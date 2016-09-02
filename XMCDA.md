@@ -22,6 +22,7 @@ Une série de services web ouverts permet d’utiliser les méthodes d’aide mu
 * Permettre à chaque décideur de s’identifier pour entrer ses données (avec pwd ou sans, décidé par l’administrateur).
 * Étendre pour permettre l’affectation de points à de multiples catégories, pour un exemple donné.
 * Import csv / excel (via WS existant éventuellement).
+
 ##Références
 * [xmcda-modular](https://github.com/xmcda-modular) sur Github.
 * [XMCDA](http://www.decision-deck.org/xmcda/), site officiel.

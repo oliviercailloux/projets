@@ -11,6 +11,7 @@ Les sites de location (type http://pap.fr) proposent généralement des moyens r
 * L’utilisateur se fait aider pour déterminer son utilité. Il voit le résultat de sa spécification d’utilité sur des annonces concrètes du système.
 * L’utilisateur peut indiquer en voyant la liste d’annonces qu’il préfère une annonce à une autre alors qu’elle est classé sous la deuxième. Le système lui permet alors de corriger son utilité pour que le classement en question soit rétabli.
 * Extraction annonce depuis le système dans un format XML à spécifier (chercher un format existant ou créer).
+
 ##Informations en vrac
 * http://pap.fr : semblent ouverts.
 * http://www.seloger.com/ : verrouillage légal.

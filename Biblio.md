@@ -38,3 +38,6 @@ Les auteurs scientifiques ont besoin de méta-données correctes pour citer adé
 * [Web services](http://m.abes.fr/Acces-direct-a/Pour-les-developpeurs) de l’ABES (Idref…).
 * [Exemple](http://domybiblio.net/search/) d’exploitation.
 * Idref, service web en ligne pour identifier une personne. Permet ensuite de récupérer Orcid, viaf etc. puis de récupérer des ressources. Permet d’interroger le catalogue du Sudoc à partir de noms. [API Solr](http://documentation.abes.fr/aideidrefdeveloppeur/ch02s01.html) pour interroger IdRef.
+
+##Nom technique du projet
+biblio

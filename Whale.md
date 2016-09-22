@@ -8,3 +8,6 @@ Voir les Issues sur github (tout n’est pas pertinent cependant !).
 * [Source](https://github.com/theneurasthenicrat/whale3) github
 * [Aide](http://www.scala-lang.org/old/node/960) Scala pour développeurs Java. The busy Java developer’s guide to Scala semble bien.
 * Installer Scala IDE depuis eclipse Marketplace. (J’ai installé les fct par défaut.) Activer Show heap status dans Pref / General.
+
+##Nom technique du projet
+whale

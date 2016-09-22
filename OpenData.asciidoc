@@ -23,3 +23,7 @@ Ce projet sera développé en collaboration avec la Direction des Systèmes d’
 * Import d’autres données que l’annuaire, telles que Menu du Crous ; prochaines conférences à Dauphine ; fichiers du Référentiel de l’Offre de Formation (ROF) au format CDM-fr.
 
 
+== Nom technique du projet
+open_data
+
+

@@ -27,3 +27,6 @@ Une série de services web ouverts permet d’utiliser les méthodes d’aide mu
 * [xmcda-modular](https://github.com/xmcda-modular) sur Github.
 * [XMCDA](http://www.decision-deck.org/xmcda/), site officiel.
 * [diviz](http://www.decision-deck.org/diviz/), site officiel.
+
+##Nom technique du projet
+xmcda

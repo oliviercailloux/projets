@@ -8,11 +8,7 @@ Ce projet fournira à l’administration de MIDO, un département de Dauphine, l
 * L’administration peut créer des matières, nombre d’heures de CM / TP / TD / CMTD, nombre de groupes.
 * L’administration peut créer des login pour les enseignants qui doivent indiquer leurs préférences cette année.
 * L’administration peut importer des données (cours et enseignants) depuis un fichier au format CDM-fr (cf. link:Voeux/OF_MEA5STI.xml[]).
-<<<<<<< HEAD
 * Un enseignant peut indiquer ses préférences et le nombre d’années qu’il a enseigné chaque matière (cf. link:Voeux/AA%20-%20Saisie%20des%20voeux%202016-2017.xls[Voeux/AA - Saisie des voeux 2016-2017.xls], page « Apprentissage »).
-=======
-* Un enseignant peut indiquer ses préférences et le nombre d’années qu’il a enseigné chaque matière (cf. link:Voeux/AA%20-%20Saisie%20des%20voeux%202016-2017.xls[], page « Apprentissage »).
->>>>>>> 20ae2200d855bde8394d9897e8a5fb6640d64972
 * Un enseignant peut indiquer combien d’heures il souhaite enseigner.
 * L’adminstration peut consulter une agrégation des préférences indiquées par les enseignants (cf. link:Voeux/Fichier Agrégé.pdf[]).
 * Un utilisateur peut générer une fiche de service (imprimable) pour l’enseignant de son choix (cf. link:Voeux/Fiche de service.png[]). Les coordonnées ne sont pas affichées. Les matières ne sont pas renseignées, seules des cases vides, comme sur l’illustration.

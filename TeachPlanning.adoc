@@ -10,12 +10,12 @@ Ce projet fournira à l’administration de MIDO, un département de Dauphine, l
 * L’administration peut importer des données (cours et enseignants) depuis un fichier au format CDM-fr (cf. link:Voeux/OF_MEA5STI.xml[]).
 * Un enseignant peut indiquer ses préférences et le nombre d’années qu’il a enseigné chaque matière (cf. link:Voeux/AA%20-%20Saisie%20des%20voeux%202016-2017.xls[Voeux/AA - Saisie des voeux 2016-2017.xls], page « Apprentissage »).
 * Un enseignant peut indiquer combien d’heures il souhaite enseigner.
-* L’adminstration peut consulter une agrégation des préférences indiquées par les enseignants (cf. link:Voeux/Fichier Agrégé.pdf[]).
-* Un utilisateur peut générer une fiche de service (imprimable) pour l’enseignant de son choix (cf. link:Voeux/Fiche de service.png[]). Les coordonnées ne sont pas affichées. Les matières ne sont pas renseignées, seules des cases vides, comme sur l’illustration.
+* L’adminstration peut consulter une agrégation des préférences indiquées par les enseignants (cf. link:Voeux/Fichier%20Agrégé.pdf[Voeux/Fichier Agrégé.pdf]).
+* Un utilisateur peut générer une fiche de service (imprimable) pour l’enseignant de son choix (cf. link:Voeux/Fiche%20de%20service.png[Voeux/Fiche de service.png]). Les coordonnées ne sont pas affichées. Les matières ne sont pas renseignées, seules des cases vides, comme sur l’illustration.
 * L’administration peut générer une fiche de service pour l’enseignant de son choix. Les coordonnées sont affichées.
 * L’administration peut affecter les enseignants aux matières.
 * L’administration peut indiquer quand les informations d’affectation pour l’année en cours deviennent publiques. Il n’est pas possible de revenir en arrière sur ce choix.
-* Un utilisateur peut consulter la charge totale de chaque enseignant (cf. link:Voeux/services MIDO.xls[]), une fois les données rendues publiques.
+* Un utilisateur peut consulter la charge totale de chaque enseignant (cf. link:Voeux/services%20MIDO.xls[Voeux/services MIDO.xls]), une fois les données rendues publiques.
 * La charge totale de chaque enseignant doit être accessible au format JSON, une fois les données rendues publiques.
 * L’administration peut importer un nouveau fichier CDM-fr où une matière a été renommée. Le reste du système doit s’adapter au renommage. Même chose en cas de création d’une nouvelle matière, effacement…
 * Le système doit garder la trace des opération d’une année précédente. (Les matières et préférences peuvent changer d’une année à l’autre.)

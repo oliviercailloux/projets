@@ -20,7 +20,7 @@ Ce projet sera développé en collaboration avec la Direction des Systèmes d’
 * Export JSON.
 * Prise en compte des remarques suite à review code (sécurité & qualité) par la DSI.
 * Généralisation via NoSQL.
-* Import d’autres données que l’annuaire, telles que fichiers du Référentiel de l’Offre de Formation (ROF) au format CDM-fr (voir link:OF_MEA5STI.xml) ; Menu du Crous ; prochaines conférences à Dauphine.
+* Import d’autres données que l’annuaire, telles que fichiers du Référentiel de l’Offre de Formation (ROF) au format CDM-fr (voir link:Voeux/OF_MEA5STI.xml) ; Menu du Crous ; prochaines conférences à Dauphine.
 
 == Nom technique du projet
 open_data

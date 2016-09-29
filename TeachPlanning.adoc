@@ -21,6 +21,9 @@ Ce projet fournira à l’administration de MIDO, un département de Dauphine, l
 * Le système doit garder la trace des opération d’une année précédente. (Les matières et préférences peuvent changer d’une année à l’autre.)
 * Lors de l’affectation par l’administration des enseignants aux matières, le système aide en mettant en exergue les enseignants dont la charge n’est pas encore complète.
 
+== Refs
+* CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
+
 == Nom technique du projet
 teach_planning
 

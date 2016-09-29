@@ -25,6 +25,7 @@ Plusieurs fonctionnalités importantes dépendent de l’existence de link:OpenD
 == Refs
 * http://www.poleinfo3.dauphine.fr/ 
 * http://10.30.71.19/PI3/web/app_dev.php/
+* Le code de link:https://github.com/oliviercailloux/poleinfo3[poleinfo3]
 
 == Nom technique du projet
 pole_info

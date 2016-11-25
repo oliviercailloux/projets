@@ -15,6 +15,7 @@ Les sites de location (type http://pap.fr) proposent généralement des moyens r
 ##Informations en vrac
 * http://pap.fr : semblent ouverts.
 * http://www.seloger.com/ : verrouillage légal.
+* AirBnB : verrouillage légal. (https://www.airbnb.fr/terms, Conduite de l'Utilisateur)
 * GTFS : http://wiki.openstreetmap.org/wiki/General_Transit_Feed_Specification https://github.com/OneBusAway/onebusaway-gtfs-modules http://transitfeeds.com/ http://opendata.stif.info/explore/dataset/offre-horaires-tc-gtfs-idf/
 http://www.nctr.usf.edu/2011/05/enabling-cost-effective-multimodal-trip-planners-through-open-transit-data-2/
 http://www.opentripplanner.org/ 

@@ -1,6 +1,7 @@
-#Recherche d’appartement à louer
+= Recherche d’appartement à louer
 Les sites de location (type http://pap.fr) proposent généralement des moyens rudimentaires de recherche parmi les annonces existantes. Ce projet vise à doter l’utilisateur de moyens d’indiquer ses préférences d’une manière riche, afin de lui montrer les annonces qui lui conviennent le mieux d’abord. En particulier, au lieu de filtrer de façon binaire (ex. : exclure tous les appartements plus petits que x m²), le système permettra la compensation (ex. : inclure une annonce pour un appartement très petit s’il est très bon sur les autres critères) ; et le système permettra d’inclure comme critère la distance (en transport public) à des lieux d’intérêts pour l’utilisateur tels que son lieu de travail.
-##Récits utilisateur
+
+== Récits utilisateur
 * Entrée nouvelle annonce.
 * Un utilisateur indique son utilité (en argent) concernant les différents aspects d’un appartement. Pour chaque critère (ex nb pièces) il indique combien il est prêt à donner pour passer d’une valeur à une autre (ex 30 € pour gagner un mètre carré).
 * Un utilisateur voit une liste d’annonces, ordonnée selon leur utilité à ses yeux.
@@ -12,7 +13,7 @@ Les sites de location (type http://pap.fr) proposent généralement des moyens r
 * L’utilisateur peut indiquer en voyant la liste d’annonces qu’il préfère une annonce à une autre alors qu’elle est classé sous la deuxième. Le système lui permet alors de corriger son utilité pour que le classement en question soit rétabli.
 * Extraction annonce depuis le système dans un format XML à spécifier (chercher un format existant ou créer).
 
-##Informations en vrac
+== Informations en vrac
 * http://pap.fr : semblent ouverts.
 * http://www.seloger.com/ : verrouillage légal.
 * AirBnB : verrouillage légal. (https://www.airbnb.fr/terms, Conduite de l'Utilisateur)
@@ -20,5 +21,5 @@ Les sites de location (type http://pap.fr) proposent généralement des moyens r
 http://www.nctr.usf.edu/2011/05/enabling-cost-effective-multimodal-trip-planners-through-open-transit-data-2/
 http://www.opentripplanner.org/ 
 
-##Nom technique du projet
+== Nom technique du projet
 apartments

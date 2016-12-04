@@ -6,15 +6,15 @@ L’université Paris-Dauphine crée et met à jour de nombreuses données publi
 
 Le mouvement open data considère que les données bénéficient d’une exposition maximale, dans des formats facilement lisibles par des machines. Entre autres bénéfices, cette approche facilite la réutilisation et l’innovation.
 
-Ce projet a pour but de créer une plate-forme qui servira à la mise à disposition de certaines données publiques de Paris-Dauphine. Il visera à mettre également à disposition certaines données non publiques après authentification. Par exemple, l’enseignant a droit d’accès aux adresses e-mail des étudiants qui suivent son cours, mais ces données ne sont pas publiques.
+Ce projet a pour but de créer une plate-forme qui servira à la mise à disposition de certaines données publiques de Paris-Dauphine. Il visera à mettre également à disposition certaines données non publiques après authentification. Par exemple, un enseignant a droit d’accès aux adresses e-mail des étudiants qui suivent son cours, mais ces données ne sont pas publiques.
 
 Ce projet sera développé en collaboration avec la Direction des Systèmes d’Information (DSI) de Dauphine.
 
 == Récits utilisateur
 * Schéma BD pour stocker des informations de l’annuaire de Dauphine telles que nom, prénom, e-mail, etc. Intégration de données « jouet » en statique ; visualisation rudimentaire.
-* Export d’une fiche au format VCard contenant uniquement  l’adresse e-mail sur demande GET de l’e-mail, sans besoin d’authentification.
+* Export d’une fiche au format VCard contenant uniquement l’adresse e-mail sur demande GET de l’e-mail, sans besoin d’authentification.
 * Mécanisme d’authentification en lien avec le CAS de Dauphine (en partenariat avec la DSI).
-* Export d’une fiche au format VCard complète sur demande GET de l’e-mail, à condition que l’utilisateur soit authentifié par le CAS.
+* Export d’une fiche au format VCard complète sur demande GET de son propre e-mail, à condition que l’utilisateur soit authentifié par le CAS.
 * Import de données depuis un fichier (format à établir avec la DSI). (Le développement se fera sur fichiers anonymisés.)
 * Configuration de qui a accès à quelles données (ou voir avec DSI, interfaçage avec systèmes existants).
 * Export JSON.

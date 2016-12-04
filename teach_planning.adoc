@@ -18,7 +18,7 @@ Ce projet fournira à l’administration de MIDO, un département de Dauphine, l
 * Un utilisateur peut consulter la charge totale de chaque enseignant (cf. link:Voeux/services%20MIDO.xls[Voeux/services MIDO.xls]), une fois les données rendues publiques.
 * La charge totale de chaque enseignant doit être accessible au format JSON, une fois les données rendues publiques.
 * L’administration peut importer un nouveau fichier CDM-fr où une matière a été renommée. Le reste du système doit s’adapter au renommage. Même chose en cas de création d’une nouvelle matière, effacement…
-* Le système doit garder la trace des opération d’une année précédente. (Les matières et préférences peuvent changer d’une année à l’autre.)
+* Le système doit garder la trace des opérations d’une année précédente. (Les matières et préférences peuvent changer d’une année à l’autre.)
 * Lors de l’affectation par l’administration des enseignants aux matières, le système aide en mettant en exergue les enseignants dont la charge n’est pas encore complète.
 
 == Refs

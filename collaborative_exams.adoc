@@ -8,7 +8,7 @@ L’application laissera la place à la subjectivité des enseignants, en leur p
 
 == Récits utilisateur
 * Schéma BD pour stocker une question. Une question comprend un énoncé (« phrasing »), un ensemble de réponses possibles, chacune associée à l’information indiquant si cette réponse est correcte, un identifiant (créé par l’auteur de la question), et un auteur. Un énoncé et une réponse sont des textes simples. L’ensemble de réponses peut être remplacé par une information « Y/N » ou « T/F » ou « free », indiquant une question oui / non, ou vrai / faux, ou de réponse libre. Une question a une langue associée.
-* Possibilité de créer une question. Les questions sont immuables dans ce projet.
+* Possibilité de créer une question. Les questions sont immuables, dans ce projet.
 * Affichage d’une question.
 * Possibilité de créer une variante d’une question (éventuellement d’un autre auteur). Lors d’une création d’une variante, le créateur repart d’une question existante au lieu de partir de zéro.
 * Possibilité de spécifier une relation lors de la création d’une variante. Le créateur indique s’il pense que la question interroge sur la même compétence, donc s’il ne faut jamais qu’elles figurent dans le même test. Le créateur indique, si la question interroge sur la même compétence, si la nouvelle variante est plus subtile, moins subtile, aussi subtile, ou ni l’un ni l’autre. (On pourra stocker une relation « at least as subtle as ».) Une question est au moins aussi subtile que sa variante ssi la connaissance de la réponse à la première question implique nécessairement la connaissance de la réponse à la deuxième. Exemples de variantes aussi subtiles : une reformulation dans un autre style littéraire, ou une traduction.
@@ -20,7 +20,7 @@ L’application laissera la place à la subjectivité des enseignants, en leur p
 * On peut afficher ce que pensent tous les utilisateurs de la relation entre deux questions.
 * Un utilisateur peut grouper un ensemble de questions dans un sujet, portant un nom (exemple : « analyse »).
 * Ce sujet s’affiche comme « analyse-user » pour les autres utilisateurs, indiquant qu’il s’agit de l’opinion de cet utilisateur.
-* Un utilisateur peut déclarer qu’il trouve que les questions marquées par untel comme étant de tel sujet sont de tel sujet (éventuellement différent), à son avis. Il peut cependant soustraire certaines questions de cet ensemble. (Exemple : le sujet « Java » regroupe, à mon avis, toutes les questions marquées « programmation » par Untel sauf les questions q1 et q2.) Cet ensemble s’ajuste lorsque l’utlisateur suivi modifie son opinion.
+* Un utilisateur peut déclarer qu’il trouve que les questions marquées par untel comme étant de tel sujet sont de tel sujet (éventuellement différent), à son avis. Il peut cependant soustraire certaines questions de cet ensemble. (Exemple : le sujet « Java » regroupe, à mon avis, toutes les questions marquées « programmation » par Untel sauf les questions q1 et q2.) Cet ensemble s’ajuste lorsque l’utilisateur suivi modifie son opinion.
 * Un utilisateur peut créer un questionnaire : il sélectionne un ensemble de questions (provenant éventuellement de différents sujets).
 * Un utilisateur peut indiquer un coefficient pour chaque question (pour le calcul de la note).
 * Un utilisateur peut créer un modèle de questionnaire : il indique combien de questions doivent être tirées de quels sujet, avec éventuellement une probabilité de tirage pour chaque question au sein d’un sujet donné pour ce questionnaire.

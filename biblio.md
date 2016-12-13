@@ -30,7 +30,7 @@ Les auteurs scientifiques ont besoin de méta-données correctes pour citer adé
 
 ##Références
 * [Standard FRBR](http://www.ifla.org/en/publications/functional-requirements-for-bibliographic-records) : IFLA Study Group on the Functional Requirements for Bibliographic Records, Functional Requirements for Bibliographic Records: Final Report (München: K.G. Saur, 1998). (Autres [standards](http://www.ifla.org/node/8750) IFLA.)
-* International Standard Bibliographic Description ([ISBD](https://en.wikipedia.org/wiki/International_Standard_Bibliographic_Description)), [Consolidated Edition](www.ifla.org/files/assets/cataloguing/isbd/isbd-cons_20110321.pdf) ([en français](http://www.bnf.fr/documents/isbd_trad_francais.pdf)) ([Preliminary Consolidated Edition](http://gen.lib.rus.ec/book/index.php?md5=242B9D9F7BC495827B428B334C3819E1), 2007)
+* International Standard Bibliographic Description ([ISBD](https://en.wikipedia.org/wiki/International_Standard_Bibliographic_Description)), [Consolidated Edition](http://www.ifla.org/files/assets/cataloguing/isbd/isbd-cons_20110321.pdf) ([en français](http://www.bnf.fr/documents/isbd_trad_francais.pdf)) ([Preliminary Consolidated Edition](http://gen.lib.rus.ec/book/index.php?md5=242B9D9F7BC495827B428B334C3819E1), 2007)
 * Sudoc utilise un format RDF national, géré par les bibliothécaires. Viellles notices sont de moindre qualité mais les plus récentes devraient être bonnes. [Exemple](http://www.sudoc.fr/146956419.rdf). Pas ou très peu d’articles (pas sa vocation première).
 * Copac équivalent du Sudoc en GB, utilise format [MODS](http://www.loc.gov/standards/mods/).
 * [BNF](data.bnf.fr) : dépôt légal, acquisitions.

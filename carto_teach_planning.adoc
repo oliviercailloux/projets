@@ -1,0 +1,20 @@
+= Cartographie + Teach planning
+
+Le projet a pour but premier de permettre le calcul d’itinéraires multi-modal (utilisant transports en commun ; vélo ; etc.). Plus précisément, il permettra dans un premier temps de cacluler le temps de trajet d’un point à un autre de Paris en transport en commun.
+
+S’il s’avère trop difficile à mettre en œuvre, le projet se rabattra sur une aide à la réalisation du projet link:teach_planning.adoc[Teach planning].
+
+== Récits utilisateur
+
+* Calcul du temps de trajet en transport en commun depuis Google Map.
+* Installation d’un serveur open street map (OSM) servant une carte de Paris.
+* Obtention du temps de trajet à pied d’un point à un autre de Paris (via OSM).
+* Rapatriement de données GTFS de STIF (voir références ci-dessous).
+* Affichage d’un morceau de carte OSM.
+* Affichage d’une ligne de transport sur la carte OSM.
+* Calcul temps de trajet en transport, sans changement, d’un point à un autre de Paris (via OSM et GTFS).
+* Calcul temps de trajet en transport, avec changements.
+* Calcul temps de trajet multi-modal.
+
+== Refs
+Voir projet link:apartments.adoc[apartments].

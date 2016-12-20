@@ -10,7 +10,7 @@ Concrètement, il s’agira de générer des dessins représentant une biblioth�
 
 == Récits utilisateur
 * Génération d’une tranche de livre simple à partir de données statiques : titre, auteur, couleur aléatoire.
-* Import de données bibliographiques depuis le web : voir références dans link:biblio.md.
+* Import de données bibliographiques depuis le web : voir références dans link:biblio.md[biblio].
 * Génération de plusieurs rangées de tranches de livres.
 * L’utilisateur peut entrer les livres à utiliser comme source.
 * L’utilisateur peut indiquer ses préférences : tranche, face, format de chaque livre, format poster, police, couleur, etc.
@@ -19,5 +19,5 @@ Concrètement, il s’agira de générer des dessins représentant une biblioth�
 * Ajout de décors : objets qui trainent devant les livres, certains livres de face devant les autres…
 
 == Dessins
-Voir répertoire 2d_library pour inspiration.
+Voir répertoire link:2d_library[] pour inspiration.
 

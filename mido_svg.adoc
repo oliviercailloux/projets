@@ -1,0 +1,27 @@
+= MIDO SVG
+Le département MIDO propose plusieurs parcours, contenant pour certains des cours à option, avec des passerelles entre certains parcours. Il est difficile pour un enseignant extérieur (ou débutant) de se repérer dans l’offre de cours et de voir comment son cours s’articule avec les cours existants. Une manière de pallier ce problème consiste à représenter graphiquement l’offre de cours et les relations entre les cours. Cependant, de tels dessins requièrent du temps pour être bien faits, et deviennent rapidement obsolète. Ce projet vise à génération automatique de diagrammes au format SVG représentant des organigramme des cours et autres informations liées.
+
+== Récits utilisateur
+* Génération d’un SVG avec données statiques : voir dessin à la main, se concentrer sur partie Informatique des Organisations, dessin à partir d’une liste de cours en mémoire.
+* Pouvoir ajouter les responsables aux parcours au dessin.
+* Pouvoir ajouter les enseignants responsables de chaque cours au dessin.
+* Différents types d’informations peuvent être colorées différemment.
+* Différents types d’informations se trouvent dans des couches différentes.
+* Récupérer les données depuis le web.
+* Liens sur les parcours renvoient au programme des cours.
+* Graphique équivalent pour la license.
+* Paramètres : license seulement, master seulement, A3 ou A4.
+* Mots clés sur cours. Utilisateur peut associer des mots-clés aux cours via interface graphique.
+* Mots clés enregistrés dans un fichier.
+* Lecture des mots clés depuis un fichier.
+* Lecture des mots clés depuis plusieurs fichiers.
+* Entrée et affichage de pré-requis entre cours.
+* Bibliothtèque générale permettant de générer des SVG (sans interface graphique).
+* Bibliothtèque particulière permettant de générer des SVG MIDO (sans interface graphique).
+* Compromis taille police min / espacement / nb données affichées
+
+== Refs
+* Voir application Mido-svg.
+* Voir dessin à la main dans application Mido-svg.
+
+

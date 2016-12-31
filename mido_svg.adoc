@@ -21,7 +21,7 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 * Compromis taille police min / espacement / nb données affichées
 
 == Refs
-* Voir application Mido-svg.
-* Voir dessin à la main dans application Mido-svg.
+* Voir application link:Test-SVG-Gen[].
+* Voir link:mido-svg/MIDO.svg[dessin] à la main.
 
 

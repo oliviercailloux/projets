@@ -13,5 +13,5 @@ L’administration de MIDO, un département de Dauphine, utilise actuellement de
 * L’administration peut générer une fiche de service pour l’enseignant de son choix. Les coordonnées sont affichées.
 
 == Refs
-* Cf. application link:Test-ODS[] pour modification de feuilles de calcul.
+* Cf. application link:Test-ODS[] (utilisant Apache ODFToolkit) pour modification de feuilles de calcul (applicable pour générer un fichier OpenDocument Writer).
 

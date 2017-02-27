@@ -17,6 +17,8 @@ Concrètement, il s’agira de générer des dessins représentant une biblioth�
 * Import du vrai format d’un livre.
 * Carte d’origine des auteurs, des éditeurs, au bout de chaque rayon.
 * Ajout de décors : objets qui trainent devant les livres, certains livres de face devant les autres…
+* Code QR qui permet de voir les résumés, etc.
+* On peut afficher uniquement, ou mettre en avant, les nouveautés depuis une certaine date / depuis la dernière visite de qqn
 
 == Dessins
 Voir répertoire link:2d_library[] pour inspiration.

@@ -23,4 +23,5 @@ Le LAMSADE est une unité de recherche de Paris-Dauphine. Ce projet a pour but d
 
 == Refs
 * link:open_data.adoc[Dauphine Open Data] : récupération de données
+* Cf. application link:Test-ODS[] (utilisant Apache ODFToolkit) pour modification de feuilles de calcul.
 

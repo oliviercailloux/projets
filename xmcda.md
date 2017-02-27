@@ -25,6 +25,7 @@ Une série de services web ouverts permet d’utiliser les méthodes d’aide mu
 
 ##Références
 * [xmcda-modular](https://github.com/xmcda-modular) sur Github.
+* [XMCDA-2.2.1-JAXB](github.com/oliviercailloux/XMCDA-2.2.1-JAXB/) : génération et lecture de fichiers au format X2.
 * [XMCDA](http://www.decision-deck.org/xmcda/), site officiel.
 * [diviz](http://www.decision-deck.org/diviz/), site officiel.
 * [test-call-xmcda-ws](https://github.com/oliviercailloux/test-call-xmcda-ws)

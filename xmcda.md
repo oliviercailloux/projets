@@ -28,7 +28,7 @@ Une série de services web ouverts permet d’utiliser les méthodes d’aide mu
 * [XMCDA-2.2.1-JAXB](https://github.com/oliviercailloux/XMCDA-2.2.1-JAXB/) : génération et lecture de fichiers au format X2.
 * [XMCDA](http://www.decision-deck.org/xmcda/), site officiel.
 * [diviz](http://www.decision-deck.org/diviz/), site officiel.
-* [example](http://www.decision-deck.org/ws/_downloads/description-wsDD96.xml) Diviz description file.
+* [exemple](http://www.decision-deck.org/ws/wsd-rankAlternativesValues-RXMCDA.html) de fichier description Diviz: voir description.xml.
 * [test-call-xmcda-ws](https://github.com/oliviercailloux/test-call-xmcda-ws)
 
 ##Nom technique du projet

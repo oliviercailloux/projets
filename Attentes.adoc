@@ -1,0 +1,11 @@
+= Attentes
+
+* Coder en anglais
+* Avec Javadoc
+* Avec tests unitaires
+* Gestion appropriée des exceptions
+* Un projet commun
+* Découpe en objets appropriée
+* Utilisation appropriée des classes de la JRE et de bibliothèques tierces
+* Implémenter une fonctionnalité à la fois dans un programme qui tourne. Soyez agiles !
+* Répondre aux attentes du client : vérifier la compréhension !

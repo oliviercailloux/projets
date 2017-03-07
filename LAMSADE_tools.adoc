@@ -11,7 +11,7 @@ Le LAMSADE est une unité de recherche de Paris-Dauphine. Ce projet a pour but d
 * Recherche d’une conférence existante : par nom, par URL…
 * Utilisation format standard calendrier pour édition des conférences.
 * Moyen aller : a → b (bus) → c (avion) etc. Pour chaque transport, indiquer : fourchette prix, à rembourser ?, à acheter ?, original stocké ? \+ possibilité stocker fichier (ou donner URL ?). Moyen retour, même chose.
-* Montrer périple sur une carte (lieu départ, lieu d’arrivée si rien d’autre rempli) d’{wj}http://openstreemap.org[OSM].
+* Montrer périple sur une carte (lieu départ, lieu d’arrivée si rien d’autre rempli) d’{wj}https://www.openstreetmap.org[OSM].
 * Sur place : l’utilisateur peut indiquer moyens de transports et fourchette prix.
 * Génération d’une demande d’ordre de mission (OM) (voir link:LAMSADE/ordre_de_mission.ods[canevas] OM).
 * Génération d’une demande de mission jeune chercheur (JC) (voir link:LAMSADE/demande_de_mission_jeune_chercheur.odt[canevas] JC).

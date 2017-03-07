@@ -22,6 +22,6 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 
 == Refs
 * Voir application link:Test-SVG-Gen[].
-* Voir link:mido-svg/MIDO.svg[dessin] à la main.
+* Voir link:MIDO-Svg/MIDO.svg[dessin] à la main.
 
 

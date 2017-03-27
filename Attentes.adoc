@@ -10,6 +10,6 @@
 * Implémenter une fonctionnalité à la fois dans un programme qui tourne. Soyez agiles !
 * Je dois voir vos contributions dans la branche `master` : fusionnez avant la séance. (Idée : https://fr.wikipedia.org/wiki/Int%C3%A9gration_continue[Intégration continue])
 * Respecter les https://github.com/oliviercailloux/java-course/tree/master/Best%20practices[bonnes pratiques]
-* Vous pouvez utiliser le `groupId` `io.github.oliviercailloux.y2017`. Utilisez obligatoirement comme `artifactId` le nom de votre projet (avec tirets bas, \_, transformés en traits d’union)
+* Vous pouvez utiliser le `groupId` `io.github.oliviercailloux.y2017`. Utilisez obligatoirement comme `artifactId` le nom de votre projet (avec tirets bas, _, transformés en traits d’union)
 * Répondre aux attentes du client : vérifier la compréhension !
 

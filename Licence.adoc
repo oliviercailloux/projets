@@ -1,4 +1,4 @@
-= licence des projets
+= Licence des projets
 Je vous propose de publier vos projets sous une licence open source. Rien ne vous y oblige, car je vous considère comme propriétaires du code que vous créez.
 
 == Proposition

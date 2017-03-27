@@ -1,0 +1,21 @@
+= licence des projets
+Je vous propose de publier vos projets sous une licence open source. Rien ne vous y oblige, car je vous considère comme propriétaires du code que vous créez.
+
+== Proposition
+Pour que votre projet soit utilisable par d’autres, ou qu’il puisse servir de base à d’autres projets d’étudiants (par exemple pour, les années prochaines, perfectionner ce que vous avez commencé), il est nécessaire que votre code soit muni d’une licence adéquate.
+
+La licence indique dans quelles conditions les utilisateurs ou programmeurs peuvent utiliser ou modifier votre création.
+
+Dans le cadre du cours, je vous considère comme propriétaire du code que vous créez. Cela veut dire que vous en avez la propriété intellectuelle. C’est donc vous qui choisissez quelle licence associer au code (quels droits fournir à vos utilisateurs).
+
+Le projet sera en pratique réutilisable seulement si tous les contributeurs (tous les membres de votre projet) acceptent de publier leur code sous une même licence.
+
+La licence que je propose d’utiliser est la licence https://opensource.org/licences/MIT[MIT], une licence open source connue.
+
+== Mise en œuvre
+Votre choix ou refus de publier votre code sous licence MIT n’affectera pas votre évaluation pour ce cours, car je n’en aurai pas connaissance avant l’évaluation.
+
+* Pendant l’année : vous réfléchissez et discutez, au sein de votre groupe, à votre choix d’accepter ou non de publier votre projet sous licence MIT. Vous ne me mettez pas au courant de votre choix.
+* En fin d’année : lors de la dernière séance, je vous fournirai un document vous permettant de déclarer que vos contributions au projet sont publiées sous licence MIT. Vous choisissez si vous signez ce document. Que vous l’ayez signé ou pas, vous le remettez ensuite à votre délégué, qui conserve tous les documents sous enveloppe.
+* Après remise des notes pour le cours, le délégué me fait parvenir les documents.
+

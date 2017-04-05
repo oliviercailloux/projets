@@ -8,7 +8,7 @@ La licence indique dans quelles conditions les utilisateurs ou programmeurs peuv
 
 Le projet sera en pratique réutilisable seulement si tous les contributeurs (tous les membres de votre projet) acceptent de publier leur code sous une même licence.
 
-La licence que je propose d’utiliser est la licence https://opensource.org/licences/MIT[MIT], une licence open source connue.
+La licence que je propose d’utiliser est la licence https://opensource.org/licenses/MIT[MIT], une licence open source connue.
 
 == Mise en œuvre
 Votre choix ou refus de publier votre code sous licence MIT n’affectera pas votre évaluation pour ce cours. Je n’aurai d’ailleurs pas connaissance de votre choix avant l’évaluation.

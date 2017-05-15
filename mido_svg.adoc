@@ -16,8 +16,8 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 * Lecture des mots clés depuis un fichier.
 * Lecture des mots clés depuis plusieurs fichiers.
 * Entrée et affichage de pré-requis entre cours.
-* Bibliothtèque générale permettant de générer des SVG (sans interface graphique).
-* Bibliothtèque particulière permettant de générer des SVG MIDO (sans interface graphique).
+* Bibliothèque générale permettant de générer des SVG (sans interface graphique).
+* Bibliothèque particulière permettant de générer des SVG MIDO (sans interface graphique).
 * Compromis taille police min / espacement / nb données affichées
 
 == Refs

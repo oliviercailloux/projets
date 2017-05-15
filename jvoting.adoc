@@ -5,6 +5,7 @@ Application de manipulation et visualisation de données de vote
 Le champ disciplinaire du choix social étudie les propriétés et mises en œuvre de méthodes de vote variées. Une méthode de vote, dans ce contexte, est une façon d’agréger les préférences des électeurs de façon à en déduire une préférence de la société (un choix, ou un rangement, typiquement). Ce projet a pour but de mettre à disposition une plateforme logicielle permettant de visualiser des données d’élections, de les manipuler, et de tester des méthodes.
 
 == Récits utilisateur
+* Format pour représenter des profils de vote. En XML Schema, puis en json. Permettre de représenter tous les formats de PrefLib et de Whale.
 * L’utilisateur peut visualiser un profil de vote : un ensemble de candidats, un ensemble de préférences (rangement complet des candidats). La dernière version d’un profil est toujours accessible sur /v1/Px/c/, où x est le n° du profil. (v1 indique la première version de l’API.)
 * L’utilisateur peut créer un profil de vote, accessible sur /v1/Px/Vy/, où x est le n° de ce profil (un compteur qui s’incrémente), et y est la version (un autre compteur qui s’incrémente).
 * L’utilisateur peut modifier un profil créé précédemment. Le profil résultant est accessible sur /v1/Px/Vy/, avec y la nouvelle version créée.

@@ -11,7 +11,7 @@ Le projet sera en pratique réutilisable seulement si tous les contributeurs (to
 La licence que je propose d’utiliser est la licence https://opensource.org/licenses/MIT[MIT], une licence open source connue.
 
 == Mise en œuvre
-Votre choix ou refus de publier votre code sous licence MIT n’affectera pas votre évaluation pour ce cours. Je n’aurai d’ailleurs pas connaissance de votre choix avant l’évaluation.
+Votre choix ou refus de publier votre code sous licence MIT n’affectera pas votre évaluation pour ce cours. (Je n’aurai d’ailleurs pas connaissance de votre choix avant l’évaluation.)
 
 * Pendant l’année : vous réfléchissez et discutez, au sein de votre groupe, à votre choix d’accepter ou non de publier votre projet sous licence MIT. Vous ne me mettez pas au courant de votre choix.
 * En fin d’année : lors de la dernière séance, je vous fournirai un document vous permettant de déclarer que vos contributions au projet sont publiées sous licence MIT. Vous choisissez si vous signez ce document. Que vous l’ayez signé ou pas, vous le remettez ensuite à votre délégué, qui conserve tous les documents sous enveloppe.

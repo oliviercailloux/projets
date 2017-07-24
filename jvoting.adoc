@@ -25,6 +25,7 @@ Le champ disciplinaire du choix social étudie les propriétés et mises en œuv
 * http://www.preflib.org/about.php[{PrefLib}]
 * http://strokes.imag.fr/whale4/[Whale4]
 * https://github.com/xmcda-modular[xmcda-modular]
+* http://www.spliddit.org/
 
 == Nom technique du projet
 jvoting

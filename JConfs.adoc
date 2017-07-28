@@ -1,0 +1,38 @@
+= JConfs
+
+Outil de gestion de déplacement en conférence.
+
+== Contexte
+
+== Fonctions demandées
+Contract1:: Une classe Conference qui permet de stocker une conférence : URL, Titre, Date début et fin, Frais d’inscription, Lieu (Ville et Pays).
+Contract2:: Une classe PathStep qui stocke une étape d’un itinéraire : type (transport en commun local, train, avion, taxi)
+File1:: Une classe qui permet d’écrire une conférence au format VCard.
+File2:: Une classe qui permet de lire une conférence au format VCard.
+Resources1:: Inclure dans votre classpath un (petit !) fichier de carte du monde de https://github.com/mapsforge/mapsforge[Mapsforge]. Créer une méthode main qui lit le fichier et teste sa validité. (Exemple https://www.javadoc.io/doc/org.mapsforge/mapsforge-map-reader/0.8.0[Javadoc].)
+Resources2:: Inclure dans votre classpath un fichier modèle d’ordre de mission (voir link:LAMSADE/ordre_de_mission.ods[canevas] OM). Créer un main qui ouvre le document à l’aide de Apache ODFToolkit (voir https://github.com/oliviercailloux/Test-SVG[Test SVG]) et le referme aussitôt, et affiche si le document a bien pu être ouvert.
+Interfaces1:: Créer une Interface Java ConferencesRetriever pour lire un ensemble de données de conférences : elle renvoie simplement un ensemble de Conferences. On peut aussi lui préciser un intervalle de dates, dans une autre méthode, qui restreint ce qu’elle renvoie. Fusionner dans master. Dans la branche Interfaces1.1, créer une classe ConferencesShower. On peut lui fournir une instance de ConferencesRetriever. Elle fournit une méthode qui communique avec l’utilisateur sur la sortie et l’entrée standard et lui permet d’effectuer par ce biais une recherche de conférences. Faites en sorte que la branche Interfaces1.1 ne contienne pas d’implémentation de ConferencesRetriever.
+Interfaces2:: Une classe ConferencesFromVCard qui implémente ConferencesRetriever. On peut lui fournir un chemin d’accès. Elle lit les vcards dans le répertoire fourni, et renvoie les conférences qui correspondent aux dates choisies. Fusionner Interfaces2 et Interfaces1.1 dans master. Dans la branche Interfaces 2.1, créer une méthode main qui fait fonctionner le programme de discussion avec l’utilisateur pour lui permettre d’afficher des conférences.
+
+Suite des fonctions.
+
+Geo:: Utiliser https://github.com/AReallyGoodName/OfflineReverseGeocode pour stocker les villes. (1)
+GuiConf:: GUI pour éditer une conférence. Lit et écrit un fichier VCard. Le fichier peut contenir plusieurs conférences. (3)
+LocalMap:: Utiliser Mapsforge pour afficher des cartes de trajet localement. (Tester avec cartes Île-de-France et Monde.) Le logiciel télécharge la carte si elle n’existe pas déjà. Il doit être possible d’afficher une carte contenant un point de départ (considéré comme Paris par défaut) et un point d’arrivée donnés. (1) (http://www.openstreetmap.org/directions?engine=osrm_car&route=48.8566%2C2.3515%3B52.5170%2C13.3889#map=7/50.730/7.866[Exemple], mais il n’est pas nécessaire d’afficher l’itinéraire ni de surligner les points extrêmes.)
+SmallMap:: Obtenir une carte Mapsforge avec uniquement niveau de zoom faible, pour réduire la taille. Documenter la procédure à suivre au format Asciidoc, en anglais. Intégrer la carte dans le logiciel. (1)
+OnlineCalendar:: Au lieu d’éditer des fichiers VCard, le GUI d’édition communique (si l’utilisateur le souhaite) avec un calendrier en ligne stocké sur fruux.com. Des classes doivent exposer cette fonctionalité hors GUI également. (3)
+History:: À chaque modification de l’ensemble des conférences, une sauvegarde est effectuée sur un dépôt GitHub distant. (Voir API GitHub.) (3)
+Researcher:: Une classe pour stocker les données d’un chercheur telles que trouvées dans l’https://www.ent.dauphine.fr/Annuaire/index.php?param0=fiche&param1=ocailloux[annuaire] de Dauphine et nécessaires pour les fonctions ci-dessous. Une classe pour lire les données de l’annuaire étant donné un login de chercheur (par exemple ocailloux). (1)
+OM:: Génération d’une demande d’ordre de mission (OM) pour une conférence et un chercheur donnés. (1)
+JC:: Génération d’une demande de mission jeune chercheur (JC) (voir link:LAMSADE/demande_de_mission_jeune_chercheur.odt[canevas] JC). Le modèle est stocké dans le classpath et contient des tags tels que <Researcher name> ou <Conference name>, qui seront remplacés par votre algorithme. (1)
+Letterhead:: Génération de papier à en-tête avec les coordonnées d’un chercheur passées en paramètres (voir link:LAMSADE[canevas]). Un programme à part entière est extrait, qui ne fait que ça (un seul main), et qui repose sur une bibliothèque contenant les fonctions développées ci-dessus. Le programme est envoyé vers un nouveau dépôt GitHub. (2)
+
+== Autres idées
+* Génération du formulaire annuel de demande de PRES (voir link:LAMSADE/Pres.pdf[canevas] PRES), d’après données passées en paramètres / fournies par interface graphique / récupérée depuis fichier / récupérée depuis internet
+* Moyen aller : a → b (bus) → c (avion) etc. Pour chaque transport, indiquer : fourchette prix, à rembourser ?, à acheter ?, original stocké ? \+ possibilité stocker fichier (ou donner URL ?). Moyen retour, même chose.
+* Sur place : l’utilisateur peut indiquer moyens de transports et fourchette prix.
+* Génération et stockage de la demande d’ordre de mission (OM) ou de la demande JC. Si déjà une, elle passe dans l’historique.
+* L’utilisateur peut entrer son mot de passe de son compte e-mail @dauphine. Le logiciel le stocke en suivant le mécanisme de conservation des données secrètes de l’OS.
+* Réception des demandes scannées envoyées sur l’e-mail du chercheur (reconnaissable par l’adresse expéditeur : \photocopieur@lamsade.dauphine.fr), à la demande de l’utilisateur.
+* Envoi demande par e-mail.
+

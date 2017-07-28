@@ -12,6 +12,8 @@ Concrètement, il s’agira de générer des dessins représentant une biblioth�
 Un https://github.com/oliviercailloux/2D-Library[projet] existant permet déjà de générer une image SVG d’un ensemble de livres. Mais il lui manque des fonctionalités importantes.
 
 == Fonctions demandées
+Vous repartirez du projet existant (lien ci-dessus), et l’étendrez.
+
 Contract1:: Une classe qui permet de stocker des préférences d’affichage d’un utilisateur : nombre de livres par étagère ; livres obliques ou droits et inclinaison ; … (voir Options du logiciel)
 Contract2:: Une classe SearchData qui permet de stocker des données de recherche d’un livre : nom de l’auteur partiel, titre partiel, et intervalle d’années de publication. Par exemple, il sera possible de stocker une donnée de recherche : auteur "Shakesp", titre "Hamlet", années 1580 – 1605.
 File1:: Une classe qui permet de lire des livres au format CSV. Elle comportera entre autres une méthode d’en-tête suivant : public List<Book> readCsv(InputStream input).

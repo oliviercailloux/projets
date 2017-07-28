@@ -25,15 +25,15 @@ Interfaces2:: Une classe SimpleSearcher qui implémente Searcher. On peut lui fo
 
 Suite des fonctions.
 
-. Corriger erreurs données par Eclipse dans code existant (1)
-. Classe pour écrire et lire préférences d’affichage de l’utilisateur dans un fichier CSV. (2)
-. GUI pour éditer ses préférences d’affichage : le programme lit un fichier CSV au démarrage, permet la modification, et écrit dans le fichier à la sortie. (3)
-. GUI pour éditer sa liste de livres (à faire après le point précédent). (2)
-. Intégration des fichiers livres et préférences au programme existant : le programme lit ces fichiers et ne permet pas leur modification. (1)
-. Les livres dans les dessins générés sont entourés d’une bordure noire. (1)
-. Les livres sont des hyperliens envoyant vers leur description, ou une recherche google sur leur titre. (2)
-. L’utilisateur peut se faire aider de la fonction de recherche de livres : il entre des données de recherche et le programme l’envoie vers une recherche sur le site de la bibliothèque du congrès (voir code existant). Une classe est conçue pour ce faire. (1)
-. Le GUI d’édition de livres est modifié pour inclure la fonctionalité ci-dessus. (2)
+Corr:: Corriger erreurs données par Eclipse dans code existant (1)
+WritePrefs:: Classe pour écrire et lire préférences d’affichage de l’utilisateur dans un fichier CSV. (2)
+GuiPrefs:: GUI pour éditer ses préférences d’affichage : le programme lit un fichier CSV au démarrage, permet la modification, et écrit dans le fichier à la sortie. (3)
+GuiBooks:: GUI pour éditer sa liste de livres (à faire après le point précédent). (2)
+GenIntegr:: Intégration des fichiers livres et préférences à l’algorithme de génération de dessin existant : le programme lit ces fichiers et ne permet pas leur modification. (1)
+DrawBorder:: Les livres dans les dessins générés sont entourés d’une bordure noire. (1)
+DrawLinks:: Les livres sont des hyperliens envoyant vers leur description, ou une recherche google sur leur titre. (2)
+SearchCongress:: L’utilisateur peut se faire aider de la fonction de recherche de livres : il entre des données de recherche et le programme l’envoie vers une recherche sur le site de la bibliothèque du congrès (voir code existant). Une classe est conçue pour ce faire. (1)
+GuiSearch:: Le GUI d’édition de livres est modifié pour inclure la fonctionalité ci-dessus. (2)
 
 == Autres idées
 * L’utilisateur peut indiquer comme préférences : tranche, face, pour chaque livre ; ordre des livres…

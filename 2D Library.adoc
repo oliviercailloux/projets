@@ -9,7 +9,7 @@ Ce projet vise à donner aux livres immatériels une existence en deux dimension
 
 Concrètement, il s’agira de générer des dessins représentant une bibliothèque, où les livres sont vus depuis leur tranche. L’usage envisagé est d’afficher ces dessins sur des écrans, ou de les imprimer en A3, ou en poster (qui pourrait être offert en cadeau), …
 
-Un https://github.com/oliviercailloux/2D-Library[projet] existant permet déjà de générer une image SVG d’un ensemble de livres. Mais de nombreuses fonctionalités importantes devraient lui être ajoutées.
+Un https://github.com/oliviercailloux/2D-Library[projet] existant permet déjà de générer une image SVG d’un ensemble de livres. Mais il lui manque des fonctionalités importantes.
 
 == Fonctions demandées
 Contract1:: Une classe qui permet de stocker des préférences d’affichage d’un utilisateur : nombre de livres par étagère ; livres obliques ou droits et inclinaison ; … (voir Options du logiciel)
@@ -21,12 +21,14 @@ Resources2:: Inclure dans votre projet un fichier start-books-classpath.csv qui 
 Interfaces1:: Créer une Interface Java Searcher pour chercher des livres : on lui donne une instance de SearchData et elle retourne une liste de livres. On peut aussi lui préciser une limite au nombre de résultats, dans une autre méthode. Fusionner dans master. Dans la branche Interfaces1.1, créer une classe SearchCommander. On peut lui fournir une instance de Searcher. Elle fournit une méthode qui communique avec l’utilisateur sur la sortie et l’entrée standard et lui permet d’effectuer par ce biais une recherche de livre. Faites en sorte que la branche Interfaces1.1 ne contienne pas l’implémentation SimpleSearcher.
 Interfaces2:: Une classe SimpleSearcher qui implémente Searcher. On peut lui fournir des données sous forme d’une liste de livres. Elle cherche simplement dans ces données. Fusionner Interfaces2 et Interfaces1.1 dans master. Dans la branche Interfaces 2.1, créer une méthode main qui fait fonctionner le programme de discussion avec l’utilisateur pour lui permettre de rechercher un livre.
 
+Suite des fonctions.
+
 . Corriger erreurs données par Eclipse dans code existant (1)
-. Classe pour écrire et lire préférences d’affichage de l’utilisateur dans un fichier CSV (2).
+. Classe pour écrire et lire préférences d’affichage de l’utilisateur dans un fichier CSV. (2)
 . GUI pour éditer ses préférences d’affichage : le programme lit un fichier CSV au démarrage, permet la modification, et écrit dans le fichier à la sortie. (3)
 . GUI pour éditer sa liste de livres (à faire après le point précédent). (2)
 . Intégration des fichiers livres et préférences au programme existant : le programme lit ces fichiers et ne permet pas leur modification. (1)
-. Les livres dans les dessins générés sont entourés d’une bordure noire (1)
+. Les livres dans les dessins générés sont entourés d’une bordure noire. (1)
 . Les livres sont des hyperliens envoyant vers leur description, ou une recherche google sur leur titre. (2)
 . L’utilisateur peut se faire aider de la fonction de recherche de livres : il entre des données de recherche et le programme l’envoie vers une recherche sur le site de la bibliothèque du congrès (voir code existant). Une classe est conçue pour ce faire. (1)
 . Le GUI d’édition de livres est modifié pour inclure la fonctionalité ci-dessus. (2)

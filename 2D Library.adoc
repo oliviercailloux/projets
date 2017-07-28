@@ -44,5 +44,5 @@ Suite des fonctions.
 * On peut afficher uniquement, ou mettre en avant, les nouveautés depuis une certaine date / depuis la dernière visite de qqn
 
 == Dessins
-Voir répertoire link:2d_library[] pour inspiration.
+Voir répertoire link:2D%20Library[2D Library] pour inspiration.
 

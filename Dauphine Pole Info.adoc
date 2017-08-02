@@ -1,0 +1,40 @@
+= Dauphine Pole Info
+Application de gestion des masters MIAGE de Paris-Dauphine
+
+== Contexte
+Le département MIDO propose six masters MIAGE : IF, ID, SITN, chacun en formation classique et en formation par apprentissage. Chaque master a ses cours, ses enseignants intervenants, etc. Les responsables de ces masters souhaitent disposer d’un outil informatique pour faciliter leur gestion, par exemple, recruter et affecter les enseignants aux cours, affecter les étudiants aux cours facultatifs en fonction de leurs préférences, des places disponibles et des contraintes horaires, etc.
+
+L’outil actuellement utilisé n’est plus maintenu et ne communique pas avec l’extérieur, gardant donc privées des données qui pourraient être utiles, et ne bénéficiant pas des données centrales de Dauphine (éventuellement mieux mises à jour). Il est demandé, en vue de son remplacement sans discontinuité de service, d’exposer les données de l’outil existant pour permettre la création d’interfaces graphiques compatibles et la réutilisation des données existantes.
+
+Plusieurs fonctionnalités bénéficieront du (ou au) projet link:OpenData.adoc[Dauphine Open Data] (DOD), la communication entre les deux projets sera donc utile.
+
+== Fonctions demandées
+PHP:: Faire tourner l’application existante sur l’ordinateur d’au moins un des développeurs de ce projet. Documenter (dans votre README de projet) ce qu’il est nécessaire de faire. (0,5)
+Basics:: Des objets pour stocker une personne et un cours (voir table Contenu), en vue de stocker les éléments de la base existante (voir schéma application existante poleinfo3). Même chose pour Master et toutes informations nécessaires pour lier cours, enseignants et master (voir schéma SQL). (0,5)
+Txt:: Pouvoir encoder et décoder en texte chacun de ces objets pris isolément, donc sans les informations de lien entre eux (par exemple, la représentation textuelle d’un cours ne mentionne pas ses enseignants ni les masters qui le comprennent). (0,5)
+BasicServlets:: Chaque objet de base Thing (Pour Thing valant Course, Person) a un id et trois servlets associées : setThing(id, txt), où txt est la représentation textuelle de Thing, getThing(id), et setThing(id, field1, field2, …). Les servlets ne permettent pas de modifier les interactions entre objets (par exemple de changer l’enseignant d’un cours), seulement les détails des objets eux-même (par exemple le titre d’un cours). (1)
+BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, la modification des informations de base de Course et Person. (1)
+ObjectsXML:: Encoder / décoder une partie de vos objets de base en XML. Repartir du schéma CDM-fr, simplifié. (« Vos objets de base » comprend ici Master.) (1)
+ObjectsJSON:: Encoder / décoder le reste de vos objets de base en JSON. (0,5)
+ExtBasicServlets:: Étendre servlets existants pour accepter et renvoyer à la demande du XML ou JSON en plus du texte. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
+LinkServlets:: Servlet permettant de récupérer, effacer, ajouter des liens entre master, cours et person, par id uniquement. Mêmes instructions que ci-dessus. (0,5)
+Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
+LinkClient:: Étendre le client pour permettre de modifier les liens entre cours, master, enseignants, le munir d’un GUI moins rudimentaire. (1)
+SetDB:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD de façon à garantir la compatibilité avec l’application existante. (1,5)
+UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)
+SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
+SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
+DoubleReader:: Votre client communique uniquement avec DOD au lieu de votre serveur. (DOD communique quand à lui avec votre serveur.) Votre client reçoit (en lecture seule) et affiche, en plus, les informations centrales de DOD. (1)
+Merger:: Ajoutez, en concertation avec l’équipe DOD, un servlet sur DOD et une entité BD, qui permet d’associer des ids PI3 à des ids de Dauphine centrale (là où c’est pertinent). Votre client prend en compte cette information quand elle existe. (1)
+
+== Autres fonctions possibles
+* Un étudiant peut entrer ses préférences concernant les cours facultatifs auxquels il a accès.
+* Un responsable peut affecter les étudiants aux cours facultatifs. Ce faisant, il voit combien d’étudiants sont déjà inscrits aux cours, ce qui l’aide à équilibrer la charge.
+* Accès à la maquette d’un parcours, générée. (Cf. maquettes existantes.)
+
+== Refs
+* http://www.poleinfo3.dauphine.fr/ 
+* http://10.30.71.19/PI3/web/app_dev.php/
+* Le code de link:https://github.com/oliviercailloux/poleinfo3[poleinfo3]
+* CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
+

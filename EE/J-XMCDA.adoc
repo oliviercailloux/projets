@@ -1,11 +1,9 @@
 = J-XMCDA
 
 == Objectif
-
 Permettre l’invocation de services web XMCDA (spécialisés en aide multicritère à la décision) grâce à une interface graphique, fournir des outils divers pour faciliter leur usage. La connaissance de l’aide multicritère à la décision n’est pas requise.
 
 == Contexte
-
 Une série de services web ouverts permet d’utiliser les méthodes d’aide multicritère à la décision. Ils reposent sur le format XMCDA et sur le logiciel Diviz, qui permet l’invocation des services sans devoir programmer. L’utilisateur doit cependant fabriquer à la main les fichiers XML d’entrée (ou convertir du CSV), et plus généralement il n’existe pas d’intégration des outils dans un logiciel très simple d’emploi.
 
 Le format d’encodage actuellement utilisé pour XMCDA est XMCDAv2 (ci-après : X2). Tous les services web XMCDA acceptent en entrée du X2 et sortent du X2. L’inconvénient de cette approche est que les services web sont mal décrits par le schéma. À l’opposé, le schéma xmcda-modular a été proposé, qui ne doit pas être utilisé pour décrire un service web directement, mais bien pour générer des schémas qui servent à décrire des services web. Ainsi, on pourrait conserver la compatibilité entre services, mais leur donner une spécificité. Votre mission est (entre autres) d’assurer la compatibilité de ces deux approches, et l’invocation automatique de services webs dans la mesure du possible.
@@ -31,15 +29,14 @@ Le format d’encodage actuellement utilisé pour XMCDA est XMCDAv2 (ci-après :
 * Import csv / excel (via WS existant éventuellement).
 
 Diviz:: Un binôme se familiarise avec l’usage de Diviz, et le présente aux autres. Il faut suivre un tutoriel avec un cas d’usage non trivial ; télécharger les données six real cars et les utiliser sur un problème. Écrire un rapport avec ce qui a été et les problèmes rencontrés. (1)
-Alts:: Objet Alternative (id: int, name: String) ; un objet pour représenter un rangement d’alternatives avec ex-æquo (association de chaque alternative à son rang). Conseil : les représenter par un arbre où la relation parent enfant est la relation « est moins bonne que » (suit dans le classement). Encodage et décodage de ces deux objets en texte. Utiliser le format de http://www.preflib.org/data/format.php#election-data[{PrefLib}] pour la représentation textuelle d’un rangement avec ex-æquo. (0,5)
-Crits:: Objet Criterion (id et name) ; un objet Evaluations pour représenter les évaluations d’un ensemble d’alternatives, chacune sur une série de critère. Voir exemple six real cars. Conseil : utiliser une Table de Guava. Représentation textuelle d’un critère, et d’un objet évaluation en CSV. (1)
-ServiceDescr:: Objet WebServiceDescription : un ensemble de paires d’id (string) et de type (un type au sens XML). Les types sont ceux qui peuvent servir de type de base dans le schéma xmcda-modular, plus un type spécial représentant le type de base X2. Ce dernier nous servira de type par défaut, car il est très général. Encodage et décodage de l’objet WebServiceDescription en texte. (1)
+Alts:: Objet Alternative (id: int, name: String) ; un objet pour représenter un rangement d’alternatives avec ex-æquo (association de chaque alternative à son rang). Conseil : les représenter par un arbre où la relation parent enfant est la relation « est moins bonne que » (suit dans le classement). Encodage et décodage de Alternative en JSON, et utiliser le format de http://www.preflib.org/data/format.php#election-data[{PrefLib}] pour la représentation textuelle d’un rangement avec ex-æquo (encodage et décodage). (1)
+Crits:: Objet Criterion (id et name) ; un objet Evaluations pour représenter les évaluations d’un ensemble d’alternatives, chacune sur une série de critère. Voir exemple six real cars. Conseil : utiliser une Table de Guava. Représentation JSON d’un critère, et d’un objet évaluation en CSV et JSON. (1)
+ServiceDescr:: Objet WebServiceDescription : un ensemble de paires d’id (string) et de type (un type au sens XML). Les types sont ceux qui peuvent servir de type de base dans le schéma xmcda-modular, plus un type spécial représentant le type de base X2. Ce dernier nous servira de type par défaut, car il est très général. Encodage et décodage de l’objet WebServiceDescription en JSON. (1)
 BasicServlets:: des servlets qui associent des objets de base à un identifiant d’un problème. getAlternative(id pbl, id alt): Alternative. getCriterion(id pbl, id crit). getEvaluations(id pbl). Set*, même chose. (1)
 BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, l’édition de ces données de base. (1)
 ObjectsXML:: Encoder / décoder vos objets du modèle (Alternative, Criterion, ensemble d’alternatives, ensemble de critères, AlternativeTree, Evaluations) en XML : au format X2 et au format xmcda-modular. (Utiliser les bibilothèques JAXB associées.) Les XML fournis au format X2 se conforment au schéma X2. (1)
 GenSchema:: Étant donné un objet WebServiceDescription, classe SchemaGenerator qui retourne un schéma XSD correspondant réutilisant les types de xmcda-modular. (1)
-ObjectsJSON:: Encoder / décoder Alternative, Criterion, AlternativeTree, Evaluations en JSON. (1)
-ExtBasicServlets:: Étendre servlets existants concernant vos objets de base, pour renvoyer à la demande du XML ou JSON en plus du texte. Transformer en REST. Cookie permet de mémoriser un id prbl, il est utilisé si l’id pbl n’est pas fourni. (1)
+ExtBasicServlets:: Étendre servlets existants concernant vos objets de base, pour renvoyer à la demande du XML ou JSON en plus des éventuels autres formats déjà implémentés. Transformer en REST. Cookie permet de mémoriser un id prbl, il est utilisé si l’id pbl n’est pas fourni. (1)
 Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
 SetDB1:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD alternatives, critères, évaluations, AlternativeTree. (1)
 UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)

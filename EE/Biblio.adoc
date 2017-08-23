@@ -1,0 +1,63 @@
+= Biblio
+
+Logiciel d’amélioration collaborative de notices bibliographiques.
+
+== Contexte
+Une notice bibliographique fournit des données sur un ouvrage ou une publication (livre, article scientifique, etc.) telles que ses auteurs, son éditeur, etc.
+Les auteurs scientifiques ont besoin de méta-données correctes pour citer adéquatement leurs sources. Exemples http://proceedings.mlr.press/v70/[ici].
+
+Ces informations sont souvent entachées d’erreurs ou difficilement exploitables : nom et prénom de l’auteur inversés ou mal orthographiés, problème des homonymes, etc. Les informations fournies par Amazon et par Google books, par exemple, peuvent ne pas correspondre. Les bibliothécaires fournissent un travail souvent de meilleure qualité, mais néanmoins imparfait et inévitablement incomplet.
+
+Bien que de nombreuses bases de données accessibles publiquement existent pour récupérer les méta-données, leur qualité nécessairement imparfaite conduit les chercheurs à passer du temps à se constituer une base de données (à peu près) à jour après vérification des données. Ce travail est dupliqué par chacun. L’objectif de ce projet est de fournir une plate-forme permettant de partager ce travail, et d’améliorer les méta-données, en distinguant les homonymes par exemple.
+
+== Fonctions demandées
+// 
+Abstract:: Work, Expression. Voir attributs dans le standard FRBR, Ch. 3 et 4. Vos entités doivent toutes être accompagnées d’une origine (« origin »), qui contient une date et une source. Pour les entités non implémentées telles que place, remplacer par une relation simple vers un entier représentant l’identifiant de l’entité (placeId, par exemple). Créer dans une méthode setup() deux notices bibliographiques (donc deux instances de Work et deux instances de Expression), puisées d’un article scientifique (cf. référence ci-dessus). (1)
+Concrete:: Manifestation, Item, remplacer dans Work et Expression les relations vers int par des relations vers les objets corrects pour ces nouvelles entités. Étendre setup(). (1)
+Person:: Person. Mêmes instructions que ci-dessus. Un nom d’autorité (le nom sous lequel la personne est connue des bibliothécaires), un ensemble d’autres noms. Un nom est soit un triplet first name, middle name, last name, soit un simple string (quand il ne peut pas être découpé de la sorte, par exemple pour les noms étrangers). (1)
+TxtExport:: Représenter les objets du modèle sous format JSON. Les relations sont représentées par de simples ids. (1)
+TxtImport:: Pouvoir créer un des objets du modèle à partir de sa représentation JSON. (1)
+ServletsMain:: GetWork(id): Work, GetExpression, etc, pour les cinq objets du modèle. (0,5)
+ServletsSet:: PutWork(Work): id, etc., pour les cinq objets du modèle. L’id n’est pas fourni, il est rendu par le serveur. L’origine est fournie. (0,5)
+ServletEquals:: Modifier le modèle pour pouvoir marquer certaines personnes comme des enregistrements d’autorité (« authoritative »). Un utilisateur (une personne) peut marquer une personne comme un duplicat d’une autorité. Servlet SetEquals(user id, person id, authoritative person id, boolean equal) ; GetEquals(user id, authoritative person id): List<Person>. Le modèle doit tolérer que des utilisateurs donnent des indications conflictuelles. (0,5)
+ClientCreate:: Un client simple (GUI rudimentaire ou interface utilisateur textuelle) pour créer et modifier les cinq objets de base. Une modification est considérée comme une création d’un nouvel objet à partir d’un canevas. (1)
+Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). Publier la partie serveur comme un projet indépendant (ProjectName). (1)
+MODS:: Import d’une notice depuis le format http://www.loc.gov/standards/mods/[MODS]. (2)
+JSON:: Export d’un Work dans un format JSON de votre choix. (0,5)
+MARC:: Import d’une notice depuis le format MARC 21. (1)
+ServletsWork:: Modifier les servlets existants pour format REST : get, put, modification. Un cookie peut être utilisé pour stocker l’origine. Les servlets acceptent ou renvoient les formats demandés : MODS, JSON, MARC 21, texte. (1)
+Populate:: Servlet qui, étant donné une URL, récupère une entrée dans un format connu et l’intègre au serveur. (Voir exemples dans les références.) (1)
+Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
+SetDB1:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD les Work et Expression. (1,5)
+SetDBVar:: Même chose pour le reste du modèle. (1,5)
+UseDB1:: Modifier une partie des servlets pour qu’ils écrivent dans et lisent la BD. (1)
+SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
+SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
+
+== Autres fonctionnalités
+Error:: un utilisateur peut indiquer qu’une entrée est un duplicat erroné d’une autre entrée (exemple : un Work, une Person, etc.) Un commentaire libre sert à indiquer la nature de l’erreur. Exemple : Work1 est Work2 sauf que le titre est incorrect.
+Copy:: un utilisateur peut indiquer qu’une entrée égale une autre. Si un work égale un autre, ça n’implique pas l’égalité de leurs exemplaires. Mais l’inverse bien.
+PersonnalIds:: un utilisateur peut donner un id personnel à une entité, stocké sous la forme (user, id).
+
+* importer données livres depuis CrossRef. 
+* Importer données depuis autres formats (FRBR Appendix)
+* trouver auto la notice d’autorité de la http://authorities.loc.gov/[Bibliothèque du Congrès] (ou Abes IdRef)
+* implémenter relations ? FRBR Ch. 5
+* implémenter au moins certains éléments du Ch. 7
+* vérifier auto si directives ISBD sont suivies ?
+* calcul d’une croyance par défaut (le dernier qui a parlé sauf si pas fiable…)
+* l’utilisateur peut accorder sa confiance
+* détection de duplicats potentiels (tous attributs égaux) ; ou approximatifs.
+* Format de fichier pour table des matières associée à un ouvrage. Pouvoir l’ajouter à un PDF.
+
+== Références
+* http://www.ifla.org/en/publications/functional-requirements-for-bibliographic-records[Standard FRBR] : IFLA Study Group on the Functional Requirements for Bibliographic Records, Functional Requirements for Bibliographic Records: Final Report (München: K.G. Saur, 1998). (Autres http://www.ifla.org/node/8750[standards] IFLA.)
+* International Standard Bibliographic Description (https://en.wikipedia.org/wiki/International_Standard_Bibliographic_Description[ISBD]), http://www.ifla.org/files/assets/cataloguing/isbd/isbd-cons_20110321.pdf[Consolidated Edition] (http://www.bnf.fr/documents/isbd_trad_francais.pdf[en français]) (http://gen.lib.rus.ec/book/index.php?md5=242B9D9F7BC495827B428B334C3819E1[Preliminary Consolidated Edition], 2007)
+* Sudoc utilise un format RDF national, géré par les bibliothécaires. Viellles notices sont de moindre qualité mais les plus récentes devraient être bonnes. http://www.sudoc.fr/146956419.rdf[Exemple]. Pas ou très peu d’articles (pas sa vocation première).
+* Copac équivalent du Sudoc en GB, utilise format http://www.loc.gov/standards/mods/[MODS].
+* http://data.bnf.fr[BNF] : dépôt légal, acquisitions.
+* Base CrossRef (https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md[API]) très riche, > 80 M enregistrements. Bonne qualité pour démarrer. Articles de revue académique, souvent.
+* http://m.abes.fr/Acces-direct-a/Pour-les-developpeurs[Web services] de l’ABES (Idref…).
+* http://domybiblio.net/search/[Exemple] d’exploitation.
+* Idref, service web en ligne pour identifier une personne. Permet ensuite de récupérer Orcid, viaf etc. puis de récupérer des ressources. Permet d’interroger le catalogue du Sudoc à partir de noms. http://documentation.abes.fr/aideidrefdeveloppeur/ch02s01.html[API Solr] pour interroger IdRef.
+

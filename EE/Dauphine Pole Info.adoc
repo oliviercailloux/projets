@@ -1,4 +1,5 @@
 = Dauphine Pole Info
+
 Application de gestion des masters MIAGE de Paris-Dauphine
 
 == Contexte
@@ -9,13 +10,12 @@ L’outil actuellement utilisé n’est plus maintenu et ne communique pas avec 
 Plusieurs fonctionnalités bénéficieront du (ou au) projet link:OpenData.adoc[Dauphine Open Data] (DOD), la communication entre les deux projets sera donc utile.
 
 == Fonctions demandées
-PHP:: Faire tourner l’application existante sur l’ordinateur d’au moins un des développeurs de ce projet. Documenter (dans votre README de projet) ce qu’il est nécessaire de faire. (0,5)
+PHP:: Faire tourner l’application existante sur l’ordinateur d’au moins un des développeurs de ce projet. Documenter (dans votre README de projet) ce qui est nécessaire pour ce faire. (0,5)
 Basics:: Des objets pour stocker une personne et un cours (voir table Contenu), en vue de stocker les éléments de la base existante (voir schéma application existante poleinfo3). Même chose pour Master et toutes informations nécessaires pour lier cours, enseignants et master (voir schéma SQL). (0,5)
-Txt:: Pouvoir encoder et décoder en texte chacun de ces objets pris isolément, donc sans les informations de lien entre eux (par exemple, la représentation textuelle d’un cours ne mentionne pas ses enseignants ni les masters qui le comprennent). (0,5)
+Repr:: Pouvoir encoder et décoder en JSON chacun de ces objets pris isolément, donc sans les informations de lien entre eux (par exemple, la représentation textuelle d’un cours ne mentionne pas ses enseignants ni les masters qui le comprennent). (0,5)
 BasicServlets:: Chaque objet de base Thing (Pour Thing valant Course, Person) a un id et trois servlets associées : setThing(id, txt), où txt est la représentation textuelle de Thing, getThing(id), et setThing(id, field1, field2, …). Les servlets ne permettent pas de modifier les interactions entre objets (par exemple de changer l’enseignant d’un cours), seulement les détails des objets eux-même (par exemple le titre d’un cours). (1)
 BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, la modification des informations de base de Course et Person. (1)
-ObjectsXML:: Encoder / décoder une partie de vos objets de base en XML. Repartir du schéma CDM-fr, simplifié. (« Vos objets de base » comprend ici Master.) (1)
-ObjectsJSON:: Encoder / décoder le reste de vos objets de base en JSON. (0,5)
+ObjectsXML:: Encoder / décoder une partie de vos objets de base en XML. Repartir du schéma CDM-fr, simplifié. (« Vos objets de base » comprend ici Master.) Encoder / décoder le reste de vos objets de base en JSON, y compris les relations. (1)
 ExtBasicServlets:: Étendre servlets existants pour accepter et renvoyer à la demande du XML ou JSON en plus du texte. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
 LinkServlets:: Servlet permettant de récupérer, effacer, ajouter des liens entre master, cours et person, par id uniquement. Mêmes instructions que ci-dessus. (0,5)
 Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)

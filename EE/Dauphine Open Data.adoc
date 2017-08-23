@@ -1,4 +1,5 @@
 = Dauphine Open Data
+
 Application de mise à disposition de données de Dauphine
 
 == Contexte
@@ -10,30 +11,36 @@ Ce projet a pour but de créer une plate-forme qui servira à la mise à disposi
 
 //Ce projet sera développé en collaboration avec la Direction des Systèmes d’Information (DSI) de Dauphine.
 
+Possibilité de réutiliser les classes d’un https://github.com/oliviercailloux/Teach-planning[projet] existant concernant l’enseignement et les cours. Mentionner systématiquement de tels emprunts, afin de respecter le droit d’auteur.
+
 == Fonctions demandées
-Course:: Objet Course pour représenter un cours de Dauphine. S’inspirer des informations contenues dans le Référentiel de l’Offre de Formation (ROF) de Dauphine au format CDM-fr (voir link:Voeux/OF_MEA5STI.xml[]), à simplifier éventuellement pour conserver l’information essentielle. Documenter vos choix. Permettre encodage d’un cours par une représentation textuelle. L’identifiant d’un cours doit être un String. (1)
+// 18,5
+Course:: Objet Course pour représenter un cours de Dauphine. S’inspirer du modèle dans le projet existant et des informations contenues dans le Référentiel de l’Offre de Formation (ROF) de Dauphine au format CDM-fr (voir link:Voeux/OF_MEA5STI.xml[]), à simplifier éventuellement pour conserver l’information essentielle. Documenter vos choix. Permettre encodage d’un cours par une représentation textuelle. L’identifiant d’un cours doit être un String. (1)
 Basics:: Objets Person pour représenter un étudiant ou un enseignant (voir informations contenues dans l’ link:https://www.ent.dauphine.fr/Annuaire/index.php?param0=fiche&param1=ocailloux[annuaire] et dans ROF). Objet Planning pour représenter les liens horaires et liens entre cours et enseignant (tel enseignant a une séance de tel cours à telle heure). Voir informations contenues dans le planning en ligne de Dauphine (chercher Cailloux). Identifier une personne par son login Dauphine, un identifiant de 8 caractères. Documenter vos choix. (1)
-Triple:: Objet Triple contenant : (subject: String, predicate: String, object: String). (Plus : Gérez ces triplets avec une bibliothèque RDF.) Permettez encodage et décodage en texte, y compris d’une liste de tels triplets. (0,5)
+Triple:: Objet Triple contenant : (subject: String, predicate: String, object: String). (Plus : Gérez ces triplets avec une bibliothèque RDF.) Permettez encodage et décodage en texte (ou JSON), y compris d’une liste de tels triplets. (0,5)
 VCal:: Permettre encodage d’une ou plusieurs entrées de planning, au format VCal. Fournir des tests unitaires. (1)
 VCard:: Permettre encodage d’une ou plusieurs personnes, au format VCard. Fournir des tests unitaires. (1)
 BasicServlets:: getCourse(id): Course. getPerson(id Dauphine): Person (VCard). getPlanning(id Dauphine): VCal (toutes les entrées correspondant à cette personne). Ces données (supposées venir de Dauphine centrale) sont en lecture seule. On peut en outre associer une information à n’importe quel objet : addTriple(subject, predicate, object), où subject doit correspondre à un id d’un objet dans vos données ; removeTriple(subject, predicate, object) ; getData(subject): List<Triple<subject, predicate, object>>. (1) (Vous vous arrangerez pour que tous les id dans votre modèle soient différents.)
 BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, la visualisation des informations de base de Course et Person, et l’ajout de triplets associés. (1)
-ObjectsXML:: Encoder / décoder une partie de vos objets du modèle en XML. Repartir du schéma CDM-fr, à simplifier éventuellement. (0,5)
+ObjectsXML:: Encoder / décoder une partie de vos objets du modèle en XML. Repartir du schéma CDM-fr, à simplifier éventuellement. (1)
 ObjectsJSON:: Encoder / décoder le reste de vos objets du modèle en JSON. (0,5)
-ExtBasicServlets:: Étendre servlets existants pour renvoyer à la demande du XML ou JSON en plus du texte. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
+ExtBasicServlets:: Étendre servlets existants pour renvoyer à la demande du XML ou JSON en plus des formats déjà supportés. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
 Gather:: Récupérer les données depuis l’annuaire si elles ne sont pas déjà dans votre modèle, ou si elles sont trop vieilles, au moment de la requête. Votre modèle stocke ces données et leur date. (Parser le HTML selon le standard DOM.) Récupérer les informations du planning, selon la même approche. (1)
 Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
 PIGateway:: Offrir des servlets pour refléter les servlets offerts par le projet Poleinfo. Vos servlets relayent simplement les appels au serveur Poleinfo. Ils sont accessibles aux mêmes adresses que le projet Poleinfo mais avec le préfixe /PI. (On ne se contente pas de réécriture d’URL car ces services seront étendus par la suite.) (0,5)
 SetDB1:: Implémenter une entité JPA et les méthodes permettant d’écrire et de lire depuis la BD les cours et triplets. (1)
 SetDB2:: Même chose pour le reste du modèle : Person et Planning. (1)
 UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)
+Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. (1)
+Server:: Isoler la partie serveur du reste du code, publier comme un projet indépendant (ProjectName). (0,5)
+Client:: Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). (0,5)
 SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
 SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 
-//* Mécanisme d’authentification en lien avec le CAS de Dauphine (en partenariat avec la DSI).
-//* Import de données depuis un fichier (format à établir avec la DSI). (Le développement se fera sur fichiers anonymisés.)
-//* Prise en compte des remarques suite à review code (sécurité & qualité) par la DSI.
-//* Import d’autres données que l’annuaire ; Menu du Crous ; prochaines conférences à Dauphine.
+== Autres fonctionnalités
+* Mécanisme d’authentification en lien avec le CAS de Dauphine (en partenariat avec la DSI).
+* Prise en compte des remarques suite à review code (sécurité & qualité) par la DSI.
+* Menu du CROUS ? (Seulement trouvé http://www.dauphine.fr/fr/universite/campus/campus-porte-dauphine/restauration.html[ceci] et http://www.mso.dauphine.fr/fileadmin/mediatheque/mso/images/Menu_GRILL.pdf[menu] utilisé précédemment.)
 
 == Refs
 * CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/

@@ -10,9 +10,8 @@ L’application laissera la place à la subjectivité des enseignants, en leur p
 On pourra s’inspirer d’un https://github.com/oliviercailloux/Collaborative-planning[projet] existant.
 
 == Fonctions demandées
-// 23
 Question:: Interfaces et objets pour Question et objets associés. Une question comprend un énoncé (« phrasing »), une langue, un ensemble de réponses possibles, chacune associée à l’information indiquant si cette réponse est correcte, un identifiant (int), et un auteur. Un auteur est identifié par un id (int) et a un e-mail. Utiliser un objet Person pour les auteurs. Un énoncé et une réponse sont des textes simples. L’ensemble de réponses peut être remplacé par une information « Y/N » ou « T/F » ou « free », indiquant une question oui / non, ou vrai / faux, ou de réponse libre. Créer à cet effet une interface MultipleChoiceQuestion qui étend Question. L’auteur peut associer un identifiant personnel (string) à une question. Ceci est stocké hors de l’objet Question. Cet identifiant peut changer. (La paire (auteur, identifiant) doit être unique.) Une question est immuable. (2)
-QuestionText:: Lecture et écriture d’une question en format JSON. (2)
+QuestionText:: Lecture et écriture d’une question en format JSON. (1)
 Servlets:: Servlet NewQuestion(question): id, qui reçoit une question en format JSON ; servlet GetQuestion(id): question, qui envoie une question à partir de son id. (1)
 ServletsModify:: ChangeResponseTypeTF(id orig, new author id): new id et ChangeResponseTypeYN(id orig, new author id). Change la réponse à une question en créant une nouvelle question qui a un autre type de réponse (c-à-d Y/N ou T/F) et en renvoyant son nouvel id. ChangeQuestionLanguage(id orig, new author id, new language): new id. (1)
 ServletAbilities:: Stocker une relation « same ability » entre questions, associée à une personne. Une personne peut indiquer qu’une question interroge, à son avis, sur la même compétence qu’une autre. (On pourra l’utiliser pour éviter que ces questions figurent dans le même test.) Servlet SameAbility(person id, id question 1, id question 2, sameAbility: boolean) et servlet GetSameAbility(person id, id question 1, id question 2): boolean. La relation est réflexive et symétrique (donc inutile de stocker les parties réflexives et déduire ce qu’on peut de la symétrie). (1)
@@ -20,16 +19,14 @@ ServletImprovements:: Stocker une relation « improvement » entre questions
 BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, la création et la visualisation de questions au format asciidoc. Il faudra pouvoir voir le rendu en plus du code source. (1)
 ModifClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, la création de questions à partir d’autres questions et la modification de relations. (1)
 QuestionXML:: Lire et écrire une question en XML, et les relations de votre modèle. Chaque relation peut être représentée comme un ensemble de triplets associé à une personne. (1)
-QuestionJSON:: Lire et écrire une question en JSON, et les relations du modèle. (1)
+QuestionJSON:: Lire et écrire les relations du modèle en JSON. (0,5)
 QuestionMultiFormat:: Récupérer une question à partir de son id, en format XML ou JSON. Introduire une question en multiples formats. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
 RelationsMultiFormat:: Servlet GetSameAbility(person id): ensemble de triplets ; et de même pour les autres relations, et de même pour Set. La relation peut être récupérée ou envoyée au format XML ou JSON. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni. (1)
 Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
 SetDB1:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD les questions. (1)
 SetDB2:: Même chose pour le reste du modèle : relations, tags, … (1)
 UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)
-Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. (1)
-Server:: Isoler la partie serveur du reste du code, publier comme un projet indépendant (ProjectName). (0,5)
-Client:: Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). (0,5)
+Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). Publier la partie serveur comme un projet indépendant (ProjectName). (1,5)
 SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
 SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 

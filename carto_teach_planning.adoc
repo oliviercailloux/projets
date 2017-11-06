@@ -18,3 +18,5 @@ S’il s’avère trop difficile à mettre en œuvre, le projet se rabattra sur 
 
 == Refs
 Voir projet link:apartments.adoc[apartments].
+* http://www.geovelo.fr (min risk and min time)
+

@@ -7,7 +7,7 @@ Ce projet permettra à des enseignants de créer des ensembles de questions et r
 
 L’application laissera la place à la subjectivité des enseignants, en leur permettant par exemple de privilégier certaines questions.
 
-On pourra s’inspirer d’un https://github.com/oliviercailloux/Collaborative-planning[projet] existant.
+On pourra s’inspirer d’un https://github.com/oliviercailloux/Collaborative-exams[projet] existant.
 
 == Fonctions demandées
 Question:: Interfaces et objets pour Question et objets associés. Une question comprend un énoncé (« phrasing »), une langue, un ensemble de réponses possibles, chacune associée à l’information indiquant si cette réponse est correcte, un identifiant (int), et un auteur. Un auteur est identifié par un id (int) et a un e-mail. Utiliser un objet Person pour les auteurs. Un énoncé et une réponse sont des textes simples. L’ensemble de réponses peut être remplacé par une information « Y/N » ou « T/F » ou « free », indiquant une question oui / non, ou vrai / faux, ou de réponse libre. Créer à cet effet une interface MultipleChoiceQuestion qui étend Question. L’auteur peut associer un identifiant personnel (string) à une question. Ceci est stocké hors de l’objet Question. Cet identifiant peut changer. (La paire (auteur, identifiant) doit être unique.) Une question est immuable. (2)

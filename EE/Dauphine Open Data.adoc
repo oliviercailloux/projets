@@ -14,7 +14,6 @@ Ce projet a pour but de créer une plate-forme qui servira à la mise à disposi
 Possibilité de réutiliser les classes d’un https://github.com/oliviercailloux/Teach-planning[projet] existant concernant l’enseignement et les cours. Mentionner systématiquement de tels emprunts, afin de respecter le droit d’auteur.
 
 == Fonctions demandées
-// 18,5
 Course:: Objet Course pour représenter un cours de Dauphine. S’inspirer du modèle dans le projet existant et des informations contenues dans le Référentiel de l’Offre de Formation (ROF) de Dauphine au format CDM-fr (voir link:Voeux/OF_MEA5STI.xml[]), à simplifier éventuellement pour conserver l’information essentielle. Documenter vos choix. Permettre encodage d’un cours par une représentation textuelle. L’identifiant d’un cours doit être un String. (1)
 Basics:: Objets Person pour représenter un étudiant ou un enseignant (voir informations contenues dans l’ link:https://www.ent.dauphine.fr/Annuaire/index.php?param0=fiche&param1=ocailloux[annuaire] et dans ROF). Objet Planning pour représenter les liens horaires et liens entre cours et enseignant (tel enseignant a une séance de tel cours à telle heure). Voir informations contenues dans le planning en ligne de Dauphine (chercher Cailloux). Identifier une personne par son login Dauphine, un identifiant de 8 caractères. Documenter vos choix. (1)
 Triple:: Objet Triple contenant : (subject: String, predicate: String, object: String). (Plus : Gérez ces triplets avec une bibliothèque RDF.) Permettez encodage et décodage en texte (ou JSON), y compris d’une liste de tels triplets. (0,5)
@@ -40,6 +39,12 @@ SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 * Récupération des données de planning plus propres (en partenariat avec la DSI).
 * Prise en compte des remarques suite à review code (sécurité & qualité) par la DSI.
 * Menu du CROUS ? (Seulement trouvé http://www.dauphine.fr/fr/universite/campus/campus-porte-dauphine/restauration.html[ceci] et http://www.mso.dauphine.fr/fileadmin/mediatheque/mso/images/Menu_GRILL.pdf[menu] utilisé précédemment.)
+
+== Authentification
+Voici les informations dont je dispose concernant l’authentification.
+
+CAS sur intranet Dauphine, accessible uniquement depuis une machine sur domaine dauphine.fr. Renommer “localhost” (dans fichier /etc/hosts ?) en “myservice.dauphine.fr”. Il faut s’adresser au CAS à partir du port 80 ou 443, donc il faut changer la configuration de Glassfish.
+Connexion au CAS de test : appeler la page https://passeport.qualif.dauphine.fr/cas/login?service=http://myservice.dauphine.fr/open_data/login avec une url de service de la forme http://myservice.dauphine.fr. Le CAS envoie un ticket à l’application (il redirige l’utilisateur vers http://myservice.dauphine.fr/open_data/login?ticket=ST-2788-n1aHBsxSUlQ1V9JuKGYS-passeport.dauphine.fr ?). On peut ensuite demander d’autres informations sur la connexion via "https://passeport.qualif.dauphine.fr/cas/p3/serviceValidate?service=http://myservice.dauphine.fr/open_data/login&ticket="+ ticket + "&format=json".
 
 == Refs
 * CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/

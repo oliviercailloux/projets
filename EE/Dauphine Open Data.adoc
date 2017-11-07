@@ -43,6 +43,9 @@ SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 == Authentification
 Voici les informations dont je dispose concernant l’authentification.
 
+Dauphine utilise le CAS Apéréo, la partie visible de Passeport.
+Il y a (ou avait) aussi un système de « proxy tickets ». Mais ce système est peu à peu démantelé par la DSI car développement jugé trop compliqué.
+
 CAS sur intranet Dauphine, accessible uniquement depuis une machine sur domaine dauphine.fr. Renommer “localhost” (dans fichier /etc/hosts ?) en “myservice.dauphine.fr”. Il faut s’adresser au CAS à partir du port 80 ou 443, donc il faut changer la configuration de Glassfish.
 Connexion au CAS de test : appeler la page https://passeport.qualif.dauphine.fr/cas/login?service=http://myservice.dauphine.fr/open_data/login avec une url de service de la forme http://myservice.dauphine.fr. Le CAS envoie un ticket à l’application (il redirige l’utilisateur vers http://myservice.dauphine.fr/open_data/login?ticket=ST-2788-n1aHBsxSUlQ1V9JuKGYS-passeport.dauphine.fr ?). On peut ensuite demander d’autres informations sur la connexion via "https://passeport.qualif.dauphine.fr/cas/p3/serviceValidate?service=http://myservice.dauphine.fr/open_data/login&ticket="+ ticket + "&format=json".
 

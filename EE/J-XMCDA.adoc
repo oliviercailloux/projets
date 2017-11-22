@@ -13,7 +13,7 @@ Diviz:: Un binôme se familiarise avec l’usage de Diviz, et le présente aux a
 Alts:: Objet Alternative (id: int, name: String) ; un objet pour représenter un rangement d’alternatives avec ex-æquo (association de chaque alternative à son rang). Conseil : les représenter par un DAG où la relation parent enfant est la relation « est moins bonne que » (suit dans le classement). Voir bibliothèque Guava. Ou par une liste de liste (liste d’alternatives ex-æquo). Encodage et décodage de Alternative en JSON, et utiliser le format de http://www.preflib.org/data/format.php#election-data[{PrefLib}] pour la représentation textuelle d’un rangement avec ex-æquo (encodage et décodage). (1)
 Crits:: Objet Criterion (id et name) ; un objet Evaluations pour représenter les évaluations d’un ensemble d’alternatives, chacune sur une série de critère. Voir exemple six real cars. Conseil : utiliser une Table de Guava. Représentation JSON d’un critère, et d’un objet évaluation en CSV et JSON. (1)
 ServiceDescr:: Objet WebServiceDescription : un ensemble de paires d’id (string) et de type (un type au sens XML). Les types sont ceux qui peuvent servir de type de base dans le schéma xmcda-modular, plus un type spécial représentant le type de base X2. Ce dernier nous servira de type par défaut, car il est très général. Encodage et décodage de l’objet WebServiceDescription en JSON. (1)
-BasicServlets:: des servlets qui associent des objets de base à un identifiant d’un problème. getAlternative(id pbl, id alt): Alternative. getCriterion(id pbl, id crit). getEvaluations(id pbl). Set*, même chose. (1)
+BasicServlets:: des servlets qui associent des objets de base à un identifiant d’un problème. getAlternative(id pbl, id alt): Alternative. getCriterion(id pbl, id crit): Criterion. getEvaluations(id pbl) (renvoie toutes les évaluations connues pour ce problème). addAlternative(id pbl, id alt), addCriterion(id pbl, id crit), setEvaluation(id pbl, id alt, id crit, real eval). (1)
 BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, l’édition de ces données de base. (1)
 ObjectsXML:: Encoder / décoder vos objets du modèle (Alternative, Criterion, ensemble d’alternatives, ensemble de critères, AlternativeTree, Evaluations) en XML : au format X2 et au format xmcda-modular. (Utiliser les bibilothèques JAXB associées.) Les XML fournis au format X2 se conforment au schéma X2. (1)
 GenSchema:: Étant donné un objet WebServiceDescription, classe SchemaGenerator qui retourne un schéma XSD correspondant réutilisant les types de xmcda-modular. (1)
@@ -26,30 +26,16 @@ GenX2Input:: Étant donné une url de description d’un service web XMCDA (par 
 ReadX2Output:: Créer une architecture générique permettant de lire (et donc déserialiser) les résultats d’un service web XMCDA au format X2. Le programme associe le résultat à un id problème fourni au préalable. (1)
 X2GW:: Servlet GetX2(url descr, id pbl). Le serveur crée au vol, si possible étant donné les données du problème d’id correspondante, une instance X2 correspondant au descripteur du service, et intègre les résultats au problème donné, ou renvoie l’erreur à l’appelant. (0,5)
 ClientGW:: Étendre votre client de manière à ce qu’il permette, après avoir édité des données, d’appeler un service web XMCDA. Le client a (dans un fichier de paramètres livré avec le client) une liste d’urls de descripteurs de services web XMCDA qui fonctionnent avec votre passerelle. Lui fournir suffisamment de fonctionnalités pour assurer l’appel de plusieurs services web X2, au besoin en améliorant le serveur également. (Vous ne devez pas vous occuper de l’aspect persistence, laissé à la fonction suivante.) (1,5)
-XMGW:: Servlet XM-rankAlternativesValues(Contents). Contents représente une description complète d’un problème (non stocké au préalable dans votre serveur), au format XM, conforme au schéma généré par SchemaGenerator (cf fonction GenSchema) pour des entrées correspondantes au service rankAlternativesValues. Le servlet décode le XM, encode du X2, appelle le service (via GetX2), récupère une réponse au format X2, décode, encode en XM, et renvoie un XML au format XM conforme au schéma généré pour la sortie du service à l’utilisateur. (1)
+XMGW:: Servlet XM-rankAlternativesValues(Contents). Contents représente une description complète d’un problème (non nécessairement stocké au préalable dans votre serveur), au format XM, conforme au schéma généré par SchemaGenerator (cf fonction GenSchema) pour des entrées correspondantes au service rankAlternativesValues. Le servlet décode le XM, encode du X2, appelle le service (via GetX2), récupère une réponse au format X2, décode, encode en XM, et renvoie un XML au format XM conforme au schéma généré pour la sortie du service à l’utilisateur. (1)
 Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). Publier la partie serveur comme un projet indépendant (ProjectName). (1,5)
 SetDB2:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD pour le reste de votre modèle. (1)
 SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
 SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 
-=== Anciennement ===
-* Interface graphique web (ou SWT) et entités pour créer et éditer les objets principaux de xmcda-modular. Commencer par Alternatives, Criteria, PerformanceTable.
-* Export de parties au format xmcda-modular (XM).
-* Export de parties au format xmcda2 (X2).
-* En extraire une bibliothèque permettant de développer une application similaire mais qui fonctionne en local.
-* Interface graphique SWT en plus de web (ou web en plus de SWT).
-* Gestion multiples utilisateurs aux données séparées.
-* De descripteur diviz : création d’un schéma XM.
-* De schéma XM : instanciation des données au format XM.
-* De descripteur diviz : instanciation des données au format X2.
-* Envoi des données X2 au WS X2.
+=== Suppléments ===
 * Envoi message via JMS quand réponse est prête.
-* Affichage et manipulation du résultat.
-* Création d’un WS XM façade au WS X2.
-* Interface graphique pour créer les objets nécessaires à une désagrégation de groupe (tri, multiples décideurs avec exemples partagés dans catégories pour chacun).
 * Projets avec (certaines) données partagées entre plusieurs utilisateurs.
 * Permettre à chaque décideur de s’identifier pour entrer ses données (avec pwd ou sans, décidé par l’administrateur).
-* Étendre pour permettre l’affectation de points à de multiples catégories, pour un exemple donné.
 * Import csv / excel (via WS existant éventuellement).
 
 == Références

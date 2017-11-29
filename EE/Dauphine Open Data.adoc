@@ -33,6 +33,7 @@ SetDB2:: Même chose pour le reste du modèle : Person et Planning. (1)
 UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)
 SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
 SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
+AuthDoc:: Documenter en détail et clairement le mécanisme d’authentification sur le CAS de Dauphine. Le document, au format Asciidoc, doit être compréhensible par un étudiant ayant les prérequis pour ce cours mais non expert en programmation web. Illustrer avec une application de démo, de préférence de code ouvert, sur GitHub, si permis par la DSI. À effectuer en partenariat avec la DSI : contacter Jean-Christophe GAY, de ma part (contacts sur l’annuaire de Dauphine). (2)
 
 == Autres fonctionnalités
 * Mécanisme d’authentification en lien avec le CAS de Dauphine (en partenariat avec la DSI).

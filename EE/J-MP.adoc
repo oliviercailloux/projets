@@ -1,0 +1,48 @@
+= J-MP
+
+== Objectif
+Permettre l’édition et la résolution collaborative de programmes mathématiques (en particulier PLNP, programmes à variables mixtes).
+
+== Contexte
+De nombreuses organisations ont à résoudre des problèmes d’optimisation qui peuvent se formuler sous forme de programmes mathématiques (PM). Par exemple, dans une université, la planification des cours en fonction des salles disponibles, du nombre d’étudiants affectés aux cours, des contraintes horaires des enseignants, etc. De nombreux outils existent pour résoudre des PM, si bien que leur résolution en pratique, pour des problèmes de taille raisonnable, ne pose souvent plus de problème. Cependant, la formulation du problème elle-même est souvent une tâche très difficile. La formulation du problème doit en effet inclure toutes les contraintes pertinentes, au risque d’invalider totalement la solution trouvée. La connaissance des contraintes est souvent répartie sur un ensemble d’acteurs (par exemple, le secrétariat d’un département connait les affectations des étudiants aux cours à option, l’administration centrale connait les contraintes de salles). En outre, il est souvent impossible de satisfaire tous les désirs de tous les acteurs impliqués, ce qui implique de pouvoir chercher quelles contraintes relâcher.
+
+Ce projet permettra à un groupe d’acteurs de travailler ensemble à la formulation et réalisation d’un PM, en permettant l’exploration, la sauvegarde de l’historique, …
+
+Le projet s’appuiera sur JLP, qui permet une représentation orientée-objet d’un PM en Java.
+
+== Fonctions demandées
+AMPL:: Une classe permettant d’exporter un PM (de JLP) au format http://ampl.com/BOOK/CHAPTERS/04-tut1.pdf[AMPL] (utiliser l’approche la plus simple en déroulant toutes les contraintes, comme dans la section 1.2 du chapitre fourni). Vérifier la validité du fichier en soumettant un problème simple à NEOS Server. (1)
+ShowProblem:: Possibilité de stocker en mémoire des MPs associés à un identifiant (entier). Servlet init qui initialise cette liste avec deux problèmes simples associés aux id 1 et 2. getProblem(int id) renvoie une description textuelle du PM correspondant, ou une erreur. (1)
+ModProblem:: Servlets setVarBounds, addConstraint, removeConstraint, setObjectiveFunction qui prennent chacune un identifiant du problème à modifier, et les paramètres requis (par exemple les bornes et l’identifiant de la variable, pour setVarBounds), et qui modifient le MP correspondant en mémoire. (1)
+MPToJSON:: Classe pour obtenir une description d’un PM en JSON. Modifier getProblem pour permettre également l’affichage en JSON et en AMPL ; transformer en servlet JAX-RS. (1)
+ClientEdit:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, l’édition d’un problème (via appels aux servlets adéquats). (1)
+Travis:: Configurer Travis et s’assurer que les tests passent. (1)
+Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
+Tree:: Un arbre de problèmes représentant la relation « est une modification de ». Pouvoir obtenir une représentation de cet arbre en JSON (un arbre d’ids). Utiliser le pattern Decorator (voir https://github.com/google/guava/wiki/CollectionHelpersExplained#forwarding-decorators[doc] Guava). (1)
+SaveHistory:: Servlet save(problem id : int) qui sauvegarde le PM en l’état et l’associe à un timestamp (celui en cours au moment de l’appel). Servlet save(problem id : int, previous : timestamp) qui sauvegarde le PM en l’état, l’associe au timestamp actuel (au moment de l’appel), et mémorise que cette sauvegarde a pour prédécesseur le timestamp fourni (plus précisément, le timestamp le plus grand précédent le timestamp fourni pour lequel il y a une sauvegarde). Il faudra donc conserver un arbre pour chaque problem id, pour mémoriser la relation parent. Cela représente le fait que ce nouvel état est une modification de l’état précédent. (1)
+GetHistory:: Servlet getHistory(problem id) qui montre l’historique de ce problème comme un arbre en JSON. Servlet setBack(problem id, timestamp) qui remplace le problème d’id donné par l’état qu’il avait lors du timestamp fourni (le timestamp le plus grand précédent le timestamp fourni pour lequel il y a une sauvegarde). Exemple : je sauve le problème d’id 1 en l’état P1 au temps t1, je modifie le problème en P1', j’appelle setBack(1, t1), j’appelle setVarBounds(1, …), ce dernier appel doit modifier le problème dans l’état P1 et non P1'. Donc getProblem(1) doit renvoyer un problème d’état correspondant à P1 sauf la variable modifiée. (0,5)
+SetDB:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD les données stockées en mémoire. (1)
+UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)
+CPLEXInit:: Obtenir une licence académique d’IBM, télécharger CPLEX. Écrire une documentation brève en Asciidoc qui indique comment ajouter la bibliothèque CPLEX à l’installation locale de Maven. Écrire un test qui instancie CPLEX et vérifie son numéro de version. Il n’est pas demandé que ce test passe via Travis puisque CPLEX ne sera pas disponible sur le serveur d’intégration continue (commenter l’annotation @Test pour désactiver le test). S’inspirer de JLP. (1)
+CPLEXLink:: Permettre de résoudre un PM avec CPLEX. S’inspirer de JLP. (2)
+Neos:: Une classe permet de soumettre un problème à NEOS Server (au format AMPL) et de récupérer son résultat. Utiliser une bibliothèque Java proposée par Neos, ou à défaut, son API REST. (1)
+StoreResult:: Le résultat renvoyé par Neos est stocké dans un objet Result de JLP. Pouvoir fournir une représentation texte d’un résultat (dans un format approprié). Servlet solve qui permet de résoudre un PM. (On supposera ici que le problème est suffisament simple pour que le résultat puisse être obtenu immédiatement.) (1,5)
+HistClient:: Modifier le client pour permettre de naviguer dans, et d’enrichir, l’arbre des révisions d’un problème donné : voir l’arbre, voir l’état d’un problème en un nœud, modifier le problème, sauver (ce qui sauve le problème comme un successeur du nœud choisi). (2)
+Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). Publier la partie serveur comme un projet indépendant (ProjectName). (1,5)
+SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
+SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
+
+=== Suppléments ===
+* Résolution différée
+* Envoi message via JMS quand réponse est prête
+* Autres solveurs
+
+== Références
+* https://neos-guide.org/[NEOS Guide]: Companion Site to the NEOS Server
+* https://developer.ibm.com/docloud/documentation/decision-optimization-on-cloud/[DOcplexcloud] (30 days free trial)
+* http://www.gurobi.com/products/gurobi-cloud[Gurobi-cloud]
+* http://ampl.com/products/api/ (“works with any purchased AMPL installation covered by current maintenance & support service”)
+* http://glpk-java.sourceforge.net/ (GPL)
+* https://github.com/google/or-tools (Apache)
+* http://coin-or.github.io/jorlib/ (LGPL, Apache-incompatible, only specific opt) ; CMPL: GPL and LGPL ; Cbc: EPL. But no Java version.
+

@@ -8,7 +8,7 @@ De nombreuses organisations ont à résoudre des problèmes d’optimisation qui
 
 Ce projet permettra à un groupe d’acteurs de travailler ensemble à la formulation et réalisation d’un PM, en permettant l’exploration, la sauvegarde de l’historique, …
 
-Le projet s’appuiera sur JLP, qui permet une représentation orientée-objet d’un PM en Java.
+Le projet s’appuiera sur https://github.com/oliviercailloux/JLP[JLP], qui permet une représentation orientée-objet d’un PM en Java.
 
 == Fonctions demandées
 AMPL:: Une classe permettant d’exporter un PM (de JLP) au format http://ampl.com/BOOK/CHAPTERS/04-tut1.pdf[AMPL] (utiliser l’approche la plus simple en déroulant toutes les contraintes, comme dans la section 1.2 du chapitre fourni). Vérifier la validité du fichier en soumettant un problème simple à NEOS Server. (1)

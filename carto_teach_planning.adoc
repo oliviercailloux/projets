@@ -17,6 +17,8 @@ S’il s’avère trop difficile à mettre en œuvre, le projet se rabattra sur 
 * Calcul temps de trajet multi-modal.
 
 == Refs
-Voir projet link:apartments.adoc[apartments].
 * http://www.geovelo.fr (min risk and min time)
+* GTFS : http://wiki.openstreetmap.org/wiki/General_Transit_Feed_Specification https://github.com/OneBusAway/onebusaway-gtfs-modules http://transitfeeds.com/ http://opendata.stif.info/explore/dataset/offre-horaires-tc-gtfs-idf/
+http://www.nctr.usf.edu/2011/05/enabling-cost-effective-multimodal-trip-planners-through-open-transit-data-2/
+http://www.opentripplanner.org/ 
 

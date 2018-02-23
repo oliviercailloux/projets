@@ -60,4 +60,4 @@ PersonnalIds:: un utilisateur peut donner un id personnel à une entité, stock�
 * http://domybiblio.net/search/[Exemple] d’exploitation.
 * Idref, service web en ligne pour identifier une personne. Permet ensuite de récupérer Orcid, viaf etc. puis de récupérer des ressources. Permet d’interroger le catalogue du Sudoc à partir de noms. http://documentation.abes.fr/aideidrefdeveloppeur/ch02s01.html[API Solr] pour interroger IdRef.
 * https://bitbucket.org/bibsonomy/bibsonomy/src/tip/bibsonomy-rest-client/[BibSonomy], a social bookmarking system, with a REST client in Java.
-
+* Format https://wiki.code4lib.org/Working_with_MARC[MARC 21].

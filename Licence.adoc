@@ -14,6 +14,6 @@ La licence que je propose d’utiliser est la licence https://opensource.org/lic
 Votre choix ou refus de publier votre code sous licence MIT n’affectera pas votre évaluation pour ce cours. (Je n’aurai d’ailleurs pas connaissance de votre choix avant l’évaluation.)
 
 * Pendant l’année : vous réfléchissez et discutez, au sein de votre groupe, à votre choix d’accepter ou non de publier votre projet sous licence MIT. Vous ne me mettez pas au courant de votre choix.
-* En fin d’année : lors de la dernière séance, je vous fournirai un document vous permettant de déclarer que vos contributions au projet sont publiées sous licence MIT. Vous choisissez si vous signez ce document (si oui, tous les membres du groupe doivent signer). Que vous l’ayez signé ou pas, vous le remettez ensuite à votre délégué, qui conserve tous les documents sous enveloppe.
+* En fin d’année : lors de la dernière séance, je vous fournirai un document vous permettant de déclarer que vos contributions au projet sont publiées sous licence MIT. Vous choisissez ensemble si vous signez ce document (si oui, tous les membres du groupe doivent signer). Que vous l’ayez signé ou pas, vous le remettez ensuite à votre délégué, qui conserve tous les documents sous enveloppe.
 * Après remise des notes pour le cours, le délégué me fait parvenir les documents.
 

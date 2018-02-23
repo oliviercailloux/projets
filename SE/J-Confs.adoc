@@ -1,4 +1,4 @@
-= JConfs
+= J-Confs
 
 Outil de gestion de déplacement en conférence.
 
@@ -18,7 +18,7 @@ Suite des fonctions.
 
 Geo:: Utiliser https://github.com/AReallyGoodName/OfflineReverseGeocode pour stocker les villes. (1)
 GuiConf:: GUI pour éditer une conférence. Lit et écrit un fichier VCard. Le fichier peut contenir plusieurs conférences. (3)
-LocalMap:: Utiliser Mapsforge pour afficher des cartes de trajet localement. (Tester avec cartes Île-de-France et Monde.) Le logiciel télécharge la carte si elle n’existe pas déjà. Il doit être possible d’afficher une carte contenant un point de départ (considéré comme Paris par défaut) et un point d’arrivée donnés. (1) (http://www.openstreetmap.org/directions?engine=osrm_car&route=48.8566%2C2.3515%3B52.5170%2C13.3889#map=7/50.730/7.866[Exemple], mais il n’est pas nécessaire d’afficher l’itinéraire ni de surligner les points extrêmes.)
+LocalMap:: Utiliser Mapsforge pour afficher des cartes de trajet localement. (Tester avec cartes Île-de-France et Monde.) Le logiciel télécharge la carte si elle n’existe pas déjà. Il doit être possible d’afficher une carte contenant un point de départ (considéré comme Paris par défaut) et un point d’arrivée donnés. (http://www.openstreetmap.org/directions?engine=osrm_car&route=48.8566%2C2.3515%3B52.5170%2C13.3889#map=7/50.730/7.866[Exemple], mais il n’est pas nécessaire d’afficher l’itinéraire ni de surligner les points extrêmes.) (1)
 SmallMap:: Obtenir une carte Mapsforge avec uniquement niveau de zoom faible, pour réduire la taille. Documenter la procédure à suivre au format Asciidoc, en anglais. Intégrer la carte dans le logiciel. (1)
 OnlineCalendar:: Au lieu d’éditer des fichiers VCard, le GUI d’édition communique (si l’utilisateur le souhaite) avec un calendrier en ligne stocké sur fruux.com. Des classes doivent exposer cette fonctionalité hors GUI également. (3)
 History:: À chaque modification de l’ensemble des conférences, une sauvegarde est effectuée sur un dépôt GitHub distant. (Voir API GitHub.) (3)

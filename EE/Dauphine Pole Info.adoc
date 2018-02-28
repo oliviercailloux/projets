@@ -20,7 +20,7 @@ BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en 
 ObjectsXML:: Encoder / décoder une partie de vos objets de base en XML. Repartir du schéma CDM-fr, simplifié. (« Vos objets de base » comprend ici Master.) Encoder / décoder le reste de vos objets de base en JSON, y compris les relations. (1)
 ExtBasicServlets:: Étendre servlets existants pour accepter et renvoyer à la demande du XML ou JSON en plus du texte. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
 LinkServlets:: Servlet permettant de récupérer, effacer, ajouter des liens entre master, cours et person, par id uniquement. Mêmes instructions que ci-dessus. (0,5)
-Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
+Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (0,5)
 LinkClient:: Étendre le client pour permettre de modifier les liens entre cours, master, enseignants, le munir d’un GUI moins rudimentaire. (1)
 Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). Publier la partie serveur comme un projet indépendant (ProjectName). (1,5)
 SetDB:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD de façon à garantir la compatibilité avec l’application existante. (1,5)

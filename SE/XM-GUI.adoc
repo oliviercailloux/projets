@@ -1,0 +1,33 @@
+= XM-GUI
+
+Intrerface graphique permettant d’éditer des problèmes de théorie de la décision et d’envoyer ces problèmes à des services web.
+
+== Contexte
+Une série de services web ouverts permet d’utiliser les méthodes d’aide multicritère à la décision. Ils reposent sur le format XMCDA et sur le logiciel https://www.decision-deck.org/diviz/tutorial.diviz.html[Diviz], qui permet l’invocation des services sans devoir programmer. L’utilisateur doit cependant fabriquer à la main les fichiers XML d’entrée (ou convertir du CSV), et plus généralement il n’existe pas d’intégration des outils dans un logiciel très simple d’emploi.
+
+== Fonctions demandées
+Contract1:: Une classe Alternative (immuable, contenant un simple entier l’identifiant) et une classe Criterion (même chose). Une classe MCProblem qui stocke un problème d’aide multicritère à la décision : un ensemble d’alternatives, un ensemble de critères, une table d’évaluation. Une table d’évaluation associe à chaque paire (alternative, critère) un double. Utiliser pour ce faire une https://github.com/google/guava/wiki/NewCollectionTypesExplained#table[Table] Guava.
+Contract2:: Une classe AlternativesRanking, qui contient un ensemble d’alternatives chacune associée à son rang. On pourra utiliser une Multimap Guava (associer le rang à toutes les alternatives de ce rang). Par exemple, on pourra utiliser une instance de cette classe pour stocker : a1 > {a2, a3} > a4, voulant dire que a1 est au rang 1, a2 et a3 sont ex-æquo au rang 2, et a4 est au rang 3.
+File1:: Une classe qui permet de lire et écrire une Alternative, un Criterion, et un ensemble d’évaluations au format X2 (XMCDA v2, voir lien ci-dessous).
+File2:: Une classe qui permet de lire et écrire une instance de AlternativesRanking au format X2.
+Resources1:: Inclure dans votre classpath un fichier exemple au format X2. Créer une méthode main qui lit le fichier à l’aide de vos méthodes existantes.
+Resources2:: Inclure dans votre classpath un fichier image (plot) obtenu par invocation du service web illustré dans le tutoriel sur Diviz (lien ci-dessus). Créer une méthode main qui crée une fenêtre principale (vide) et affiche l’image à l’aide de SWT (https://www.safaribooksonline.com/library/view/swt-a-developers/0596008384/ch02s09.html[exemple], auquel il faut ajouter un appel à `dispose` pour se débarrasser de l’image en fin de programme).
+Interfaces1:: Consolider les fonctionnalités précédentes.
+Interfaces2:: Consolider les fonctionnalités précédentes.
+
+Suite des fonctions.
+
+ProblemGUI:: Un GUI basique qui permet l’édition d’un problème donné sous la forme d’un fichier au format X2. (3)
+WSCall:: Classe permettant d’appeler le service web de Diviz présenté dans le tutoriel, et de récupérer le résultat. (1)
+
+To be continued…
+
+== Références
+* https://github.com/xmcda-modular[xmcda-modular] sur Github. (Voir schéma et exemple, et bibliothèque JAXB.)
+* https://github.com/oliviercailloux/XMCDA-2.2.1-JAXB/[XMCDA-2.2.1-JAXB] : génération et lecture de fichiers au format X2.
+* http://www.decision-deck.org/xmcda/[XMCDA], site officiel.
+* http://www.decision-deck.org/diviz/[diviz], site officiel.
+* http://www.decision-deck.org/ws/wsd-rankAlternativesValues-RXMCDA.html[exemple] de fichier description Diviz: voir description.xml.
+* https://github.com/oliviercailloux/test-call-xmcda-ws[test-call-xmcda-ws]
+
+

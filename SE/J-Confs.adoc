@@ -6,7 +6,7 @@ Outil de gestion de déplacement en conférence.
 
 == Fonctions demandées
 Contract1:: Une classe Conference qui permet de stocker une conférence : URL, Titre, Date début et fin, Frais d’inscription, Lieu (Ville et Pays).
-Contract2:: Une classe PathStep qui stocke une étape d’un itinéraire : type (transport en commun local, train, avion, taxi)
+Contract2:: Une classe PathStep qui stocke une étape d’un itinéraire : type (transport en commun local, train, avion, taxi), lieu de départ, lieu d’arrivée.
 File1:: Une classe qui permet d’écrire une conférence au format VCard.
 File2:: Une classe qui permet de lire une conférence au format VCard.
 Resources1:: Inclure dans votre classpath un (petit !) fichier de carte du monde de https://github.com/mapsforge/mapsforge[Mapsforge]. Créer une méthode main qui lit le fichier et teste sa validité. (Exemple https://www.javadoc.io/doc/org.mapsforge/mapsforge-map-reader/0.8.0[Javadoc].)

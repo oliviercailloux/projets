@@ -29,5 +29,5 @@ To be continued…
 * http://www.decision-deck.org/diviz/[diviz], site officiel.
 * http://www.decision-deck.org/ws/wsd-rankAlternativesValues-RXMCDA.html[exemple] de fichier description Diviz: voir description.xml.
 * https://github.com/oliviercailloux/test-call-xmcda-ws[test-call-xmcda-ws]
-
+* https://github.com/oliviercailloux/Six-real-cars/[Six real cars] au format X2
 

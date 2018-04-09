@@ -10,8 +10,8 @@ Contract1:: Une classe Alternative (immuable, contenant un simple entier l’ide
 Contract2:: Une classe AlternativesRanking, qui contient un ensemble d’alternatives chacune associée à son rang. On pourra utiliser une Multimap Guava (associer le rang à toutes les alternatives de ce rang). Par exemple, on pourra utiliser une instance de cette classe pour stocker : a1 > {a2, a3} > a4, voulant dire que a1 est au rang 1, a2 et a3 sont ex-æquo au rang 2, et a4 est au rang 3.
 File1:: Une classe qui permet de lire et écrire une Alternative, un Criterion, et un ensemble d’évaluations au format X2 (XMCDA v2, voir lien ci-dessous).
 File2:: Une classe qui permet de lire et écrire une instance de AlternativesRanking au format X2.
-Resources1:: Inclure dans votre classpath un fichier exemple au format X2. Créer une méthode main qui lit le fichier à l’aide de vos méthodes existantes.
-Resources2:: Inclure dans votre classpath un fichier image (plot) obtenu par invocation du service web illustré dans le tutoriel sur Diviz (lien ci-dessus). Créer une méthode main qui crée une fenêtre principale (vide) et affiche l’image à l’aide de SWT (https://www.safaribooksonline.com/library/view/swt-a-developers/0596008384/ch02s09.html[exemple], auquel il faut ajouter un appel à `dispose` pour se débarrasser de l’image en fin de programme).
+Resources1:: Inclure dans votre class path un fichier exemple au format X2. Créer une méthode main qui lit le fichier à l’aide de vos méthodes existantes.
+Resources2:: Inclure dans votre class path un fichier image (plot) obtenu par invocation du service web illustré dans le tutoriel sur Diviz (lien ci-dessus). Créer une méthode main qui crée une fenêtre principale (vide) et affiche l’image à l’aide de SWT (https://www.safaribooksonline.com/library/view/swt-a-developers/0596008384/ch02s09.html[exemple], auquel il faut ajouter un appel à `dispose` pour se débarrasser de l’image en fin de programme).
 Interfaces1:: Consolider les fonctionnalités précédentes.
 Interfaces2:: Consolider les fonctionnalités précédentes.
 

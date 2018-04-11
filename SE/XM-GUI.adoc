@@ -14,9 +14,6 @@ Resources1:: Inclure dans votre class path un fichier exemple au format X2. Cré
 Resources2:: Inclure dans votre class path un fichier image (plot) obtenu par invocation du service web illustré dans le tutoriel sur Diviz (lien ci-dessus). Créer une méthode main qui crée une fenêtre principale (vide) et affiche l’image à l’aide de SWT (https://www.safaribooksonline.com/library/view/swt-a-developers/0596008384/ch02s09.html[exemple], auquel il faut ajouter un appel à `dispose` pour se débarrasser de l’image en fin de programme).
 Interfaces1:: Consolider les fonctionnalités précédentes.
 Interfaces2:: Consolider les fonctionnalités précédentes.
-
-Suite des fonctions.
-
 ProblemGUI:: Un GUI basique qui permet l’édition d’un problème donné sous la forme d’un fichier au format X2. (3)
 WSCall:: Classe permettant d’appeler le service web de Diviz présenté dans le tutoriel, et de récupérer le résultat. (1)
 

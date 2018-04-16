@@ -14,22 +14,18 @@ Un https://github.com/oliviercailloux/2D-Library[projet] existant permet déjà 
 == Fonctions demandées
 Vous repartirez du projet existant (lien ci-dessus), et l’étendrez.
 
-Contract1:: Une classe qui permet de stocker des préférences d’affichage d’un utilisateur : nombre de livres par étagère ; livres obliques ou droits et inclinaison ; … (voir Options du logiciel)
-Contract2:: Une classe SearchData qui permet de stocker des données de recherche d’un livre : nom de l’auteur partiel, titre partiel, et intervalle d’années de publication. Par exemple, il sera possible de stocker une donnée de recherche : auteur "Shakesp", titre "Hamlet", années 1580 – 1605.
-File1:: Une classe qui permet de lire des livres au format CSV. Elle comportera entre autres une méthode d’en-tête suivant : public List<Book> readCsv(InputStream input).
-File2:: Une classe qui permet d’écrire des livres au format CSV.
-Resources1:: Inclure dans votre projet un fichier image illustrant votre projet (un livre, une bibliothèque, …) de façon à ce qu’il soit accessible dans le class path. Créer une méthode main qui affiche l’image à l’aide de SWT (https://github.com/aerofs/eclipse-platform-swt/blob/master/examples/org.eclipse.swt.snippets/src/org/eclipse/swt/snippets/Snippet34.java[Exemple])
-Resources2:: Inclure dans votre class path un fichier start-books-classpath.csv qui contient les livres à afficher au démarrage de l’application. Créer un fichier start-books.csv à la racine de votre projet, contenant des livres différents. Créer un main qui affiche ces deux ensembles de livres sur la sortie standard.
-Interfaces1:: Créer une Interface Java Searcher pour chercher des livres : on lui donne une instance de SearchData et elle retourne une liste de livres. On peut aussi lui préciser une limite au nombre de résultats, dans une autre méthode. Fusionner dans master. Dans la branche Interfaces1.1, créer une classe SearchCommander. On peut lui fournir une instance de Searcher. Elle fournit une méthode qui communique avec l’utilisateur sur la sortie et l’entrée standard et lui permet d’effectuer par ce biais une recherche de livre. Faites en sorte que la branche Interfaces1.1 ne contienne pas l’implémentation SimpleSearcher.
-Interfaces2:: Une classe SimpleSearcher qui implémente Searcher. On peut lui fournir des données sous forme d’une liste de livres. Elle cherche simplement dans ces données. Fusionner Interfaces2 et Interfaces1.1 dans master. Dans la branche Interfaces 2.1, créer une méthode main qui fait fonctionner le programme de discussion avec l’utilisateur pour lui permettre de rechercher un livre.
-
-Suite des fonctions.
-
-Corr:: Corriger erreurs données par Eclipse dans code existant (1)
-WritePrefs:: Classe pour écrire et lire préférences d’affichage de l’utilisateur dans un fichier CSV. (2)
+Contract1:: Une classe qui permet de stocker des préférences d’affichage d’un utilisateur : nombre de livres par étagère ; livres obliques ou droits et inclinaison ; … (voir Options du logiciel). (1)
+Contract2:: Une classe SearchData qui permet de stocker des données de recherche d’un livre : nom de l’auteur partiel, titre partiel, et intervalle d’années de publication. Par exemple, il sera possible de stocker une donnée de recherche : auteur "Shakesp", titre "Hamlet", années 1580 – 1605. (0,5)
+File1:: Une classe qui permet de lire des livres au format CSV. Elle comportera entre autres une méthode d’en-tête suivant : public List<Book> readCsv(InputStream input). (1)
+File2:: Une classe qui permet d’écrire des livres au format CSV. (1)
+Resources1:: Inclure dans votre projet un fichier image illustrant votre projet (un livre, une bibliothèque, …) de façon à ce qu’il soit accessible dans le class path. Créer une méthode main qui affiche l’image à l’aide de SWT (https://github.com/aerofs/eclipse-platform-swt/blob/master/examples/org.eclipse.swt.snippets/src/org/eclipse/swt/snippets/Snippet34.java[Exemple]). (1)
+Resources2:: Inclure dans votre class path un fichier start-books-classpath.csv qui contient les livres à afficher au démarrage de l’application. Créer un fichier start-books.csv à la racine de votre projet, contenant des livres différents. Créer un main qui affiche ces deux ensembles de livres sur la sortie standard. (1)
+Interfaces1:: Créer une Interface Java Searcher pour chercher des livres : on lui donne une instance de SearchData et elle retourne une liste de livres. On peut aussi lui préciser une limite au nombre de résultats, dans une autre méthode. Fusionner dans master. Dans la branche Interfaces1.1, créer une classe SearchCommander. On peut lui fournir une instance de Searcher. Elle fournit une méthode qui communique avec l’utilisateur sur la sortie et l’entrée standard et lui permet d’effectuer par ce biais une recherche de livre. Faites en sorte que la branche Interfaces1.1 ne contienne pas l’implémentation SimpleSearcher. (1,5)
+Interfaces2:: Une classe SimpleSearcher qui implémente Searcher. On peut lui fournir des données sous forme d’une liste de livres. Elle cherche simplement dans ces données. Fusionner Interfaces2 et Interfaces1.1 dans master. Dans la branche Interfaces 2.1, créer une méthode main qui fait fonctionner le programme de discussion avec l’utilisateur pour lui permettre de rechercher un livre. (1,5)
+WritePrefs:: Classe pour écrire et lire préférences d’affichage de l’utilisateur dans un fichier CSV. (1)
 GuiPrefs:: GUI pour éditer ses préférences d’affichage : le programme lit un fichier CSV au démarrage, permet la modification, et écrit dans le fichier à la sortie. (3)
 GuiBooks:: GUI pour éditer sa liste de livres (à faire après le point précédent). (2)
-GenIntegr:: Intégration des fichiers livres et préférences à l’algorithme de génération de dessin existant : le programme lit ces fichiers et ne permet pas leur modification. (1)
+GenIntegr:: Intégration des fichiers livres et préférences à l’algorithme de génération de dessin existant : le programme lit ces fichiers et ne permet pas leur modification. Nettoyer également le code de génération existant. (1,5)
 DrawBorder:: Les livres dans les dessins générés sont entourés d’une bordure noire. (1)
 DrawLinks:: Les livres sont des hyperliens envoyant vers leur description, ou une recherche google sur leur titre. (2)
 SearchCongress:: L’utilisateur peut se faire aider de la fonction de recherche de livres : il entre des données de recherche et le programme l’envoie vers une recherche sur le site de la bibliothèque du congrès (voir code existant). Une classe est conçue pour ce faire. (1)
@@ -44,5 +40,5 @@ GuiSearch:: Le GUI d’édition de livres est modifié pour inclure la fonctiona
 * On peut afficher uniquement, ou mettre en avant, les nouveautés depuis une certaine date / depuis la dernière visite de qqn
 
 == Dessins
-Voir répertoire link:2D%20Library[2D Library] pour inspiration.
+Voir répertoire https://github.com/oliviercailloux/projets/tree/master/2D%20Library[2D Library] pour inspiration.
 

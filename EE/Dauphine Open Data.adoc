@@ -9,9 +9,9 @@ Le mouvement open data considère que les données bénéficient d’une exposit
 
 Ce projet a pour but de créer une plate-forme qui servira à la mise à disposition de certaines données publiques de Paris-Dauphine. Il visera à mettre également à disposition certaines données non publiques après authentification. Par exemple, un enseignant a droit d’accès aux adresses e-mail des étudiants qui suivent son cours, mais ces données ne sont pas publiques.
 
-//Ce projet sera développé en collaboration avec la Direction des Systèmes d’Information (DSI) de Dauphine.
+Ce projet sera éventuellement développé en collaboration avec la Direction des Systèmes d’Information (DSI) de Dauphine.
 
-Possibilité de réutiliser les classes d’un https://github.com/oliviercailloux/Teach-planning[projet] existant concernant l’enseignement et les cours. Mentionner systématiquement de tels emprunts, afin de respecter le droit d’auteur.
+On repartira d’un https://github.com/oliviercailloux/Dauphine-Open-Data[projet] existant. Il faudra entre autres injecter l’entity manager (voir `JPAUtil`).
 
 == Fonctions demandées
 Course:: Objet Course pour représenter un cours de Dauphine. S’inspirer du modèle dans le projet existant et des informations contenues dans le Référentiel de l’Offre de Formation (ROF) de Dauphine au format CDM-fr (voir https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml[exemple XML]), à simplifier éventuellement pour conserver l’information essentielle. Documenter vos choix. Permettre encodage d’un cours par une représentation textuelle. L’identifiant d’un cours doit être un String. (1)

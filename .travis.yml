@@ -1,0 +1,9 @@
+language: ruby
+git:
+  depth: 1
+rvm: 2.4.1
+before_script: gem install awesome_bot
+script: find -name "*.adoc" -print0 | xargs -0 awesome_bot --allow 302 --allow-dupe
+notifications:
+  email: false
+

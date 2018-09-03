@@ -36,7 +36,7 @@ JSON:: (À faire après DocFormats.) Prise en charge, partout où du PrefLib est
 
 == Refs
 * http://www.preflib.org/about.php[{PrefLib}]
-* http://strokes.imag.fr/whale4/[Whale4]
+* https://whale.imag.fr/[Whale4]
 * https://github.com/xmcda-modular[xmcda-modular]
 * http://www.spliddit.org/
 

@@ -42,7 +42,7 @@ SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 * https://github.com/xmcda-modular[xmcda-modular] sur Github. (Voir schéma et exemple, et bibliothèque JAXB.)
 * https://github.com/oliviercailloux/XMCDA-2.2.1-JAXB/[XMCDA-2.2.1-JAXB] : génération et lecture de fichiers au format X2.
 * http://www.decision-deck.org/xmcda/[XMCDA], site officiel.
-* http://www.decision-deck.org/diviz/[diviz], site officiel.
+* http://www.diviz.org/[diviz], site officiel.
 * http://www.decision-deck.org/ws/wsd-rankAlternativesValues-RXMCDA.html[exemple] de fichier description Diviz: voir description.xml.
 * https://github.com/oliviercailloux/test-call-xmcda-ws[test-call-xmcda-ws]
 

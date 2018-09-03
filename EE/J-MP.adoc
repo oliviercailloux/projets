@@ -11,7 +11,7 @@ Ce projet permettra à un groupe d’acteurs de travailler ensemble à la formul
 Le projet s’appuiera sur https://github.com/oliviercailloux/JLP[JLP], qui permet une représentation orientée-objet d’un PM en Java.
 
 == Fonctions demandées
-AMPL:: Une classe permettant d’exporter un PM (de JLP) au format http://ampl.com/BOOK/CHAPTERS/04-tut1.pdf[AMPL] (utiliser l’approche la plus simple en déroulant toutes les contraintes, comme dans la section 1.2 du chapitre fourni). Vérifier la validité du fichier en soumettant un problème simple à NEOS Server. (1)
+AMPL:: Une classe permettant d’exporter un PM (de JLP) au format https://ampl.com/BOOK/CHAPTERS/04-tut1.pdf[AMPL] (utiliser l’approche la plus simple en déroulant toutes les contraintes, comme dans la section 1.2 du chapitre fourni). Vérifier la validité du fichier en soumettant un problème simple à NEOS Server. (1)
 ShowProblem:: Possibilité de stocker en mémoire des MPs associés à un identifiant (entier). Servlet init qui initialise cette liste avec deux problèmes simples associés aux id 1 et 2. getProblem(int id) renvoie une description textuelle du PM correspondant, ou une erreur. (1)
 ModProblem:: Servlets setVarBounds, addConstraint, removeConstraint, setObjectiveFunction qui prennent chacune un identifiant du problème à modifier, et les paramètres requis (par exemple les bornes et l’identifiant de la variable, pour setVarBounds), et qui modifient le MP correspondant en mémoire. (1)
 MPToJSON:: Classe pour obtenir une description d’un PM en JSON. Modifier getProblem pour permettre également l’affichage en JSON et en AMPL ; transformer en servlet JAX-RS. (1)
@@ -41,7 +41,7 @@ SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 * https://neos-guide.org/[NEOS Guide]: Companion Site to the NEOS Server
 * https://developer.ibm.com/docloud/documentation/decision-optimization-on-cloud/[DOcplexcloud] (30 days free trial)
 * http://www.gurobi.com/products/gurobi-cloud[Gurobi-cloud]
-* http://ampl.com/products/api/ (“works with any purchased AMPL installation covered by current maintenance & support service”)
+* https://ampl.com/products/api/ (“works with any purchased AMPL installation covered by current maintenance & support service”)
 * http://glpk-java.sourceforge.net/ (GPL)
 * https://github.com/google/or-tools (Apache)
 * http://coin-or.github.io/jorlib/ (LGPL, Apache-incompatible, only specific opt) ; CMPL: GPL and LGPL ; Cbc: EPL. But no Java version.

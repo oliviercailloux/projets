@@ -40,7 +40,7 @@ PersonnalIds:: un utilisateur peut donner un id personnel à une entité, stock�
 
 * importer données livres depuis CrossRef. 
 * Importer données depuis autres formats (FRBR Appendix)
-* trouver auto la notice d’autorité de la http://authorities.loc.gov/[Bibliothèque du Congrès] (ou Abes IdRef)
+* trouver auto la notice d’autorité de la https://authorities.loc.gov/[Bibliothèque du Congrès] (ou Abes IdRef)
 * implémenter relations ? FRBR Ch. 5
 * implémenter au moins certains éléments du Ch. 7
 * vérifier auto si directives ISBD sont suivies ?
@@ -56,7 +56,7 @@ PersonnalIds:: un utilisateur peut donner un id personnel à une entité, stock�
 * Copac équivalent du Sudoc en GB, utilise format http://www.loc.gov/standards/mods/[MODS].
 * http://data.bnf.fr[BNF] : dépôt légal, acquisitions.
 * Base CrossRef (https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md[API]) très riche, > 80 M enregistrements. Bonne qualité pour démarrer. Articles de revue académique, souvent.
-* http://m.abes.fr/Acces-direct-a/Pour-les-developpeurs[Web services] de l’ABES (Idref…).
+* http://m.abes.fr/Espace-Pro-Acces-direct-a/API-et-Web-Services[Web services] de l’ABES (Idref…).
 * http://domybiblio.net/search/[Exemple] d’exploitation.
 * Idref, service web en ligne pour identifier une personne. Permet ensuite de récupérer Orcid, viaf etc. puis de récupérer des ressources. Permet d’interroger le catalogue du Sudoc à partir de noms. http://documentation.abes.fr/aideidrefdeveloppeur/ch02s01.html[API Solr] pour interroger IdRef.
 * https://bitbucket.org/bibsonomy/bibsonomy/src/tip/bibsonomy-rest-client/[BibSonomy], a social bookmarking system, with a REST client in Java.

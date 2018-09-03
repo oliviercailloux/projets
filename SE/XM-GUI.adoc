@@ -3,7 +3,7 @@
 Intrerface graphique permettant d’éditer des problèmes de théorie de la décision et d’envoyer ces problèmes à des services web.
 
 == Contexte
-Une série de services web ouverts permet d’utiliser les méthodes d’aide multicritère à la décision. Ils reposent sur le format XMCDA et sur le logiciel https://www.decision-deck.org/diviz/tutorial.diviz.html[Diviz], qui permet l’invocation des services sans devoir programmer. L’utilisateur doit cependant fabriquer à la main les fichiers XML d’entrée (ou convertir du CSV), et plus généralement il n’existe pas d’intégration des outils dans un logiciel très simple d’emploi.
+Une série de services web ouverts permet d’utiliser les méthodes d’aide multicritère à la décision. Ils reposent sur le format XMCDA et sur le logiciel https://www.diviz.org/tutorial.diviz.html[Diviz], qui permet l’invocation des services sans devoir programmer. L’utilisateur doit cependant fabriquer à la main les fichiers XML d’entrée (ou convertir du CSV), et plus généralement il n’existe pas d’intégration des outils dans un logiciel très simple d’emploi.
 
 == Fonctions demandées
 Contract1:: Une classe Alternative (immuable, contenant un simple entier l’identifiant) et une classe Criterion (même chose). Une classe MCProblem qui stocke un problème d’aide multicritère à la décision : un ensemble d’alternatives, un ensemble de critères, une table d’évaluation. Une table d’évaluation associe à chaque paire (alternative, critère) un double. Utiliser pour ce faire une https://github.com/google/guava/wiki/NewCollectionTypesExplained#table[Table] Guava. (2)
@@ -22,7 +22,7 @@ XM:: Prendre en charge Alternative, Criterion, et un ensemble d’évaluations a
 * https://github.com/xmcda-modular[xmcda-modular] sur Github. (Voir schéma et exemple, et bibliothèque JAXB.)
 * https://github.com/oliviercailloux/XMCDA-2.2.1-JAXB/[XMCDA-2.2.1-JAXB] : génération et lecture de fichiers au format X2.
 * http://www.decision-deck.org/xmcda/[XMCDA], site officiel.
-* http://www.decision-deck.org/diviz/[diviz], site officiel.
+* http://www.diviz.org/[diviz], site officiel.
 * http://www.decision-deck.org/ws/wsd-rankAlternativesValues-RXMCDA.html[exemple] de fichier description Diviz: voir description.xml.
 * https://github.com/oliviercailloux/test-call-xmcda-ws[test-call-xmcda-ws]
 * https://github.com/oliviercailloux/Six-real-cars/[Six real cars] au format X2

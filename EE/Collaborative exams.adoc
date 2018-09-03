@@ -7,7 +7,7 @@ Ce projet permettra à des enseignants de créer des ensembles de questions et r
 
 L’application laissera la place à la subjectivité des enseignants, en leur permettant par exemple de privilégier certaines questions.
 
-On pourra s’inspirer d’un https://github.com/oliviercailloux/Collaborative-exams[projet] existant.
+On repartira du https://github.com/oliviercailloux/Collaborative-exams[projet] existant. Il s’agira dans un premier temps de solidifier ses fonctionnalités et d’écrire des tests unitaires. Il faudra également améliorer la relation de hiérarchie entre différentes questions ; et éventuellement corriger les fonctions manquantes telles que `SameAbility`. La dépendance actuelle concernant le DOM devra sans-doute être retirée.
 
 == Fonctions demandées
 Question:: Interfaces et objets pour Question et objets associés. Une question comprend un énoncé (« phrasing »), une langue, un ensemble de réponses possibles, chacune associée à l’information indiquant si cette réponse est correcte, un identifiant (int), et un auteur. Un auteur est identifié par un id (int) et a un e-mail. Utiliser un objet Person pour les auteurs. Un énoncé et une réponse sont des textes simples. L’ensemble de réponses peut être remplacé par une information « Y/N » ou « T/F » ou « free », indiquant une question oui / non, ou vrai / faux, ou de réponse libre. Créer à cet effet une interface MultipleChoiceQuestion qui étend Question. L’auteur peut associer un identifiant personnel (string) à une question. Ceci est stocké hors de l’objet Question. Cet identifiant peut changer. (La paire (auteur, identifiant) doit être unique.) Une question est immuable. (2)
@@ -22,7 +22,7 @@ QuestionXML:: Lire et écrire une question en XML, et les relations de votre mod
 QuestionJSON:: Lire et écrire les relations du modèle en JSON. (0,5)
 QuestionMultiFormat:: Récupérer une question à partir de son id, en format XML ou JSON. Introduire une question en multiples formats. Transformer en REST. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni, pour les servlets qui requièrent ce paramètre. (1)
 RelationsMultiFormat:: Servlet GetSameAbility(person id): ensemble de triplets ; et de même pour les autres relations, et de même pour Set. La relation peut être récupérée ou envoyée au format XML ou JSON. Cookie permet de mémoriser un id person, il est utilisé si l’id person n’est pas fourni. (1)
-Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
+Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (0,5)
 SetDB1:: Implémenter des entités JPA et les méthodes permettant d’écrire et de lire depuis la BD les questions. (1)
 SetDB2:: Même chose pour le reste du modèle : relations, tags, … (1)
 UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)

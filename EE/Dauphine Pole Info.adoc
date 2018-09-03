@@ -37,7 +37,6 @@ Merger:: Ajoutez, en concertation avec l’équipe DOD, un servlet sur DOD et un
 
 == Refs
 * http://www.poleinfo3.dauphine.fr/ 
-* http://10.30.71.19/PI3/web/app_dev.php/
 * Le code de link:https://github.com/oliviercailloux/poleinfo3[poleinfo3]
 * CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
 

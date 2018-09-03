@@ -1,5 +1,5 @@
 = Apartments
-Les sites de location (type https://pap.fr) proposent généralement des moyens rudimentaires de recherche parmi les annonces existantes. Ce projet vise à doter l’utilisateur de moyens d’indiquer ses préférences d’une manière riche, afin de lui montrer les annonces qui lui conviennent le mieux d’abord. En particulier, au lieu de filtrer de façon binaire (ex. : inclure un appartement seulement s’il fait au moins x m²), le système permettra la compensation (ex. : inclure une annonce pour un appartement très petit s’il est très bon sur les autres critères) ; et le système permettra d’inclure comme critère la distance (en transport public) à des lieux d’intérêts pour l’utilisateur tels que son lieu de travail.
+Les sites de location (type https://www.pap.fr) proposent généralement des moyens rudimentaires de recherche parmi les annonces existantes. Ce projet vise à doter l’utilisateur de moyens d’indiquer ses préférences d’une manière riche, afin de lui montrer les annonces qui lui conviennent le mieux d’abord. En particulier, au lieu de filtrer de façon binaire (ex. : inclure un appartement seulement s’il fait au moins x m²), le système permettra la compensation (ex. : inclure une annonce pour un appartement très petit s’il est très bon sur les autres critères) ; et le système permettra d’inclure comme critère la distance (en transport public) à des lieux d’intérêts pour l’utilisateur tels que son lieu de travail.
 
 == Fonctions demandées
 Contract1:: Une classe qui permet de stocker des caractéristiques qu’on peut trouver dans une annonce (simple !) pour un appartement : superficie, adresse (utilisez un String par exemple), nombre de chambres, texte complet, et quelques autres attributs de votre choix. (0,5)
@@ -30,7 +30,7 @@ ValueDist:: Un appartement a une localisation précise (pour la stocker, utilise
 * https://github.com/xmcda-modular/[xmcda-modular]
 
 == Sources
-* https://pap.fr : semblent ouverts.
+* https://www.pap.fr : semblent ouverts.
 * https://www.seloger.com/ : verrouillage légal. (« En accédant au Site Internet de la Société, l'Utilisateur déclare, garantit et s'engage à (…) ne pas utiliser de dispositifs ou logiciels autres que ceux fournis par la Société destinés à (…) extraire, modifier, consulter, même en mémoire tampon ou temporaire, ou encore pour une utilisation individualisée, tout ou partie du Site Internet »)
 * AirBnB : verrouillage légal. (https://www.airbnb.fr/terms, Conduite de l'Utilisateur)
 

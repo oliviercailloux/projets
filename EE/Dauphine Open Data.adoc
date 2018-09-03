@@ -39,7 +39,7 @@ AuthDoc:: Documenter en détail et clairement le mécanisme d’authentification
 * Mécanisme d’authentification en lien avec le CAS de Dauphine (en partenariat avec la DSI).
 * Récupération des données de planning plus propres (en partenariat avec la DSI).
 * Prise en compte des remarques suite à review code (sécurité & qualité) par la DSI.
-* Menu du CROUS ? (Seulement trouvé http://www.dauphine.fr/fr/universite/campus/campus-porte-dauphine/restauration.html[ceci] et http://www.mso.dauphine.fr/fileadmin/mediatheque/mso/images/Menu_GRILL.pdf[menu] utilisé précédemment.)
+* Menu du CROUS ? (Seulement trouvé http://www.dauphine.fr/fr/universite/nos-campus/campus-porte-dauphine/restauration.html[ceci] et http://www.mso.dauphine.fr/fileadmin/mediatheque/mso/images/Menu_GRILL.pdf[menu] utilisé précédemment.)
 
 == Authentification
 Voici les informations dont je dispose concernant l’authentification.
@@ -52,5 +52,5 @@ Connexion au CAS de test : appeler la page https://passeport.qualif.dauphine.fr/
 
 == Refs
 * CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
-* https://planning.dauphine.fr/direct/index.jsp?data=767bdec461375cab4e1db9324b2b295a450c06489b0765a5db849b3aa84b0275dead10e6e85e1fd6e0fa50826f0818af8d95b75bb9e1e194[Planning] Dauphine 2017
+* https://ade.dauphine.fr/direct/index.jsp?projectId=3&displayConfName=Affichage_Enseignants[Planning] Dauphine
 

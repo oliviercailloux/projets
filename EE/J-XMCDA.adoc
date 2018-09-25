@@ -1,12 +1,12 @@
 = J-XMCDA
 
 == Objectif
-Permettre l’invocation de services web XMCDA (spécialisés en aide multicritère à la décision) grâce à une interface graphique, fournir des outils divers pour faciliter leur usage. La connaissance de l’aide multicritère à la décision n’est pas requise.
+Permettre l’invocation de services web XMCDA (spécialisés en aide multicritère à la décision, MCDA) grâce à une interface graphique, fournir des outils divers pour faciliter leur usage. La connaissance de l’aide multicritère à la décision n’est pas requise.
 
 == Contexte
 Une série de services web ouverts permet d’utiliser les méthodes d’aide multicritère à la décision. Ils reposent sur le format XMCDA et sur le logiciel Diviz, qui permet l’invocation des services sans devoir programmer. L’utilisateur doit cependant fabriquer à la main les fichiers XML d’entrée (ou convertir du CSV), et plus généralement il n’existe pas d’intégration des outils dans un logiciel très simple d’emploi.
 
-Le format d’encodage actuellement utilisé pour XMCDA est XMCDAv2 (ci-après : X2). Tous les services web XMCDA acceptent en entrée du X2 et sortent du X2. L’inconvénient de cette approche est que les services web sont mal décrits par le schéma. À l’opposé, le schéma xmcda-modular a été proposé, qui ne doit pas être utilisé pour décrire un service web directement, mais bien pour générer des schémas qui servent à décrire des services web. Ainsi, on pourrait conserver la compatibilité entre services, mais leur donner une spécificité. Votre mission est (entre autres) d’assurer la compatibilité de ces deux approches, et l’invocation automatique de services webs dans la mesure du possible.
+Le format d’encodage actuellement utilisé pour XMCDA est XMCDAv2 (ci-après : X2). Tous les services web XMCDA acceptent en entrée du X2 et sortent du X2. L’inconvénient de cette approche est que les services web sont mal décrits par le schéma. À l’opposé, le schéma xmcda-modular a été proposé, qui ne doit pas être utilisé pour décrire un service web directement, mais bien pour générer des schémas qui servent à décrire des services web. Ainsi, on pourrait conserver la compatibilité entre services, mais leur donner une spécificité. Votre mission est (entre autres) d’assurer la compatibilité de ces deux approches, et l’invocation automatique de services webs dans la mesure du possible. On repartira du projet https://github.com/oliviercailloux/XM-GUI[XM-GUI], qui définit des objets pour manipuler les principaux concepts MCDA.
 
 == Fonctions demandées
 Diviz:: Un binôme se familiarise avec l’usage de Diviz, et le présente aux autres. Il faut suivre un tutoriel avec un cas d’usage non trivial ; télécharger les données six real cars et les utiliser sur un problème. Écrire un rapport avec ce qui a été et les problèmes rencontrés. (1)

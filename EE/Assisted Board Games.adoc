@@ -38,3 +38,8 @@ GetGames:: Le serveur peut télécharger une liste de parties jouées depuis une
 HistoClient:: Les joueurs peuvent reprendre une partie existante à partir de l’endroit souhaité dans le déroulement de la partie. (Cela constitue une nouvelle partie.)
 Clock:: Le client central montre une horloge qui décompte le temps restant aux joueurs.
 
+* Analyser le langages de description de Zillion of Games (ref ci-dessous) ou d’autres aspects de ce service et rédiger un rapport en Asciidoctor indiquant ce qui peut être utilisé dans le projet. (0,5 à 1,5)
+
+== References ==
+http://www.zillions-of-games.com/
+

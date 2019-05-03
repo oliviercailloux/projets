@@ -1,0 +1,1739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cdm="http://cdm-fr.fr/2013/CDM"
+	xmlns:lheo="http://www.lheo.org/2.0" xmlns:cdmfr="http://cdm-fr.fr/2013/CDM-frSchema"
+	targetNamespace="http://cdm-fr.fr/2013/CDM-frSchema" elementFormDefault="qualified"
+	version="1.1.2">
+
+	<!-- Schema import for xhtml -->
+	<xs:import namespace="http://www.w3.org/1999/xhtml"
+		schemaLocation="http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd"/>
+	<!-- Schema import for lheo format -->
+	<xs:import namespace="http://www.lheo.org/2.0" schemaLocation="http://lheo.org/2.0.1/lheo.xsd"/>
+	<!-- Schema import for cdm standard values -->
+	<!--xs:import namespace="http://cdm-fr.fr/2013/CDM" schemaLocation="CDMFR.xsd"/-->
+	<xs:import namespace="http://cdm-fr.fr/2013/CDM" schemaLocation="http://cdm-fr.fr/2013/schemas/CDMFR.xsd"/>
+	<!-- Schema import for french controlled lists -->
+	<!--xs:include schemaLocation="CDMFR-nom.xsd"/-->
+	<xs:include schemaLocation="http://cdm-fr.fr/2013/schemas/CDMFR-nom.xsd"/>
+	<!-- ================================================= -->
+	<!-- === inherited modified or referenced elements === -->
+	<!-- ================================================= -->
+	<xs:element name="webLink">
+		<xs:annotation>
+			<xs:documentation>Link to a web page. Possible to describe the role of the web page such as home page and LOM (learning object metadata)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cdm:href"/>
+				<xs:element name="linkName" type="xs:token" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Name of the web page</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="role" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:enumeration value="homepage"/>
+						<xs:enumeration value="learningObjectMetadata"/>
+						<xs:enumeration value="catalog"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="userDefined" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="refOrgUnit">
+		<xs:annotation>
+			<xs:documentation>Reference to a orgUnit element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+			<xs:attribute name="role" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="refProgram">
+		<xs:annotation>
+			<xs:documentation>Reference to a program element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+			<xs:attribute name="role" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="refCourse">
+		<xs:annotation>
+			<xs:documentation>Reference to a course element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+			<xs:attribute name="role" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="refPerson">
+		<xs:annotation>
+			<xs:documentation>Reference to a person element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+			<xs:attribute name="role" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="searchword" type="xs:token">
+		<xs:annotation>
+			<xs:documentation>A search text that can be used to identify the enclosing element.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="refSpeciality">
+		<xs:annotation>
+			<xs:documentation>Reference to a speciality</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- ============= -->
+	<!-- === Types === -->
+	<!-- ============= -->
+	<!-- ***************** Complex Types ***************** -->
+	<xs:complexType name="title">
+		<xs:annotation>
+			<xs:documentation>Titre et corps de la personne</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="true">
+			<xs:extension base="cdm:textType">
+				<xs:attribute name="corps" type="cdmfr:corpsValueSet" use="optional"/>
+			</xs:extension>
+
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="textType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>Text expressed in one or more languages</xs:documentation>
+		</xs:annotation>
+		<xs:sequence maxOccurs="unbounded" minOccurs="0">
+			<xs:element name="text">
+				<xs:annotation>
+					<xs:documentation>The information of this text expressed in a given languages</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="language" type="xs:language" use="optional"/>
+							<!-- 2.1:  added xs:anyAttribute to permit use of xml:lang -->
+							<xs:anyAttribute/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<!-- 2.1:  added xs:anyAttribute to permit use of xml:lang -->
+		<xs:anyAttribute/>
+	</xs:complexType>
+	<xs:complexType name="fieldType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>Text expressed in one or more languages</xs:documentation>
+		</xs:annotation>
+		<xs:sequence minOccurs="1" maxOccurs="1">
+			<xs:element name="fieldName">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="free" type="cdmfr:textType">
+							<xs:annotation>
+								<xs:documentation>Nom de la mention habilitée : ouvert</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="controlled" minOccurs="1">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="registeredName" type="cdmfr:fieldNameValueSet"
+										minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="fieldNameCode" type="cdmfr:fieldNameCodeSet"
+									use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="speciality" type="cdmfr:specialityType" minOccurs="0"
+				maxOccurs="unbounded"/>
+			<xs:element ref="cdmfr:refSpeciality" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Liens vers une spécialité décrite dans une autre habilitation. La présence de cet élément implique une cohabilitation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fieldTimingInfo" type="cdmfr:timingInfoType"/>
+			<xs:element name="fieldInfo" type="cdm:infoBlockType"/>
+		</xs:sequence>
+		<xs:attribute name="fieldPurpose" type="cdmfr:fsPurposeValueSet" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="specialityType" mixed="true">
+		<xs:sequence>
+			<xs:element name="infoBlock" type="cdm:infoBlockType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="specialityId" type="xs:token">
+				<xs:annotation>
+					<xs:documentation>Shorthand identification of the study speciality</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="specialityNum" type="xs:token"/>
+			<xs:element name="specialityName" type="cdmfr:textType" minOccurs="1"/>
+			<xs:element name="specialityTimingInfo" type="cdmfr:timingInfoType" minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Date d'ouverture habilitée, ou date de renouvellement habilité pour la spécialité</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="cohabilitation" type="cdmfr:cohabilitationType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="partnership" type="cdmfr:partnershipDataType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="cdmfr:refProgram" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation> Références vers les programmes faisant l'objet de cette habilitation. Le lien se fait vers l'identifiant unique de chacun des programmes. Plusieurs liens sont
+						possibles pour lier l'ensemble des programmes inclus dans la même habilitation et décrits dans la structure </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="specialityPurpose" type="cdmfr:fsPurposeValueSet" use="required">
+			<xs:annotation>
+				<xs:documentation>Finalité de la spécialité : * Recherche * Professionnel * Recherche et Professionnel</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="timingInfoType" mixed="true">
+		<xs:sequence>
+			<xs:element name="openingDate" minOccurs="0" maxOccurs="1" type="cdm:CDMdate"/>
+			<xs:element name="renewalDate" minOccurs="0" maxOccurs="1" type="cdm:CDMdate"/>
+		</xs:sequence>
+		<xs:attribute name="duration" type="xs:duration" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="habiliStatusValueType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>Status of the habilitation process</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent mixed="true">
+			<xs:extension base="cdm:infoBlockType">
+				<xs:attribute name="habiliStatusValue" type="cdmfr:habiliStatusValueSet"
+					use="optional"/>
+				<xs:attribute name="habiliNum" type="xs:token"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="habiliReqTypeValueType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>Type of the habilitation request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="cdm:infoBlock"/>
+			<xs:element ref="cdmfr:refHabilitation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="habiliReqTypeValue" type="cdmfr:habiliReqTypeValueSet" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="cohabilitationType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>Detailed description of cohabilitation</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="exists" type="xs:boolean" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Précise si la formation est cohabilitée ou non. En cas de cohabilitation les établissements cohabilités sont identifiés par un lien vers les informations qui les
+						concernent</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="listOfOrgUnit">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="habOrgUnit" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>Ce champ permet d'insérer un lien vers les données de l'établissement habilité et vers les établissements cohabilités s'il y a
+									lieu.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="cdm:infoBlock" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Texte énonçant les remarques et précisions liées à la cohabilitation avec l'établissement décrit dans cette partie. les remarques
+												générales sur la cohabilitation sont disponibles au niveau hiérarchique précédent.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element ref="cdmfr:refOrgUnit" minOccurs="1" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Lien vers les descriptions des organismes cohabilités. Le lien s'effectue vers l'identifiant unique de chacun des
+												établissements.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="domainName" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:choice>
+												<xs:element name="fixedDomain" type="cdmfr:domainNameValueSet"/>
+												<xs:element name="openDomain" type="cdmfr:textType"/>
+											</xs:choice>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="cohabilitationRole" type="cdmfr:habiliRoleValueSet">
+						<xs:annotation>
+							<xs:documentation>Rôle de l'établissement ayant produit cette offre de formation, pour ce qui concerne les relations avec la tutelle dans le processus d'habilitation le
+								porteur doit impérativement être l'auteur de l'offre</xs:documentation>
+						</xs:annotation>
+					</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="cdm:infoBlock" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Cet infoblock permet d'ajouter des informations communes à toutes les cohabilitations faisant l'objet de cette demande d'habilitation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="i13nProgType">
+		<xs:annotation>
+			<xs:documentation>Identifier ici les établissements étrangers associés à la formation habilitée. Dans la description le pays doit être renseigné</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="i13ProgPartner" minOccurs="1" maxOccurs="unbounded"
+				type="cdmfr:partnershipDataType">
+				<xs:annotation>
+					<xs:documentation>Précisions sur le partenaire international : nom, description ...</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="i13ProgName" type="cdm:textType"/>
+			<xs:element name="i13ProgInfo" type="cdm:infoBlockType" minOccurs="0"
+				maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="courseDescriptionType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="digitalUse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="percentage" type="xs:nonNegativeInteger"/>
+						<xs:element name="lcms" type="cdmfr:lcmsType"/>
+						<xs:element name="activities" type="cdmfr:activitiesType"
+							maxOccurs="unbounded" minOccurs="0"/>
+						<xs:element name="prodPeda">
+							<xs:complexType>
+								<xs:all>
+									<xs:element name="digitProdPercentage"
+										type="xs:nonNegativeInteger"/>
+									<xs:element name="digitProdUNTPercentage"
+										type="xs:nonNegativeInteger"/>
+								</xs:all>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="infoBlock" type="cdm:infoBlockType"/>
+			<xs:element name="courseContentsEC" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="cdmfr:refCourse" maxOccurs="unbounded" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attribute name="nature" type="cdmfr:natureValueSet" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="habilitationType">
+		<xs:annotation>
+			<xs:documentation>Description of an habilitation.</xs:documentation>
+		</xs:annotation>
+		<!--xs:choice maxOccurs="unbounded"-->
+		<xs:sequence>
+			<xs:element name="habiliId" type="xs:token" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation> Numéro d'habilitation construit avec les règles d'usage et fourni par l'établissement puis conservé de façon définitive par le ministère. <br/>La construction
+						proposée pour l'identifiant se fait à partir d’éléments internationaux, nationaux et locaux afin de s’assurer de l'unicité de l'identifiant en vue d'une fusion des informations
+						dans un portail national ou européen. L'enchaînement proposé est le suivant :<br/> CodeISOPays(1)TypeCodeInstitution(2) CodeInstitution(3) FamilleDonnées(4) IdentifiantLocal(5)
+								<ol><li>1. Code du pays ISO 3166-1 : standard international désignant chaque pays par un code à deux lettres (FR pour la France)</li><li> 2. Type de code institution :
+								nom du code dans lequel est identifiée l'institution (pour les établissements dépendant du MESR le code UAI est utilisé, pour les autres établissements le code SIRET
+								peut être utilisé)</li><li> 3. Code institution : chaine de caractères désignant l'institution dans le codage choisi </li><li> 4. Famille de données : famille de CDMFR
+								à laquelle appartient l'information<ul>
+									<li>OU (orgUnit) : entité administrative ou organisationnelle</li><li> HA (habilitation)</li><li> CO (course) : unité d’enseignement </li><li>PR (program) :
+										formation</li><li> PE (person) : personne </li><li>LH (lheoAdds) : ajouts de compatibilité avec LHÉO</li>
+								</ul></li><li> 5. Identifiant local : identifiant unique des données au sein du système d’information de l’établissement </li><li> 6. Pour les spécialités ajouter SP
+								suivi du numéro d'ordre de la spécialité dans l'offre de l'établissement support</li></ol>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="legalRef" type="cdm:infoBlockType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ce champ présente les références des textes légaux de définition de la formation considérée. L'information de ce champ est fournie par la DGESIP et ne doit pas
+						être modifiée par l'établissement. Lors du dépôt initial pour les champs obligatoires l'établissement doit fournir les valeurs correspondant à ses souhaits, les informations
+						seront traitées et modifiées lors de l'examen du dossier. Ces informations n'apparaissent que lorsque des décisions sont expressément fournies sur la durée et les des dates.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<!-- Le fait de mettre un choice permet d'indiquer qu'il ne peut y avoir que l'un ou l'autre de ces élémennts. 
+				Par défaut, la cardinalité du choice est [1-1], elle est indiqué pour bien montrer qu'il doit y avoir un et un seul élément. 
+				Cela rend caduque la présence des cardinalités sur les éléments fils. -->
+				<xs:element name="field" type="cdmfr:fieldType">
+					<xs:annotation>
+						<!--xs:documentation>Description de la mention habilitée, la cardinalité vaut [0,n] car les licences Pro n'ont pas de spécialité.</xs:documentation-->
+						<xs:documentation>Description de la mention habilitée, la cardinalité vaut [0,1] car les licences Pro n'ont pas de mention.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="licPro">
+					<xs:annotation>
+						<!--xs:documentation>Dénomination nationale pour une licence professionnelle</xs:documentation-->
+						<xs:documentation>Informations spécifiques à une licence professionnelle</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="denominNat" type="cdmfr:licProNatNameValueSet"/>
+							<xs:element name="sectAct" type="cdmfr:licProSectActValueSet"/>
+							<xs:element name="composante" maxOccurs="unbounded" minOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="cdmfr:refOrgUnit"/>
+										<xs:element name="compName" type="cdm:textType"/>
+									</xs:sequence>
+									<xs:attribute name="typeCompLicPro"
+										type="cdmfr:typeCompLicProValueSet"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="specialite" type="cdm:textType"/>
+							<xs:element name="licdiplomaType" type="cdmfr:licDiplomaTypeValueSet"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="otherDiploma">
+					<xs:annotation>
+						<xs:documentation>Autre diplôme habilité ne s'inscrivant pas dans une structure mention-spécialité ou licence-Pro</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="cdmfr:textType" minOccurs="1"/>
+							<xs:element name="otherDiplomaInfo" type="cdm:infoBlockType"
+								minOccurs="0"/>
+							<xs:element ref="cdmfr:refOrgUnit" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="cdmfr:refProgram" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="contexteEtEnjeux">
+				<xs:annotation>
+					<xs:documentation>Présentation du contexte et des enjeux de la formation soumise à l'habilitation.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="contexteEtEnjeuxInfo" type="cdm:infoBlockType"
+							minOccurs="1"/>
+						<xs:element ref="cdmfr:webLink" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="habiliRequest">
+				<xs:annotation>
+					<xs:documentation>Paramètres de la demande d'habilitation de la formation concernée.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="habiliTiming" minOccurs="1" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>Dates des étapes de l'habilitation</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:all >
+									<!--xs:choice-->
+									<xs:element name="habiliCreatDate" type="cdm:CDMdate"
+										minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Date à laquelle la formation décrite a été habilitée pour la première fois.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="habiliRenewDate" type="cdm:CDMdate"
+										minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Dans le cas d'un renouvellement, date du dernier renouvellement de l'habilitation</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<!--/xs:choice-->
+									<xs:element name="habiliOpeningWhishDate" type="cdm:CDMdate"
+										minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Date d'ouverture souhaitée par l’établissement.</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="habiliWishDuration" type="xs:integer"
+										minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Durée pour laquelle l’habilitation de la formation est demandée en années</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="habiliValidDuration" type="xs:integer"
+										minOccurs="0" maxOccurs="1">
+										<xs:annotation>
+											<xs:documentation>Durée pour laquelle la formation est habilitée en années</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:all>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="habilistatus" maxOccurs="1" minOccurs="1"
+							type="cdmfr:habiliStatusValueType"> </xs:element>
+						<xs:element name="habiliReqType" maxOccurs="1" minOccurs="1"
+							type="cdmfr:habiliReqTypeValueType"/>
+						<xs:element name="habiliReqDates" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="dateCS" type="cdm:CDMdate" minOccurs="0"/>
+									<xs:element name="dateCA" type="cdm:CDMdate" minOccurs="0"/>
+									<xs:element name="dateCEVU" type="cdm:CDMdate" minOccurs="0"/>
+									<xs:element name="dateCNESR" type="cdm:CDMdate" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="cohabilitation" type="cdmfr:cohabilitationType" maxOccurs="unbounded"
+				minOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Cet élément sert, au delà de la cohabilitation, à décrire les relations entre le diplôme concerné par l'habilitation et les établiss</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="habiliObject">
+				<xs:annotation>
+					<xs:documentation>Formation(s) concernées par cette habilitation.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="cdmfr:refProgram" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="domainName" maxOccurs="unbounded" minOccurs="0">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="fixedDomain" type="cdmfr:domainNameValueSet"/>
+						<xs:element name="openDomain" type="cdmfr:textType"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="partnership" minOccurs="0" maxOccurs="unbounded"
+				type="cdmfr:partnershipDataType">
+				<xs:annotation>
+					<xs:documentation>Partenariats nationaux autres qu'une cohabilitation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="equivalence" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Description des règles d'équivalence.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="equivRefReg" type="cdmfr:textType"/>
+						<xs:element ref="cdmfr:refOrgUnit" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="i13nProg" type="cdmfr:i13nProgType" maxOccurs="unbounded"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="relatedPrograms" maxOccurs="unbounded" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="cdmfr:refOrgUnit" maxOccurs="unbounded" minOccurs="1"/>
+						<xs:element ref="cdmfr:refProgram" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="relationInfo" type="cdm:infoBlockType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="infoBlock" type="cdm:infoBlockType"/>
+			<!--/xs:choice-->
+		</xs:sequence>
+		<xs:attribute name="diplomaType" type="cdmfr:diplomaTypeValueSet"/>
+		<xs:attribute name="Organization" type="cdmfr:organizationValueSet"/>
+		<xs:attribute name="id" type="xs:ID" use="optional"/>
+		<xs:attribute name="ident" type="xs:token" use="optional"/>
+		<xs:attribute name="language" type="xs:language" use="optional"/>
+		<!-- 2.1:  added xs:anyAttribute to permit use of xml:lang -->
+		<xs:anyAttribute/>
+	</xs:complexType>
+	<xs:complexType name="lheoAddsType">
+		<xs:annotation>
+			<xs:documentation>Addendums from LHEO standard.</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="SIRET" type="lheo:SIRET-type"/>
+		</xs:all>
+		<xs:attribute name="id" type="xs:ID" use="optional"/>
+		<xs:attribute name="ident" type="xs:token" use="optional"/>
+		<xs:attribute name="language" type="xs:language" use="optional"/>
+		<!-- 2.1:  added xs:anyAttribute to permit use of xml:lang -->
+		<xs:anyAttribute/>
+	</xs:complexType>
+	<xs:complexType name="admDescType">
+		<xs:sequence>
+			<xs:element name="infoBlock" type="cdm:infoBlockType"/>
+		</xs:sequence>
+		<xs:attribute name="equiv" type="cdmfr:equiValueSet" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="globalVolumeType">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="teachingtype" type="cdmfr:teachingTypeValueSet"/>
+				<xs:attribute name="coeff" type="xs:nonNegativeInteger"/>
+				<xs:attribute name="minMax" type="cdmfr:globalVolumeTypeValueSet"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="lcmsType">
+		<xs:sequence>
+			<xs:element name="exists" type="xs:boolean"/>
+			<xs:element name="resourceManagement" type="cdm:infoBlockType"/>
+			<xs:element name="percentageOfUse" type="xs:nonNegativeInteger"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="activitiesType">
+		<xs:complexContent mixed="true">
+			<xs:extension base="cdm:infoBlockType">
+				<xs:attribute name="activitiesList" type="cdmfr:activitiesListValueSet"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CDMlocation">
+		<xs:annotation>
+			<xs:documentation>Location given by room and/or building and/or text</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element ref="cdmfr:refOrgUnit"/>
+			<xs:element ref="cdm:adr" minOccurs="0"/>
+			<xs:element ref="cdm:infoBlock" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="room" type="xs:token" use="optional"/>
+		<xs:attribute name="building" type="xs:token" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="examType">
+		<xs:annotation>
+			<xs:documentation>Exam information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="examName" type="cdm:textType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Name of the exam</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="examKind" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Type of assessment: e.g. oral examination, written examination, oral presentation, test, paper, portfolio, thesis, report about an internship, report on
+						fieldwork, continuous assessment. Kind of exam: e.g. ordinary, extraordinary examination.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType mixed="true">
+					<xs:complexContent mixed="true">
+						<xs:extension base="cdm:infoBlockType">
+							<xs:attribute name="examKind" type="cdm:examKindValueType"
+								use="optional"/>
+							<xs:attribute name="examForm" type="cdm:examFormValueType"
+								use="optional"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="cdm:registrationDeadline" minOccurs="0"/>
+			<xs:element ref="cdm:cancelDeadline" minOccurs="0"/>
+			<xs:element ref="cdm:evaluationDeadline" minOccurs="0"/>
+			<xs:element ref="cdm:examStart" minOccurs="0"/>
+			<xs:element ref="cdm:examEnd" minOccurs="0"/>
+			<xs:element name="examDuration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Duration of the exam. </xs:documentation>
+				</xs:annotation>
+				<xs:complexType mixed="true">
+					<xs:complexContent mixed="true">
+						<xs:extension base="cdm:infoBlockType">
+							<xs:attribute name="duration" type="xs:duration" use="optional"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="cdm:examLocation" minOccurs="0"/>
+			<xs:element ref="cdm:contacts" minOccurs="0"/>
+			<xs:element ref="cdm:infoBlock" minOccurs="0"/>
+			<xs:element name="examStructure" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Exam part structure </xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="partStructure" type="cdm:infoBlockType" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Description of relationships between the exam parts</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="examParts" type="cdmfr:examType" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>List of exam parts</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="examPartStructure" type="cdm:partStructureValueType"
+						use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="certifCompetence" minOccurs="0">
+				<xs:complexType>
+					<xs:all>
+						<xs:element name="compEval" type="xs:boolean"/>
+					</xs:all>
+					<xs:attribute name="certifName" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="partnershipDataType">
+		<xs:annotation>
+			<xs:documentation>This tag describes any partnership it is used in various places of habilitation description</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="partnerName" type="cdmfr:textType"/>
+			<xs:element name="partnershipType" type="cdmfr:partnershipValueSet" minOccurs="0"
+				maxOccurs="unbounded"/>
+			<xs:element name="partnershipInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Description des modalités du partenariat. Description de la diplomation, nombre et précisions sur les étudiants, précisions sur la gestion du
+						partenariat.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="cdm:infoBlock" minOccurs="0"/>
+						<xs:element name="diploma" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:all>
+									<xs:element name="description" type="cdmfr:textType"/>
+								</xs:all>
+								<xs:attribute name="agreement" type="cdmfr:diplomaAgreementValueSet"
+								/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="students">
+							<xs:complexType>
+								<xs:all>
+									<xs:element ref="cdm:infoBlock"/>
+								</xs:all>
+								<xs:attribute name="number" type="xs:integer"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="management" type="cdm:infoBlockType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="cdmfr:refOrgUnit" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="country">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="alternative" type="cdmfr:textType" minOccurs="0"/>
+						<xs:element name="countryName" type="cdmfr:countryNameValueSet"/>
+					</xs:sequence>
+					<xs:attribute name="countryCode" type="cdmfr:countryCodeValueSet"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ***************** Simple Types ***************** -->
+	<xs:simpleType name="secondNameValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for secondary names of the orgUnit.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="patronyme"/>
+			<xs:enumeration value="nom courant"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="orgUnitCodeValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for orgUnitCode (national codesets in France).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="codeUAI"/>
+			<xs:enumeration value="codeRNE"/>
+			<xs:enumeration value="codeEtablissement"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="equiValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for equivalences.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="VAE"/>
+			<xs:enumeration value="VAP"/>
+			<xs:enumeration value="VES"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="orgUnitKindCodeValueSet" id="orgUnitKindNameValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for orgUnitKind (university, high school etc)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="université"/>
+			<xs:enumeration value="IEP"/>
+			<xs:enumeration value="UFR"/>
+			<xs:enumeration value="ecole"/>
+			<xs:enumeration value="ecoleIngenieur"/>
+			<xs:enumeration value="IUT"/>
+			<xs:enumeration value="IUFM"/>
+			<xs:enumeration value="institut"/>
+			<xs:enumeration value="conservatoire"/>
+			<xs:enumeration value="INSA"/>
+			<xs:enumeration value="INP"/>
+			<xs:enumeration value="departement"/>
+			<xs:enumeration value="ENS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="orgUnitKindNameValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration of names for eachorgUnitKindCode
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Université"/>
+			<xs:enumeration value="Institut d'Etudes Politiques"/>
+			<xs:enumeration value="Unité de Formation et de Recherche"/>
+			<xs:enumeration value="Ecole"/>
+			<xs:enumeration value="Ecole d'ingénieurs"/>
+			<xs:enumeration value="Institut Universitaire de Technologies"/>
+			<xs:enumeration value="Institut Universitaire de Formation des Maitres"/>
+			<xs:enumeration value="Institut"/>
+			<xs:enumeration value="Conservatoire"/>
+			<xs:enumeration value="Institut National des Sciences Appliquées"/>
+			<xs:enumeration value="Institut National Polytechnique"/>
+			<xs:enumeration value="Département"/>
+			<xs:enumeration value="Ecole Normale Supérieure"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="respBodyValueType">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for respBody </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="publicSuperieur"/>
+			<xs:enumeration value="publicAgriculture"/>
+			<xs:enumeration value="publicIndustrie"/>
+			<xs:enumeration value="publicAffairesSociales"/>
+			<xs:enumeration value="publicDefense"/>
+			<xs:enumeration value="publicCulture"/>
+			<xs:enumeration value="prive"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="diplomaValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for diplomas structures.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="bidiplomation"/>
+			<xs:enumeration value="diplomes conjoints"/>
+			<xs:enumeration value="diplomes separes"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="fsPurposeValueSet">
+		<xs:annotation>
+			<!-- SCO le 07/11/12 : Mise en majuscule des premières lettres des mots -->
+			<xs:documentation>finalité de la formation.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Recherche"/>
+			<xs:enumeration value="Professionnel"/>
+			<xs:enumeration value="Recherche et Professionnel"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- SCO le 07/11/12 : correction de la valeur pour STAPS, pour mettre en conformité avec les autres : première lettre des mots composant le sigle passées en majuscule. : 
+			anciennce  valeur : <xs:enumeration value="Sciences et techniques des activités physiques et sportives"/>
+			Commentaire modifié pour enlever le fait que cela peut être transformé en liste ouverte -->
+
+	<!-- Suppression de la défintion : passée dans le fichier CDMFR-nom
+	<xs:simpleType name="domainNameValueSet">
+		<xs:annotation>
+			<xs:documentation>liste des noms de domaine des diplômes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Arts, Lettres, Langues"/>
+			<xs:enumeration value="Droit, Economie, Gestion"/>
+			<xs:enumeration value="Sciences Humaines et Sociales"/>
+			<xs:enumeration value="Sciences, Technologies, Santé"/>
+			<xs:enumeration value="Sciences et Techniques des Activités Physiques et Sportives"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<xs:simpleType name="habiliRoleValueSet">
+		<xs:annotation>
+			<xs:documentation>liste des rôles d'un établissement.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="support"/>
+			<xs:enumeration value="cohabilité"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- SCO le 08/11/12 : passé dans CDMFR-nom et complété. -->
+	<!--
+	<xs:simpleType name="licProNatNameValueSet">
+		<xs:annotation>
+			<xs:documentation>liste des noms de licence Pro.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="nom1"/>
+			<xs:enumeration value="nom2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<!-- SCo 07/11/12 : défintion de "licProSectActValueSet" passée dans fichier CDMFR-nom -->
+	<!--
+	<xs:simpleType name="licProSectActValueSet">
+		<xs:annotation>
+			<xs:documentation>liste des secteurs de licence Pro.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="sect1"/>
+			<xs:enumeration value="sect2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<!-- SCo le 07/11/12 : suppression et transfert de la définition "fieldNameValueSet" dans CDMFR-nom -->
+	<!--
+	<xs:simpleType name="fieldNameValueSet">
+		<xs:annotation>
+			<xs:documentation>liste des intitulés de mention contrôlée.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="mention1"/>
+			<xs:enumeration value="mention2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="fieldNameCodeSet">
+		<xs:annotation>
+			<xs:documentation>liste des codes d'intitulés de mention contrôlée.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="code1"/>
+			<xs:enumeration value="code2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<xs:simpleType name="licDiplomaTypeValueSet">
+		<xs:annotation>
+			<!-- SCo le 05/11/12 : Documentation modifiée -->
+			<xs:documentation>liste des types de diplômes qui suivent le modèle Licence Pro.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="LPro"/>
+			<xs:enumeration value="DEUST"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- SCo le 05/11/12 : suppressuion du type simple "fieldCodeValueSet" qui est non défini et non utilisé. -->
+	<!--
+	<xs:simpleType name="fieldCodeValueSet">
+		<xs:annotation>
+			<xs:documentation>peut-être transformée en liste ouverte.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="code1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<xs:simpleType name="habiliStatusValueSet">
+		<xs:annotation>
+			<xs:documentation>État du processus d'habilitation pour la formation concernée.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="habilité"/>
+			<xs:enumeration value="non habilité"/>
+			<xs:enumeration value="en cours d'habilitation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="habiliReqTypeValueSet">
+		<xs:annotation>
+			<!-- SCo le 07/11/12 : modification des valeurs pour être conforme Pélican / Ghabi -->
+			<xs:documentation>Liste des types de demande.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<!--
+			<xs:enumeration value="renouvellement"/>
+			<xs:enumeration value="création ex nihilo"/>
+			<xs:enumeration value="fusion"/>
+			<xs:enumeration value="restructuration"/>
+		-->
+			<xs:enumeration value="Création ex-nihilo"/>
+			<xs:enumeration value="Renouvellement à l'identique"/>
+			<xs:enumeration value="Renouvellement avec modifications"/>
+			<xs:enumeration value="Création par restructuration"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="partnershipValueSet">
+		<xs:annotation>
+			<xs:documentation>Liste des types de partenariats</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="académique"/>
+			<xs:enumeration value="professionnel"/>
+			<xs:enumeration value="national"/>
+			<xs:enumeration value="international"/>
+		</xs:restriction>
+
+	</xs:simpleType>
+	<xs:simpleType name="diplomaTypeValueSet">
+		<xs:annotation>
+			<!-- SCO : 26/10/12 : correction de la documentation (il y avait "liste des types de partenariats") -->
+			<xs:documentation>Liste des types de diplômes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Lpro"/>
+			<xs:enumeration value="DEUST"/>
+			<xs:enumeration value="L"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="autre"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="organizationValueSet">
+		<xs:annotation>
+			<!-- SCO : 26/10/12 : correction de la documentation (il y avait "liste des types de partenariats") -->
+			<xs:documentation>Liste des types d'organisation des études</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="1/23"/>
+			<xs:enumeration value="12/3"/>
+			<xs:enumeration value="123"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="1/2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="diplomaAgreementValueSet">
+		<xs:annotation>
+			<xs:documentation>Liste des accords de diplomation entre établissements</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="bidiplomation"/>
+			<xs:enumeration value="diplômes conjoints"/>
+			<xs:enumeration value="diplômes séparés"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="teachingTypeValueSet">
+		<xs:annotation>
+			<!-- Documentation modifiée 05/11/12 par SCo : à revoir -->
+			<!--xs:documentation>Liste des accords de diplomation entre établissements</xs:documentation-->
+			<xs:documentation>Liste des modalités d'enseignements</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="CM"/>
+			<xs:enumeration value="TD"/>
+			<xs:enumeration value="TP"/>
+			<xs:enumeration value="trainingWeeks"/>
+			<xs:enumeration value="ProfessTraining"/>
+			<xs:enumeration value="homeWork"/>
+			<xs:enumeration value="all"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="programCodeValueSet" id="programLibelValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for programCode digital values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="sectDGESIP"/>
+			<xs:enumeration value="domain"/>
+			<xs:enumeration value="licProNat"/>
+			<xs:enumeration value="licProSectAct"/>
+			<xs:enumeration value="sectDiscipSISE"/>
+			<xs:enumeration value="regInscripSISE"/>
+			<xs:enumeration value="codeCNIS-NSF"/>
+			<xs:enumeration value="cite97"/>
+			<xs:enumeration value="ERASMUS"/>
+			<xs:enumeration value="FAP"/>
+			<xs:enumeration value="userDefined"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="programLibelValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for programCode textual values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="sectDGESIP"/>
+			<xs:enumeration value="domain"/>
+			<xs:enumeration value="licProNat"/>
+			<xs:enumeration value="licProSectAct"/>
+			<xs:enumeration value="sectDiscipSISE"/>
+			<xs:enumeration value="regInscripSISE"/>
+			<xs:enumeration value="codeCNIS-NSF"/>
+			<xs:enumeration value="cite97"/>
+			<xs:enumeration value="ERASMUS"/>
+			<xs:enumeration value="FAP"/>
+			<xs:enumeration value="userDefined"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="programNatureValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for programNature values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="année"/>
+			<xs:enumeration value="semestre"/>
+			<xs:enumeration value="parcours"/>
+			<xs:enumeration value="mention"/>
+			<xs:enumeration value="spécialité"/>
+			<xs:enumeration value="certification"/>
+			<xs:enumeration value="C2i"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="relationTypeValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for relationType values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="année"/>
+			<xs:enumeration value="semestre"/>
+			<xs:enumeration value="parcours"/>
+			<xs:enumeration value="mention"/>
+			<xs:enumeration value="spécialité"/>
+			<xs:enumeration value="certification"/>
+			<xs:enumeration value="C2i"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="lllValueValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for lll values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="formation continue"/>
+			<xs:enumeration value="formation continue en alternance"/>
+			<xs:enumeration value="formation professionnelle"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="lllContextValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for lll context values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="adossProf"/>
+			<xs:enumeration value="adossRech"/>
+			<xs:enumeration value="formCont"/>
+			<xs:enumeration value="formContAlt"/>
+			<xs:enumeration value="formProf"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="purposeValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for purpose values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="conseils de perfectionnement"/>
+			<xs:enumeration value="évaluation des enseignements par les étudiants"/>
+			<xs:enumeration value="suivi des étudiants diplômés"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="degreeValueSet">
+		<xs:annotation>
+			<!-- SCo le 06/11/12 : ajout de l'accent sur "préparation aux concours" -->
+			<xs:documentation>Enumeration set of values for degree textual values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="licence"/>
+			<xs:enumeration value="licencePro"/>
+			<xs:enumeration value="master"/>
+			<xs:enumeration value="phD"/>
+			<xs:enumeration value="préparation aux concours"/>
+			<xs:enumeration value="diplôme d'état"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="degreeCodeValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for degree digital values.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="15"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sspCodeValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for French Rome Code.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="A fournir"/>
+			<xs:enumeration value="adresse web?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="studentStatusValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for student Status.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="CNCP"/>
+			<xs:enumeration value="BCN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="respRoleValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for responsible body rôles.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="composante de responsabilité administrative"/>
+			<xs:enumeration value="composante de responsabilité pédagogique"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="activitiesListValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values forLMS activities.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="student productions dropping"/>
+			<xs:enumeration value="pedagogical forums"/>
+			<xs:enumeration value="distance classroom"/>
+			<xs:enumeration value="digital networks"/>
+			<xs:enumeration value="mcq"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- SCo 06/11/12 : Type supprimé car il est en doublon avec le type equiValueSet défini aussi dans ce fichier avec les mêmes valeurs. -->
+	<!--
+	<xs:simpleType name="equivValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for equivalences</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="VAE"/>
+			<xs:enumeration value="VAP"/>
+			<xs:enumeration value="VES"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<xs:simpleType name="corpsValueSet">
+		<xs:annotation>
+			<!-- SCo 06/11/12 :  correction de la documentation -->
+			<!--xs:documentation>Enumeration set of values for equivalences</xs:documentation-->
+			<xs:documentation>Liste des valeurs pour les corps des personnels.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="PUPH"/>
+			<xs:enumeration value="PU"/>
+			<xs:enumeration value="MCF"/>
+			<xs:enumeration value="ATER"/>
+			<xs:enumeration value="Mon"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="indicatorValueSet">
+		<xs:annotation>
+			<xs:documentation>Enumeration set of values for indicator Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="autoEval"/>
+			<xs:enumeration value="bilanFonct"/>
+			<xs:enumeration value="prospective"/>
+			<xs:enumeration value="pilotMention"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="typeCompLicProValueSet">
+		<xs:annotation>
+			<xs:documentation>Liste des types de composantes d'une licence pro</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="associée"/>
+			<xs:enumeration value="principale"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="globalVolumeTypeValueSet">
+		<xs:annotation>
+			<xs:documentation>Valeurs min et Max affectées au volume global d'heures enseignées dans un programme donné.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="min"/>
+			<xs:enumeration value="max"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- SCo le 07/11/12 : suppression du type simple "countryNameValueSet", il est passé dans le CDMFR-nom
+	<xs:simpleType name="countryNameValueSet">
+		<xs:annotation>
+			<xs:documentation>Noms des pays selon la nomenclature internationale</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="nom1"/>
+			<xs:enumeration value="nom2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	<xs:simpleType name="natureValueSet">
+		<xs:annotation>
+			<xs:documentation>Noms des types d'éléments constitutifs</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="Modules"/>
+			<xs:enumeration value="Matières"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- *************************** -->
+	<!-- *** Organisational Unit *** -->
+	<!-- *************************** -->
+	<xs:element name="orgUnitSecondName">
+		<xs:annotation>
+			<xs:documentation>Second name of the organisation unit</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="secondName" type="cdmfr:textType"/>
+			</xs:sequence>
+			<xs:attribute name="secondNameNature" type="cdmfr:secondNameValueSet" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="orgUnitAip">
+		<xs:annotation>
+			<xs:documentation>Professionnal insertion help</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock" minOccurs="0"/>
+				<xs:element name="alumni" type="cdm:infoBlockType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- **************** -->
+	<!-- *** Program  *** -->
+	<!-- **************** -->
+	<xs:element name="programName">
+		<xs:annotation>
+			<xs:documentation>Full name of the study program</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="cdmfr:textType">
+					<xs:attribute name="ordinaryName" type="xs:boolean"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="programCode">
+		<xs:annotation>
+			<xs:documentation>A study program code according to a codification scheme. The choice of codification rule can be given by the attribute codeSet. </xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<!-- si on ajoutait 2 attributs facultatifs code et libbelle on aurait alors  deux écritures possibles - la seconde ne premet pas de vérifier la liste de vocabulaire sans schematron -
+				 <cdmfr:programCode codeSet="domain" code="DEG" libelle="Droit, Economie, Gestion"/> 
+				 <cdmfr:programCode codeSet="domain" libelSet="domain"><cdmfr:codeSet>DEG</cdmfr:codeSet><cdmfr:libelSet>Droit, Economie, Gestion</cdmfr:libelSet></cdmfr:programCode>
+				 On pourrait aussi avoir une définition plus fine pour codeUserDefined  du type :
+				 <xs:element name="codeUserDefined" type="cdm:token"/>
+			--> 
+			<xs:choice minOccurs="0">
+				<xs:choice id="codeSet" maxOccurs="unbounded">
+					<xs:element name="codeSectDGESIP" type="cdmfr:codeSectDGESIPValueSet"/>
+					<xs:element name="codeDomain" type="cdmfr:domainCodeValueSet"/>
+					<xs:element name="codeLicProNat" type="cdmfr:licProNatCodeValueSet"/>
+					<xs:element name="codeLicProSectAct" type="cdmfr:licProSectActCodeSet"/>
+					<xs:element name="codeSectDiscipSISE" type="cdmfr:codeSectDiscipSISEValueSet"/>
+					<xs:element name="codeCNIS-NSF" type="cdmfr:codeCNIS-NSFValueSet"/>
+					<xs:element name="codeRegimeInscriptionSISE"
+						type="cdmfr:codeRegInscripSISEValueSet"/>
+					<xs:element name="codeCite97" type="cdmfr:codeCite97ValueSet"/>
+					<xs:element name="codeErasmus" type="cdmfr:codeErasmusValueSet"/>
+					<xs:element name="codeFAP" type="cdmfr:codeFAPValueSet"/>
+					<xs:element name="codeUserDefined" type="cdm:textType"/>
+				</xs:choice>
+				<xs:choice id="libelSet" maxOccurs="unbounded">
+					<xs:element name="libelSectDGESIP" type="cdmfr:libelSectDGESIPValueSet"/>
+					<xs:element name="libelDomain" type="cdmfr:domainNameValueSet"/>
+					<xs:element name="libelLicProNat" type="cdmfr:licProNatNameValueSet"/>
+					<xs:element name="libelLicProSectAct" type="cdmfr:licProSectActValueSet"/>
+					<xs:element name="libelSectDiscipSISE" type="cdmfr:libelSectDiscipSISEValueSet"/>
+					<xs:element name="libelCNIS-NSF" type="cdmfr:libelCNIS-NSFValueSet"/>
+					<xs:element name="libelRegimeInscriptionSISE"
+						type="cdmfr:libelRegInscripSISEValueSet"/>
+					<xs:element name="libelCite97" type="cdmfr:libelCite97ValueSet"/>
+					<xs:element name="libelErasmus" type="cdmfr:libelErasmusValueSet"/>
+					<xs:element name="libelFAP" type="cdmfr:libelFAPValueSet"/>
+					<xs:element name="libelUserDefined" type="cdm:textType"/>
+				</xs:choice>
+			</xs:choice>
+			<xs:attribute name="codeSet" type="cdmfr:programCodeValueSet" use="optional"/>
+			<xs:attribute name="libelSet" type="cdmfr:programLibelValueSet" use="optional"/>
+			<!--xs:attribute name="code" type="xs:token" use="optional"/>
+			<xs:attribute name="libelle" type="xs:string" use="optional"/-->
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="programDescription">
+		<xs:annotation>
+			<xs:documentation>A (short) general description of the study program. This description may also contain information on the mutual links that it may have with other programs, this will
+				enable to access all relevant information when a reference is made to this program.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="cdm:infoBlock" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="indicators" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:choice maxOccurs="unbounded">
+							<xs:element ref="cdm:infoBlock" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="cdmfr:webLink" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="actions" type="cdm:infoBlockType" minOccurs="0"
+								maxOccurs="unbounded"/>
+							<xs:element name="prospective" type="cdm:infoBlockType" minOccurs="0"
+								maxOccurs="unbounded"/>
+							<xs:element name="fieldManagement">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="cdm:infoBlockType">
+											<xs:attribute name="purpose"
+												type="cdmfr:purposeValueSet"/>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+						<xs:attribute name="indicator" type="cdmfr:indicatorValueSet"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="lifelongLearning" minOccurs="0">
+					<xs:complexType mixed="true">
+						<xs:complexContent>
+							<xs:extension base="cdm:infoBlockType">
+								<xs:attribute name="lllValue" type="cdmfr:lllValueValueSet"/>
+								<xs:attribute name="lllContext" type="cdmfr:lllContextValueSet"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="researchLink">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="relatedOrgUnit" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="relationType"
+											type="cdmfr:relationTypeValueSet"/>
+										<xs:element ref="cdmfr:refOrgUnit"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="globalVolume" type="cdmfr:globalVolumeType" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Précisions sur les volumes d'enseignement suivis par l'étudiant par type d'enseignement précisé dans l'attribut (TP, TD, CM, …). Il peut y avoir des
+							variations d'horaires en fonction des UE optionnelles choisies dans un parcours ou un semestre donné, les valeurs minimale et maximales pour le parcours ou le semestre
+							concerné sont fournies et caractérisées avec l'attribut minMax</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attribute name="nature" type="cdmfr:programNatureValueSet"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="aip">
+		<xs:complexType mixed="true">
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="possibleFollowUp" minOccurs="0" maxOccurs="unbounded"
+					type="cdm:infoBlockType"/>
+				<xs:element name="successSupport" minOccurs="0" maxOccurs="unbounded"
+					type="cdm:infoBlockType"/>
+				<xs:element name="learningPathStrategySupport" minOccurs="0" maxOccurs="unbounded"
+					type="cdm:infoBlockType"/>
+				<xs:element name="professTrainingSupport" minOccurs="0" maxOccurs="unbounded"
+					type="cdm:infoBlockType"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="qualificationDescription">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="degree">
+		<xs:annotation>
+			<xs:documentation>Degree describes the qualification awarded by a higher education institution after successful completion of a prescribed study programme.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="cdm:infoBlockType">
+					<xs:attribute name="degree" type="cdmfr:degreeValueSet" use="optional"/>
+					<xs:attribute name="degreeCode" type="cdmfr:degreeCodeValueSet" use="optional"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="profession">
+		<xs:annotation>
+			<xs:documentation>Learning outcomes, skills, job opportunities. What does the qualification give in terms of employment or professional practice.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock"/>
+				<xs:element name="romeData">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="cdmfr:textType">
+								<xs:attribute name="romeCode" type="cdmfr:romeCodeValueSet"
+									use="optional"/>
+								<xs:attribute name="romeLibel" type="cdmfr:romeLibelValueSet"
+									use="optional"/>
+								<xs:attribute name="sspCode" type="cdmfr:sspCodeValueSet"
+									use="optional"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="sspCode" type="cdmfr:sspCodeValueSet" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="studyQualification">
+		<xs:annotation>
+			<xs:documentation>Qualification giving access to further study.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock"/>
+				<xs:element name="competenceDesc" type="cdmfr:textType"/>
+				<xs:element name="competenceValidity">
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="cdm:CDMdateTime">
+								<xs:attribute name="limited" type="xs:boolean" use="required"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ppalTeachingLanguage">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="cdmfr:textType">
+					<xs:attribute name="teachingLang" type="xs:language" use="required"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="registrationDetail">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="registrationProcess">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="registrationLocation" type="cdm:infoBlockType"/>
+							<xs:element name="registrationModalities" type="cdm:infoBlockType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="registrationStart" type="cdm:CDMdateTime"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="refSiret">
+		<xs:annotation>
+			<xs:documentation>Reference to a SIRET number of a private company or institution.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+			<xs:attribute name="CompanyName" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="studentStatus">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="cdm:infoBlockType">
+					<xs:attribute name="studentStatusValueType" type="cdmfr:studentStatusValueSet"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ectsRequired">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="cdm:infoBlockType">
+					<xs:attribute name="value" type="xs:nonNegativeInteger"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="formOfAssessment">
+		<xs:annotation>
+			<xs:documentation>Informations concerning assessment including jury structure and membership.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock"/>
+				<xs:element name="juryStruct">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="juryStructDesc" type="cdmfr:textType"/>
+							<xs:element ref="cdmfr:refPerson" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="programStructure">
+		<xs:annotation>
+			<xs:documentation>Information about how the study program is structured, e.g. as a course structure diagram, all courses and programs belonging to the formation can be linked
+				here</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Cet espace permet de fournir des commentaires et précisions sur l'organisation des différents programmes et courses impliqués dans la structure décrite. Il
+							s'agit d'informations complémentaires qui viennent s'ajouter à la description du programme inclus dans la structure en cours de description. </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="cdmfr:refProgram" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="cdmfr:refCourse" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+
+	</xs:element>
+	<!-- *************** -->
+	<!-- *** Course  *** -->
+	<!-- *************** -->
+	<xs:element name="credits">
+		<xs:annotation>
+			<xs:documentation>Indication of the student workload as ECTS (European Credit Transfer System)-credits and/or as hours per week and/or as text.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock"/>
+				<xs:element name="globalVolume" type="cdmfr:globalVolumeType" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="ECTScredits" type="xs:decimal" use="optional"/>
+			<xs:attribute name="hoursPerWeek" type="xs:decimal" use="optional"/>
+			<xs:attribute name="totalWorkLoad" type="xs:decimal" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- SCo 06/05/12 : remplacement du type de l'attribut "cdmfr:equivValueSet" par "cdmfr:equiValueSet" : type en doublon, le premier a été supprimé. -->
+	<xs:element name="admissionDescription">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="cdm:infoBlockType">
+					<xs:attribute name="equiv" type="cdmfr:equiValueSet" use="optional"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="teachingTeam">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cdm:infoBlock" minOccurs="0"/>
+				<xs:element ref="cdmfr:refPerson" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="refOrgResp">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element name="respRole" type="cdmfr:respRoleValueSet"/>
+				<xs:element name="relType" type="cdm:infoBlockType" minOccurs="0"/>
+				<xs:element ref="cdmfr:refOrgUnit"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- ************** -->
+	<!-- *** Person *** -->
+	<!-- ************** -->
+	<xs:element name="affiliation">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="cdmfr:refOrgUnit" maxOccurs="unbounded"/>
+				<xs:element name="professField" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>ce texte permet de donner toutes les précisions sur le champ professionnel de l'intervenant : ses fonctions, son niveau de responsabilité, son expérience
+							pédagogique, etc...</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:annotation>
+								<xs:documentation>les données de ce cham concernent lecode rome et le lien vers le numéro SIRET de la société et de l'établissement de l'intervenant Reference to a
+									SIRET number of a private company or institution.</xs:documentation>
+							</xs:annotation>
+
+							<xs:extension base="cdmfr:textType">
+								<xs:attribute name="employerRomeCode" type="cdmfr:romeCodeValueSet"
+									use="optional"/>
+								<xs:attribute name="employerSiretIdRef" type="xs:IDREF"
+									use="optional"/>
+								<xs:attribute name="ref" type="xs:token" use="optional"/>
+								<xs:attribute name="employerName" type="xs:token" use="optional"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+
+				</xs:element>
+				<xs:element name="sectCNU">
+					<xs:complexType mixed="true">
+						<xs:choice maxOccurs="unbounded">
+							<xs:element name="sectionCNULibelValue"
+								type="cdmfr:sectionCNULibelValueSet"/>
+						</xs:choice>
+						<xs:attribute name="sectionCNUCodeValue" type="cdmfr:sectionCNUCodeValueSet"
+						/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="publications" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="cdm:href"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="activities">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="teachingMajor" type="cdm:infoBlockType"/>
+				<xs:element name="otherActivities" type="cdm:infoBlockType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- ********************* -->
+	<!-- *** habilitation  *** -->
+	<!-- ********************* -->
+	<xs:element name="habilitation" type="cdmfr:habilitationType">
+		<xs:annotation>
+			<xs:documentation>A description of habilitation provided by the ministry.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="refHabilitation">
+		<xs:annotation>
+			<xs:documentation>Reference to an Habilitation element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="idRef" type="xs:IDREF" use="optional"/>
+			<xs:attribute name="ref" type="xs:token" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- **************** -->
+	<!-- *** lheoAdds *** -->
+	<!-- **************** -->
+	<xs:element name="lheoAdds">
+		<xs:annotation>
+			<xs:documentation>A description of addendums derived from LHEO standard.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="cdmfr:lheoAddsType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

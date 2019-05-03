@@ -1,8 +1,8 @@
-= Cartographie + Teach planning
+= Cartographie
 
 Le projet a pour but premier de permettre le calcul multi-modal d’itinéraires (utilisant transports en commun ; vélo ; etc.). Plus précisément, il permettra dans un premier temps de calculer le temps de trajet d’un point à un autre de Paris en transport en commun.
 
-S’il s’avère trop difficile à mettre en œuvre, le projet se rabattra sur une aide à la réalisation du projet link:teach_planning.adoc[Teach planning].
+S’il s’avère trop difficile à mettre en œuvre, on pourra basculer sur un autre projet.
 
 == Récits utilisateur
 

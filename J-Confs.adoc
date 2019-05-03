@@ -2,9 +2,19 @@
 
 Outil de gestion de déplacement en conférence.
 
-== Contexte
+On repartira d’un https://github.com/oliviercailloux/J-Confs[projet] existant.
 
-== Fonctions demandées
+== Commencer par
+* Mettre à jour dépendances, vérifier config JUnit 5 et Guava en particulier
+* Nettoyer dépôt : gitignore, déplacer doc (t.q. ancienne présentation) dans un répertoire `Doc`, enlever éventuels fichiers inutiles
+* Build status dans README (format MD ⇒ asciidoc)
+* Prendre en compte warnings Eclipse. Résoudre build Travis.
+* Lister ce qui est fait parmi les fonctions ci-dessous, fait mais à revoir (pourquoi), non fait
+* Améliorer lisibilité du code, utiliser des objets immuables là où c’est censé (procéder par sujet)
+
+== Fonctions demandées précédemment
+(Les nombres entre parenthèses donnent une vague idée du temps nécessaire pour l’implémentation, 3 est estimé à trois fois plus long que 1.)
+
 Contract1:: Une classe Conference qui permet de stocker une conférence : URL, Titre, Date début et fin, Frais d’inscription, Lieu (Ville et Pays). (0,5)
 Contract2:: Une classe PathStep qui stocke une étape d’un itinéraire : type (transport en commun local, train, avion, taxi), lieu de départ, lieu d’arrivée. (0,5)
 File1:: Une classe qui permet d’écrire une conférence au format iCalendar. (1)

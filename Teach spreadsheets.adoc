@@ -5,6 +5,15 @@ Affectation des enseignants aux cours dans le département MIDO via génération
 == Contexte
 L’administration de MIDO, un département de Dauphine, utilise actuellement des feuilles de calcul pour affecter les enseignants aux cours à enseigner lors d’une année académique donnée. En vue d’une transition vers des outils plus simples d’emploi, ce projet vise à interagir automatiquement avec les feuilles de calcul intégrant les informations fournies par le département.
 
+On repartira d’un https://github.com/oliviercailloux/Teach-spreadsheets[projet] existant.
+
+== Commencer par
+* Mettre à jour dépendances, vérifier config JUnit 5 et Guava en particulier, enlever du POM tout ce qui ne semble pas utile
+* Nettoyer dépôt : gitignore, déplacer doc (t.q. ancienne présentation) dans un répertoire `Doc`, enlever éventuels fichiers inutiles
+* Prendre en compte warnings Eclipse.
+* Lister ce qui est fait parmi les fonctions ci-dessous, fait mais à revoir (pourquoi), non fait
+* Améliorer lisibilité du code, utiliser des objets immuables là où c’est censé (procéder par sujet)
+
 == Fonctions demandées
 Contract1:: Une classe Course qui permet de stocker un cours (voir fichier https://github.com/oliviercailloux/projets/raw/master/Voeux/AA%20-%20Saisie%20des%20voeux%202016-2017.xls[Saisie des vœux], onglet L3) : Nom, Code Apogée, Nb heures CM, Nb heures TD, Nb heures CMTD, Nb heures TP, Nb groupes CM / TD / etc., et l’année d’études dans laquelle le cours s’insère (L3 Informatique, M1 Mathématiques, L3 apprentissage, …). (0,5)
 Contract2:: Une classe CoursePref qui stocke des préférences d’un enseignant pour un cours : elle permet d’indiquer une préférence pour le CM, TD, CMTD, TP (A, B, C ou absent, pour chacun). (0,5)

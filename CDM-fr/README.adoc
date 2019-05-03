@@ -1,0 +1,64 @@
+= CDM-fr
+
+As the official [https://cdm-fr.fr/]website is often down, I put here the main files and information related to the CDM-fr schema, copied from the site.
+
+== Accueil
+Les procédures d'élaboration, d'évaluation, d'habilitation et de présentation des formations s'inscrivent dans la logique de dématérialisation des procédures administratives. Cela impose notamment le respect de règles communes pour la collecte, la gestion et la diffusion des informations, par l'intermédiaire d'un format pivot d'échange. Celui-ci doit garantir la fiabilité des données et permettre les échanges entre les systèmes d'information des différents acteurs : composantes, établissements, regroupements d'établissements, AERES, ministère, Onisep, etc.
+
+Le format CDM-fr a vocation à répondre à l'ensemble de ces exigences.
+
+Un groupe de travail auquel ont participé
+
+    la Conférence des Présidents d'Université,
+    la Direction Générale pour l'Enseignement Supérieur et l'Insertion Professionnelle (Service de la Stratégie de l'Enseignement Supérieur et de l'Insertion Professionnelle et Sous Direction des Systèmes d'Information et des Etudes Statistiques),
+    l'Agence d'Evaluation pour la Recherche et l'Enseignement Supérieur, l'Agence de Mutualisation des Universités et des Etablissements d'Enseignement Supérieur
+    le consortium Cocktail
+
+a été créé sous le pilotage du Directeur Général à l'Enseignement Supérieur et à l'Insertion Professionnelle.
+
+Il a abouti à une première version V1.0 du format d'échange des données de présentation des offres de formations CDM-FR, validée par le comité de pilotage le 26 Juillet 2011 et mise à disposition des utilisateurs sur ce site.
+
+ 
+
+Le dispositif CDM-FR V1.0 est structuré de telle sorte que les informations ne soient saisies qu'une seule fois  et puissent être exploitées de façon à répondre à différents besoins : présentation des dossiers en vue de l'habilitation des formations, gestion des formations, diffusion de l'offre sur un site internet, etc.
+
+Il a été élaboré à partir des travaux et expériences antérieures des utilisateurs du format CDM natif.
+
+Ce dispositif est constitué
+
+◦   d'un schéma technique (CDMFR), en vue de son utilisation dans les différents systèmes d'information
+
+◦   d'un ensemble de règles d'usage
+
+◦   de référentiels et nomenclatures mises à disposition des utilisateurs sur un serveur national à l'adresse
+
+ 
+
+Au sein de ce schéma, certaines rubriques sont obligatoires (seront par exemple nécessaires lors d'une demande d'habilitation d'une formation). Leur contenu est relié ou non à une table ou à un référentiel. Lorsque tel est le cas, la table ou le référentiel sont mis à disposition sur ce site.
+
+D'autres rubriques (pour lesquelles l'utilisation d'une table ou d'un référentiel peut également être proposée) sont facultatives. Elles ont pour objet de permettre l'enrichissement de la description des offres de formation (pour présentation sur internet par exemple).
+
+Le caractère obligatoire ou facultatif des rubriques pourra évoluer si utile avec les prochaines versions du schéma commun CDM.FR.
+
+Les évolutions de ce schéma (prévues annuellement) seront initiées par le groupe de travail qui se basera sur les retours des utilisateurs, notamment au travers de l'appel à commentaires proposé sur ce site. Elles seront validées par un comité de pilotage sous l'autorité du Directeur générale de l'Enseignement Supérieur et de l'Insertion Professionnelle.
+
+== Files
+Cette page contient les différents éléments téléchargeables utiles à la mise en œuvre du format d'échange CDM.fr.
+
+La version validée en cours de ce schéma avec
+
+* Une partie commune nécessaire et suffisante pour échanger des descriptions d'offre de formation à l'international
+* Une partie "extension française" indispensable aux échanges au sein des systèmes d'information de l'Enseignement Supérieur et de la Recherche en France.
+* Un fichier CDM-fr-nom.xsd qui regroupe toutes les nomenclatures proposées en format .csv dans la version V1.0.
+
+Une carte heuristique qui présente de façon conceptuelle les éléments du format d'échange
+
+Un guide d'utilisation qui a pour objet de décrire et commenter le dispositif de description concertée de l'offre de formation universitaire.  Ce guide s'adresse le plus largement possible  aux acteurs de l'offre de formation en minimisant autant que faire se peut les termes spécialisés, il reste cependant un document technique.
+
+* CDMFR.xsd Schéma CDM commun v1.1.2
+* CDMFR-ext.xsd Schéma CDM Extension française v1.1.2
+* CDMFR-nom.xsd Nomenclature v1.1.2
+* RUR_CDM-fr.pdf Guide Utilisateur V1.1.1
+* CDM-fr.mm Carte Heuristique (https://www.freeplane.org/wiki/index.php/Main_Page[Mind Map]) V1.1.1
+* README-v1.1.1.pdf « Les principales modifications apportées au schéma dans sa version V1.1.1 »
+

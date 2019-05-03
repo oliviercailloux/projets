@@ -1,7 +1,18 @@
 = Apartments
 Les sites de location (type https://www.pap.fr) proposent généralement des moyens rudimentaires de recherche parmi les annonces existantes. Ce projet vise à doter l’utilisateur de moyens d’indiquer ses préférences d’une manière riche, afin de lui montrer les annonces qui lui conviennent le mieux d’abord. En particulier, au lieu de filtrer de façon binaire (ex. : inclure un appartement seulement s’il fait au moins x m²), le système permettra la compensation (ex. : inclure une annonce pour un appartement très petit s’il est très bon sur les autres critères) ; et le système permettra d’inclure comme critère la distance (en transport public) à des lieux d’intérêts pour l’utilisateur tels que son lieu de travail.
 
-== Fonctions demandées
+On repartira d’un https://github.com/oliviercailloux/Apartments[projet] existant.
+
+== Commencer par
+* Mettre à jour dépendances, vérifier config JUnit 5 et Guava en particulier
+* Nettoyer dépôt : gitignore, déplacer doc (t.q. ancienne présentation) dans un répertoire `Doc`, enlever éventuels fichiers inutiles
+* Prendre en compte warnings Eclipse.
+* Lister ce qui est fait parmi les fonctions ci-dessous, fait mais à revoir (pourquoi), non fait
+* Améliorer lisibilité du code, utiliser des objets immuables là où c’est censé (par sujet)
+
+== Fonctions demandées précédemment
+(Les nombres entre parenthèses donnent une vague idée du temps nécessaire pour l’implémentation, 3 est estimé à trois fois plus long que 1.)
+
 Contract1:: Une classe qui permet de stocker des caractéristiques qu’on peut trouver dans une annonce (simple !) pour un appartement : superficie, adresse (utilisez un String par exemple), nombre de chambres, texte complet, et quelques autres attributs de votre choix. (0,5)
 Contract2:: Une classe PiecewiseLinearValueFunction, qui permet de stocker un ensemble de paires (valeur réelle, valeur réelle entre 0 et 1 compris). Une instance de cette classe permet de mesurer l’attrait pour l’utilisateur d’un aspect donné d’un appartement. La première valeur représente une description objective de la qualité d’un appartement sur un aspect donné (par exemple la taille de l’appartement), et la deuxième, entre 0 et 1, mesure l’attrait associée à cette qualité. Cette mesure est nommée la valeur subjective, ou utilité, correspondant à la valeur objective fournie. La classe permet donc d’associer à différentes valeurs objectives leur utilité. Par exemple, on pourra associer la valeur 30 (mètre carrés) à l’utilité 0.5 et la valeur 45 (mètres carrés) à l’utilité 0.7. Vous pouvez repartir de https://github.com/elieahd/decision-uta-method/blob/master/src/main/java/io/github/oliviercailloux/uta_calculator/model/PartialValueFunction.java[PartialValueFunction.java] dans le projet UTA Calculator (à condition de citer vos sources, bien sûr). (1)
 File1:: Une classe qui permet de lire des appartements au format Java XML properties (voir https://docs.oracle.com/javase/9/docs/api/java/util/Properties.html#loadFromXML-java.io.InputStream-[Properties#loadFromXML]). Elle comportera entre autres une méthode d’en-tête suivant : `public Apartment readApartment(InputStream input) throws IOException`. (1)

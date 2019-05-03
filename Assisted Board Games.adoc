@@ -1,0 +1,43 @@
+= Assisted Board Games
+
+D’après une idée généreusement fournie par Vincent Giroux. (Merci à lui !)
+
+Le https://boardgamegeek.com/wiki/page/Welcome_to_BoardGameGeek[jeu de plateau] se décline essentiellement en deux versions : sur place, sans ordinateur ; ou purement http://www.yucata.de/[en ligne]. Dans le https://boardgamegeek.com/image/1648160/game-thrones-board-game-second-edition[premier cas], on se réunit et on joue autour d’un plateau de jeu et d’éléments de jeu incarnés physiquement. Dans le https://play.google.com/store/apps/details?id=com.f2zentertainment.pandemic[deuxième cas], on joue généralement chacun chez soi.
+
+Le concept d’Assisted Board Game propose de réunir les avantages des deux aspects. (Pour ses détracteurs : les inconvénients des deux aspects.) Il s’agit de partager un moment ensemble, en étant physiquement réunis, mais tout en profitant de l’aide d’une implémentation informatique. Ceci sera particulièrement bienvenu pour les jeux nécessitant de https://boardgamegeek.com/image/2836495/republic-rome[nombreuses] manipulations de pions et ajustements automatiques, ou une https://boardgamegeek.com/image/1822915/zombie-15[longue] mise en place, mais aussi pour sauvegarder la partie, rejouer une partie existante, ou se faire assister de diverses manières par un ordinateur.
+
+Un Assisted Board Game est composé, idéalement, d’une https://d2rormqr1qwzpz.cloudfront.net/photos/2012/03/16/55-32402-11672_pax_catan_3_super.jpg[table] https://novotelstore.com/fr/table-interactive-play#prettyPhoto[interactive], qui joue le rôle de plateau de jeu, et d’une tablette par joueur. (Pour ce projet on se contentera d’un ordinateur qui jouera le rôle de table interactive et d’un ordinateur par joueur.)
+
+Dans ce projet on implémentera ce concept, pour commencer, sous la forme d’un Assisted Chess. Le plateau central affiche le plateau de jeu. Les clients individuels des joueurs leur permettront de jouer en recevant l’assistance d’un ordinateur : le joueur peut de façon privée (sans le montrer à son adversaire) proposer un coup, et l’ordinateur lui montrera les meilleurs réponses à son coup. En limitant adéquatement la profondeur de recherche de l’ordinateur, cela pourrait permettre aux joueurs d’éviter les erreurs basiques, ou fournir un avantage compensatoire à un joueur plus faible, ou aider à l’apprentissage. L’objectif plus ambitieux est d’ensuite généraliser cette approche pour permettre d’implémenter des Assisted Board Game en général.
+
+NB pour ce projet on pourra placer jusqu’à 10 personnes dans l’équipe, car les tâches sont facilement parallélisables.
+
+On repartira d’un https://github.com/oliviercailloux/Assisted-Board-Games[projet] existant.
+
+== Commencer par
+* Déplacer l’existant dans un sous-package `chess`.
+* Transformer en jar.
+* Prendre en compte warnings Eclipse.
+* Faire de l’état et d’un coup des objets immuables.
+* Faire fonctionner la BD en local en mémoire (difficile mais mieux), OU implémenter une logique alternative avec une base en mémoire.
+
+== Extension des échecs
+* Ajouter un encodage standard pour les coups et les états du jeu d’échec.
+* UI en ligne de commande.
+* Implémenter aide décrite dans l’énoncé, ou autre : liste de bons coups possibles pour le prochain coup, stratégie menant à la victoire ou à une meilleure position (sous forme de meilleurs coups de part et d’autre), stratégie sous forme d’arbre de profondeur et largeur donnés.
+* Utiliser Jetty pour faire tourner les servlets en local.
+* Améliorer l’HTML et JavaScript existant pour les échecs.
+* L’état contient une horloge qui indique le temps restant aux joueurs.
+
+== Autres jeux et concepts
+* Implémenter un nouveau jeu dans un autre sous-package (par exemple `checkers`) qui adopte la même structure et logique générale.
+* Implémenter un jeu (t.q. pierre, feuille, ciseaux) avec concept d’état partiellement caché : état complet (inclut données pour tous les joueurs, par ex. : joueur 1 a choisi _pierre_, joueur 2 n’a pas encore choisi) ; état partiel, visible par un joueur donné (par ex., le joueur 2 voit : joueur 1 a choisi, joueur 2 doit encore choisir) ; état visible, sous-ensemble des données visibles par tous (ce que voit un spectateur qui ne connait pas l’information propre aux joueurs). Dans le cas où tout est visible (par ex. les échecs), les trois états sont égaux.
+* Implémenter un jeu (t.q. jeu de l’oie) avec hasard : l’état complet inclut un générateur déterministe qui contient toutes les possibilités, auquel on demande tout tirage aléatoire. Ce générateur doit être enregistré avec la partie, et n’est pas visible.
+* GUI SWT pour jouer : une fenêtre qui montre l’état complet (pour débug ou spectateurs omniscients), une qui montre un état partiel et permet d’indiquer le prochain coup, une qui montre l’état visible par tous.
+* Implémenter un jeu (t.q. Texas Hold’em) avec état partiellement caché et hasard.
+* Généraliser pour faciliter l’implémentation d’un nouveau jeu.
+
+== Autres extensions
+* Permettre un fork de partie à un certain coup (bonus : permettre d’enregistrer une série de générateurs avec une partie, associés à un numéro de coup, pour permettre de changer le générateur lors du fork) ; de nommer la partie (exemple : partie célèbre Kasparov contre Deep Blue), de trouver les états communs
+* Analyser le langages de description de http://www.zillions-of-games.com/[Zillion of Games] ou d’autres aspects de ce service et rédiger un rapport en Asciidoctor indiquant ce qui peut être utilisé dans le projet.
+

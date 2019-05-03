@@ -1,6 +1,6 @@
 = CDM-fr
 
-As the official [https://cdm-fr.fr/]website is often down, I put here the main files and information related to the CDM-fr schema, copied from the site.
+As the official https://cdm-fr.fr/[website] is often down, I put here the main files and information related to the CDM-fr schema, copied from the site.
 
 == Accueil
 Les procédures d'élaboration, d'évaluation, d'habilitation et de présentation des formations s'inscrivent dans la logique de dématérialisation des procédures administratives. Cela impose notamment le respect de règles communes pour la collecte, la gestion et la diffusion des informations, par l'intermédiaire d'un format pivot d'échange. Celui-ci doit garantir la fiabilité des données et permettre les échanges entre les systèmes d'information des différents acteurs : composantes, établissements, regroupements d'établissements, AERES, ministère, Onisep, etc.

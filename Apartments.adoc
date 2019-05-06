@@ -1,4 +1,5 @@
 = Apartments
+
 Les sites de location (type https://www.pap.fr) proposent généralement des moyens rudimentaires de recherche parmi les annonces existantes. Ce projet vise à doter l’utilisateur de moyens d’indiquer ses préférences d’une manière riche, afin de lui montrer les annonces qui lui conviennent le mieux d’abord. En particulier, au lieu de filtrer de façon binaire (ex. : inclure un appartement seulement s’il fait au moins x m²), le système permettra la compensation (ex. : inclure une annonce pour un appartement très petit s’il est très bon sur les autres critères) ; et le système permettra d’inclure comme critère la distance (en transport public) à des lieux d’intérêts pour l’utilisateur tels que son lieu de travail.
 
 On repartira d’un https://github.com/oliviercailloux/Apartments[projet] existant.

@@ -1,6 +1,6 @@
 = XM-GUI
 
-Intrerface graphique permettant d’éditer des problèmes de théorie de la décision et d’envoyer ces problèmes à des services web.
+Interface graphique permettant d’éditer des problèmes de théorie de la décision et d’envoyer ces problèmes à des services web.
 
 == Contexte
 Une série de services web ouverts permet d’utiliser les méthodes d’aide multicritère à la décision. Ils reposent sur le format http://www.decision-deck.org/xmcda/[XMCDA] et sur le logiciel http://www.diviz.org/[diviz], qui permet l’invocation des services sans devoir programmer. L’utilisateur doit cependant fabriquer à la main les fichiers XML d’entrée (ou convertir du CSV), et plus généralement il n’existe pas d’intégration des outils dans un logiciel très simple d’emploi.

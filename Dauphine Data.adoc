@@ -1,4 +1,4 @@
-= Dauphine Open Data
+= Dauphine Data
 
 Application de mise à disposition de données de Dauphine
 
@@ -11,35 +11,40 @@ Ce projet a pour but de créer une plate-forme qui servira à la mise à disposi
 
 Ce projet sera éventuellement développé en collaboration avec la Direction des Systèmes d’Information (DSI) de Dauphine.
 
-On repartira d’un https://github.com/oliviercailloux/Dauphine-Open-Data[projet] existant. Il faudra entre autres injecter l’entity manager (voir `JPAUtil`).
+On repartira d’un https://github.com/oliviercailloux/Dauphine-Data[projet] existant.
 
-== Fonctions demandées
-Course:: Objet Course pour représenter un cours de Dauphine. S’inspirer du modèle dans le projet existant et des informations contenues dans le Référentiel de l’Offre de Formation (ROF) de Dauphine au format CDM-fr (voir https://raw.githubusercontent.com/oliviercailloux/projets/master/Voeux/OF_MEA5STI.xml[exemple XML]), à simplifier éventuellement pour conserver l’information essentielle. Documenter vos choix. Permettre encodage d’un cours par une représentation textuelle. L’identifiant d’un cours doit être un String. (1)
-Basics:: Objets Person pour représenter un étudiant ou un enseignant (voir informations contenues dans l’ link:https://www.ent.dauphine.fr/Annuaire/index.php?param0=fiche&param1=ocailloux[annuaire] et dans ROF). Objet Planning pour représenter les liens horaires et liens entre cours et enseignant (tel enseignant a une séance de tel cours à telle heure). Voir informations contenues dans le planning en ligne de Dauphine (chercher Cailloux). Identifier une personne par son login Dauphine, un identifiant de 8 caractères. Documenter vos choix. (1)
-Triple:: Objet Triple contenant : (subject: String, predicate: String, object: String). (Plus : Gérez ces triplets avec une bibliothèque RDF.) Permettez encodage et décodage en texte (ou JSON), y compris d’une liste de tels triplets. (0,5)
-VCal:: Permettre encodage d’une ou plusieurs entrées de planning, au format VCal. Fournir des tests unitaires. (1)
-VCard:: Permettre encodage d’une ou plusieurs personnes, au format VCard. Fournir des tests unitaires. (1)
-BasicServlets:: getCourse(id): Course. getPerson(id Dauphine): Person (VCard). getPlanning(id Dauphine): VCal (toutes les entrées correspondant à cette personne). Ces données (supposées venir de Dauphine centrale) sont en lecture seule. On peut en outre associer une information à n’importe quel objet : addTriple(subject, predicate, object), où subject doit correspondre à un id d’un objet dans vos données ; removeTriple(subject, predicate, object) ; getData(subject): List<Triple<subject, predicate, object>>. (Vous vous arrangerez pour que tous les id dans votre modèle soient différents.) (1)
-BasicClient:: Implémenter un client qui permet, avec un GUI rudimentaire ou en ligne de commande, la visualisation des informations de base de Course et Person, et l’ajout de triplets associés. (1)
-Lib:: Isoler la partie bibliothèque du reste du code. La publier comme un projet Maven indépendant (suffixer le nom du projet de -lib) et faire dépendre le reste du code de cette bibliothèque. Isoler la partie client du reste du code, publier comme un projet indépendant (ProjectName-client). Publier la partie serveur comme un projet indépendant (ProjectName). (1,5)
-ObjectsXML:: Encoder / décoder une partie de vos objets du modèle en XML. Repartir du schéma CDM-fr, à simplifier éventuellement. (1)
-ObjectsJSON:: Encoder / décoder le reste de vos objets du modèle en JSON. (0,5)
-ExtBasicServlets:: Étendre servlets existants pour renvoyer à la demande du XML ou JSON en plus des formats déjà supportés. Transformer en JAX-RS. (1)
-Gather:: Récupérer les données depuis l’annuaire si elles ne sont pas déjà dans votre modèle, ou si elles sont trop vieilles, au moment de la requête. Votre modèle stocke ces données et leur date. (Parser le HTML selon le standard DOM.) Récupérer les informations du planning, selon la même approche. (1)
-Online:: Faire tourner le serveur en ligne grâce au service d’IBM. (1)
-PIGateway:: Offrir des servlets pour refléter les servlets offerts par le projet Poleinfo. Vos servlets relayent simplement les appels au serveur Poleinfo. Ils sont accessibles aux mêmes adresses que le projet Poleinfo mais avec le préfixe /PI. (On ne se contente pas de réécriture d’URL car ces services seront étendus par la suite.) (0,5)
-SetDB1:: Implémenter une entité JPA et les méthodes permettant d’écrire et de lire depuis la BD les cours et triplets. (1)
-SetDB2:: Même chose pour le reste du modèle : Person et Planning. (1)
-UseDB:: Modifier les servlets pour qu’ils écrivent dans et lisent la BD. (1)
-SOAP:: Transformer certains servlets pour en faire des services SOAP. (1)
-SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
-AuthDoc:: Documenter en détail et clairement le mécanisme d’authentification sur le CAS de Dauphine. Le document, au format Asciidoc, doit être compréhensible par un étudiant ayant les prérequis pour ce cours mais non expert en programmation web. Illustrer avec une application de démo, de préférence de code ouvert, sur GitHub, si permis par la DSI. À effectuer en partenariat avec la DSI : contacter Jean-Christophe GAY, de ma part (contacts sur l’annuaire de Dauphine). (2)
+== Contexte de l’application Pole Info
+Le département MIDO propose six masters MIAGE : IF, ID, SITN, chacun en formation classique et en formation par apprentissage. Chaque master a ses cours, ses enseignants intervenants, etc. Les responsables de ces masters souhaitent disposer d’un outil informatique pour faciliter leur gestion, par exemple, recruter et affecter les enseignants aux cours, affecter les étudiants aux cours facultatifs en fonction de leurs préférences, des places disponibles et des contraintes horaires, etc.
 
-== Autres fonctionnalités
-* Mécanisme d’authentification en lien avec le CAS de Dauphine (en partenariat avec la DSI).
-* Récupération des données de planning plus propres (en partenariat avec la DSI).
+L’outil actuellement utilisé (PoleInfo3) n’est plus maintenu et ne communique pas avec l’extérieur, gardant donc privées des données qui pourraient être utiles, et ne bénéficiant pas des données centrales de Dauphine (éventuellement mieux mises à jour). Il est demandé, en vue de son remplacement sans discontinuité de service, d’exposer les données de l’outil existant pour permettre la création d’interfaces graphiques compatibles et la réutilisation des données existantes.
+
+Vous repartirez et enrichirez le projet existant https://github.com/oliviercailloux/Dauphine-Pole-Info[Dauphine Pole Info], qui a posé les jalons utiles pour le remplacement de PoleInfo3 (PI3) et propose un modèle de données proche de celui-ci. Il faudra continuer le développement de l’accès aux données compatible entre Pole Info et PI3 ; et développer de plus une passerelle entre Dauphine Data et Pole Info.
+
+== Commencer par (pour chaque projet)
+* Build status dans README
+* Renommer packages pour préfixe correct
+* Prendre en compte warnings Eclipse. Résoudre build Travis.
+* Se débarasser de Lombock
+
+== Fonctions demandées : DD
+* Gui pour voir les données.
+* Ajout d’une indication d’origine aux entités (indiquant la source des données), source par défaut = source officielle = Dauphine. Quand un user ajoute des données, l’origine est ce user. L’utilisateur doit pouvoir préciser qui a accès aux données qu’il ajoute : au moins lui-même nécessairement, et potentiellement des utilisateurs nommés, ou tout le monde. Il peut aussi modifier les droits d’accès après coup. Quand on demande les entités, par défaut, on montre uniquement les officielles. Un user peut aussi demander les entités d’une origine donnée, ou les entités de toutes les origines. Dans tous les cas, on ne lui montre que ce qu’il a le droit de voir. 
+* Modifications temporalisées et non écrasement (utiliser Hibernate Envers). Les droits d’accès cependant sont écrasés.
+* Documenter en détail et clairement le mécanisme d’authentification sur le CAS de Dauphine. Le document, au format Asciidoc, doit être compréhensible par un étudiant ayant les prérequis pour ce cours mais non expert en programmation web. Illustrer avec une application de démo, de préférence de code ouvert, sur GitHub, si permis par la DSI. À effectuer en partenariat avec la DSI.
+* Récupération des données de l’annuaire de Dauphine (en partenariat avec la DSI). (Ou cours, planning, …)
 * Prise en compte des remarques suite à review code (sécurité & qualité) par la DSI.
-* Menu du CROUS ? (Seulement trouvé http://www.dauphine.fr/fr/universite/nos-campus/campus-porte-dauphine/restauration.html[ceci] et http://www.mso.dauphine.fr/fileadmin/mediatheque/mso/images/Menu_GRILL.pdf[menu] utilisé précédemment.)
+* Possibilité d’entrer le menu du CROUS de la semaine
+
+== Fonctions demandées : PI
+* Faire tourner PI3 sur vos machines (en local) en vérifiant et complétant les instructions existantes
+* Automatiser déploiement de PI3 à distance avec un Docker (sur le modèle utilisé pour DD)
+* Faire en sorte que PI écrive les données de façon à ce que PI3 arrive bien à les lire, et inversement. Écrire tests pour vérifier.
+* Automatiser déploiement de PI à distance sur la même machine que PI3.
+
+== Fonctions demandées : passerelle entre PI et DD
+* Étendre schéma des données DD pour permettre de stocker éventuelles infos supplémentaires utiles pour PI. Commencer par lister les besoins. S’assurer qu’une donnée est _soit_ écrite par PI (celles pas dans schéma de base DD), soit écrite par DD (les autres), mais jamais les deux. (Discipliner les utilisateurs de PI3 pour non écriture des données propres à DD, ou de préférence désactiver dans PHP ou SQL l’écriture sur PI3 des données propres à DD.) À défaut, stocker dans DD les versions PI à côté des versions DD, et PI utilise uniquement les versions PI.
+* PI, sur demande, lit toutes les données propres DD et les écrit dans PI3. Si ceci écrase une donnée de PI3 qui ne correspond pas, erreur et l’écriture n’est pas faite.
+* Lorsque modification depuis PI, PI écrit dans base PI3 et dans la base de DD, en enregistrant ses ajouts (de façon temporalisée) avec pour origine PI.
 
 == Authentification
 Voici les informations dont je dispose concernant l’authentification.
@@ -52,5 +57,4 @@ Connexion au CAS de test : appeler la page https://passeport.qualif.dauphine.fr/
 
 == Refs
 * CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
-* https://ade.dauphine.fr/direct/index.jsp?projectId=3&displayConfName=Affichage_Enseignants[Planning] Dauphine
 

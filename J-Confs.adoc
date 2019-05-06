@@ -2,6 +2,10 @@
 
 Outil de gestion de déplacement en conférence.
 
+== Contexte
+
+Ce projet a pour but d’aider un chercheur et l’administration à organiser les déplacements en conférence, en manipulant des formats de calendrier, en manipulant des cartes et des APIs de récupération de prix pour planifier l’itinéraire, … On fournira également éventuellement des outils annexes pour simplifier certaines tâches administratives récurrentes telles que des remplissages de formulaires.
+
 On repartira d’un https://github.com/oliviercailloux/J-Confs[projet] existant.
 
 == Commencer par

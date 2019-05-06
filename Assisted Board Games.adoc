@@ -15,6 +15,7 @@ NB pour ce projet on pourra placer jusqu’à 10 personnes dans l’équipe, car
 On repartira d’un https://github.com/oliviercailloux/Assisted-Board-Games[projet] existant.
 
 == Commencer par
+* Nettoyer dépôt : supprimer fichiers inutiles, .gitignore, déplacer dans un répertoire Doc ce qui peut l’être
 * Déplacer l’existant dans un sous-package `chess`.
 * Transformer en jar.
 * Prendre en compte warnings Eclipse.

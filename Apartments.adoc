@@ -27,7 +27,7 @@ GUI:: Un GUI qui permet de créer ou d’éditer une nouvelle annonce, sauvée d
 ValueDist:: Un appartement a une localisation précise (pour la stocker, utiliser un type permettant de représenter un endroit précis sur le globe, cf. fct précédente). Une implémentation de `PartialValueFunction<Location>`, avec `Location` le type choisi pour stocker la localisation, calcule l’utilité de la localisation : l’instance reçoit des lieux d’intérêts de l’utilisateur (par défaut, le centre de Paris), calcule le max des distances entre l’appartement et tous les lieux d’intérêts, et renvoie une interpolation linéaire avec 1 pour une distance de 0, et 0 pour une distance de 10h. (1)
 
 == Autres fonctionnalités
-* Lecture et écriture d’un appartement dans et depuis un fichier XML, au format xmcda-modular. Utiliser un élément XML Alternative pour identifier l’appartement, un élément Criterion pour chaque aspect (taille, etc.), et un élément Evaluation pour indiquer les valeurs objectives décrivant l’appartement. (2)
+* Lecture et écriture d’un appartement dans et depuis un fichier XML, au format https://github.com/xmcda-modular/[xmcda-modular]. Utiliser un élément XML Alternative pour identifier l’appartement, un élément Criterion pour chaque aspect (taille, etc.), et un élément Evaluation pour indiquer les valeurs objectives décrivant l’appartement. (2)
 * Lecture et écriture d’une `PartialValueFunction` au format xmcda-modular. (2) 
 * Lecture et écriture d’une `ApartmentValueFunction` au format xmcda-modular. (2) 
 * GUI qui montre à l’utilisateur tous les appartements disponibles dans un répertoire donné en paramètre, triés selon l’utilité de l’utilisateur (fournie dans un fichier dans le même répertoire). L’utilisateur peut cliquer sur un appartement et voit sa description. (2)
@@ -36,9 +36,6 @@ ValueDist:: Un appartement a une localisation précise (pour la stocker, utilise
 * L’utilisateur indique son utilité de localisation par rapport à plusieurs lieux.
 * L’utilisateur se fait aider pour déterminer son utilité. Il voit le résultat de sa spécification d’utilité sur des annonces concrètes du système.
 * L’utilisateur peut indiquer en voyant la liste d’annonces qu’il préfère une annonce à une autre alors qu’elle est classé sous la deuxième. Le système lui permet alors de corriger son utilité pour que le classement en question soit rétabli.
-
-== Références
-* https://github.com/xmcda-modular/[xmcda-modular]
 
 == Sources
 * https://www.pap.fr : semblent ouverts.

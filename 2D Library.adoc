@@ -9,10 +9,17 @@ Ce projet vise à donner aux livres immatériels une existence en deux dimension
 
 Concrètement, il s’agira de générer des dessins représentant une bibliothèque, où les livres sont vus depuis leur tranche. L’usage envisagé est d’afficher ces dessins sur des écrans, ou de les imprimer en A3, ou en poster (qui pourrait être offert en cadeau), …
 
-Un https://github.com/oliviercailloux/2D-Library[projet] existant permet déjà de générer une image SVG d’un ensemble de livres. Mais il lui manque des fonctionalités importantes.
+On repartira d’un https://github.com/oliviercailloux/2D-Library[projet] existant permettant déjà de générer une image SVG d’un ensemble de livres.
 
-== Fonctions demandées
-Vous repartirez du projet existant (lien ci-dessus), et l’étendrez.
+== Commencer par
+* Mettre à jour dépendances, vérifier config JUnit 5 et Guava en particulier
+* Nettoyer dépôt : gitignore, déplacer doc (t.q. ancienne présentation) dans un répertoire `Doc`, enlever éventuels fichiers inutiles
+* Prendre en compte warnings Eclipse.
+* Lister ce qui est fait parmi les fonctions ci-dessous, fait mais à revoir (pourquoi), non fait
+* Améliorer lisibilité du code, utiliser des objets immuables là où c’est censé (par sujet)
+
+== Fonctions demandées précédemment
+(Les nombres entre parenthèses donnent une vague idée du temps nécessaire pour l’implémentation, 3 est estimé à trois fois plus long que 1.)
 
 Contract1:: Une classe qui permet de stocker des préférences d’affichage d’un utilisateur : nombre de livres par étagère ; livres obliques ou droits et inclinaison ; … (voir Options du logiciel). (1)
 Contract2:: Une classe SearchData qui permet de stocker des données de recherche d’un livre : nom de l’auteur partiel, titre partiel, et intervalle d’années de publication. Par exemple, il sera possible de stocker une donnée de recherche : auteur "Shakesp", titre "Hamlet", années 1580 – 1605. (0,5)
@@ -33,7 +40,7 @@ GuiSearch:: Le GUI d’édition de livres est modifié pour inclure la fonctiona
 
 == Autres idées
 * L’utilisateur peut indiquer comme préférences : tranche, face, pour chaque livre ; ordre des livres…
-* Import du vrai format d’un livre. (Voir références dans link:biblio.adoc[biblio] ?) Ou édition par l’utilisateur, y compris format, police, …
+* Import du vrai format d’un livre. (Voir projet existant J-Biblio) Ou édition par l’utilisateur, y compris format, police, …
 * Carte d’origine des auteurs, des éditeurs, au bout de chaque rayon.
 * Ajout de décors : objets qui trainent devant les livres, certains livres de face devant les autres…
 * Code QR qui permet de voir les résumés, etc.

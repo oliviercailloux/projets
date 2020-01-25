@@ -1,0 +1,10 @@
+= Projets
+
+== Affectation initiale
+* https://github.com/oliviercailloux/projets/[Énoncés]
+* Max. une équipe par sujet
+* Équipes de 4 à 7
+* Obligation d’accepter membres supplémentaires à la demande si < 7
+* Inscription dans colonne : noter tous les noms. Il faut être au moins 4 pour noter son nom. S’effacer d’une colonne si on s’inscrit dans une autre.
+* Si conflit : plus grosse équipe prioritaire ; puis première équipe inscrite (lexicographiquement)
+

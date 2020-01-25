@@ -17,8 +17,8 @@ S’il s’avère trop difficile à mettre en œuvre, on pourra basculer sur un 
 * Calcul temps de trajet multi-modal.
 
 == Refs
-* http://www.geovelo.fr (min risk and min time)
-* GTFS : https://wiki.openstreetmap.org/wiki/General_Transit_Feed_Specification https://github.com/OneBusAway/onebusaway-gtfs-modules http://transitfeeds.com/ https://opendata.stif.info/explore/dataset/offre-horaires-tc-gtfs-idf/
-http://www.nctr.usf.edu/2011/05/enabling-cost-effective-multimodal-trip-planners-through-open-transit-data-2/
+* https://www.geovelo.fr (min risk and min time)
+* GTFS : https://wiki.openstreetmap.org/wiki/General_Transit_Feed_Specification https://github.com/OneBusAway/onebusaway-gtfs-modules http://transitfeeds.com/ https://data.iledefrance-mobilites.fr/explore/dataset/offre-horaires-tc-gtfs-idf/
+https://www.nctr.usf.edu/2011/05/enabling-cost-effective-multimodal-trip-planners-through-open-transit-data-2/
 http://www.opentripplanner.org/ 
 

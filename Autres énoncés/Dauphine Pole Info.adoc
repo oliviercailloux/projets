@@ -7,7 +7,7 @@ Le département MIDO propose six masters MIAGE : IF, ID, SITN, chacun en formati
 
 L’outil actuellement utilisé (PoleInfo3) n’est plus maintenu et ne communique pas avec l’extérieur, gardant donc privées des données qui pourraient être utiles, et ne bénéficiant pas des données centrales de Dauphine (éventuellement mieux mises à jour). Il est demandé, en vue de son remplacement sans discontinuité de service, d’exposer les données de l’outil existant pour permettre la création d’interfaces graphiques compatibles et la réutilisation des données existantes.
 
-Vous repartirez et enrichirez le projet existant https://github.com/oliviercailloux/Dauphine-Pole-Info[Dauphine Pole Info], qui a posé les jalons utiles pour le remplacement de PoleInfo3 et propose un modèle de données proche de celui-ci. En outre, plusieurs fonctionnalités bénéficieront du (ou au) projet https://github.com/oliviercailloux/projets/blob/master/EE/Dauphine%20Open%20Data.adoc[Dauphine Open Data] (DOD), la communication entre les deux projets sera donc utile.
+Vous repartirez et enrichirez le projet existant https://github.com/oliviercailloux/Dauphine-Pole-Info[Dauphine Pole Info], qui a posé les jalons utiles pour le remplacement de PoleInfo3 et propose un modèle de données proche de celui-ci. En outre, plusieurs fonctionnalités bénéficieront du (ou au) projet « Dauphine Open Data » (DOD), la communication entre les deux projets sera donc utile.
 
 == Fonctions demandées
 AutoDB:: Automatiser la création d’une BD MySQL de schéma attendu par l’application PoleInfo3 (cf. Readme du projet existant Dauphine Pole Info et de poleinfo3), documenter la façon de faire dans votre Readme au format Asciidoctor. (1)

@@ -10,7 +10,7 @@ On pourra s’inspirer d’un https://github.com/oliviercailloux/MIDO-SVG[projet
 * Pouvoir lire et écrire les préférences de l’utilisateur (`DiagramPreferences`) au format Json.
 * Inclure dans votre class path un fichier `default-prefs.json` avec des préférences par défaut pour l’utilisateur (`DiagramPreferences`).
 * Une classe qui dessine un SVG, étant donné une liste de cours et des préférences, dessin qui ressemble (en largement simplifié et limité aux informations stockées dans vos classes) à ce https://github.com/oliviercailloux/projets/blob/master/MIDO-Svg/MIDO.svg[dessin] à la main. Voir application https://github.com/oliviercailloux/Test-SVG[`Test SVG`] et `2D Library`.
-* Une classe `Department` qui représente un département (MIDO, LSO, …). Elle contient un nom et une URL (http://www.mido.dauphine.fr/ par exemple). Une classe `YearOfGrade` qui représente une année dans un parcours (MIAGE L3 Apprentissage par exemple), contenant un nom et une URL (http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INFAPP par exemple).
+* Une classe `Department` qui représente un département (MIDO, LSO, …). Elle contient un nom et une URL (https://www.mido.dauphine.fr/ par exemple). Une classe `YearOfGrade` qui représente une année dans un parcours (MIAGE L3 Apprentissage par exemple), contenant un nom et une URL (https://dauphine.psl.eu/formations/licences/informatique-des-organisations/l3-methodes-informatiques-appliquees-pour-la-gestion-des-entreprises/formation par exemple).
 * GUI pour éditer ses préférences d’affichage : le programme lit un fichier au démarrage, permet la modification, et écrit dans le fichier
 * Liens sur les parcours renvoient au programme des cours
 * Choix de cours par tags
@@ -21,7 +21,4 @@ On pourra s’inspirer d’un https://github.com/oliviercailloux/MIDO-SVG[projet
 == Ensuite
 * Génération de diagrammes de toutes sortes de formats et avec informations diverses récupérées depuis ROF
 * Publication d’une bibliothèque permettant à des tiers de lire facilement l’information des cours de ROF
-
-== Refs
-* CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
 

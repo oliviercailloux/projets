@@ -40,7 +40,7 @@ SOAPClient:: Transformer les clients pour en faire des clients SOAP. (1)
 == Références
 * https://neos-guide.org/[NEOS Guide]: Companion Site to the NEOS Server
 * https://developer.ibm.com/docloud/documentation/decision-optimization-on-cloud/[DOcplexcloud] (30 days free trial)
-* http://www.gurobi.com/products/gurobi-cloud[Gurobi-cloud]
+* https://www.gurobi.com/products/gurobi-cloud[Gurobi-cloud]
 * https://ampl.com/products/api/ (“works with any purchased AMPL installation covered by current maintenance & support service”)
 * http://glpk-java.sourceforge.net/ (GPL)
 * https://github.com/google/or-tools (Apache)

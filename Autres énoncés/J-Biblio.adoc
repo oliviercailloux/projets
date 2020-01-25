@@ -52,11 +52,11 @@ PersonnalIds:: un utilisateur peut donner un id personnel à une entité, stock�
 == Références
 * http://www.ifla.org/en/publications/functional-requirements-for-bibliographic-records[Standard FRBR] : IFLA Study Group on the Functional Requirements for Bibliographic Records, Functional Requirements for Bibliographic Records: Final Report (München: K.G. Saur, 1998). (Autres http://www.ifla.org/node/8750[standards] IFLA.)
 * International Standard Bibliographic Description (https://en.wikipedia.org/wiki/International_Standard_Bibliographic_Description[ISBD]), http://www.ifla.org/files/assets/cataloguing/isbd/isbd-cons_20110321.pdf[Consolidated Edition] (http://www.bnf.fr/documents/isbd_trad_francais.pdf[en français]) (http://gen.lib.rus.ec/book/index.php?md5=242B9D9F7BC495827B428B334C3819E1[Preliminary Consolidated Edition], 2007)
-* Sudoc utilise un format RDF national, géré par les bibliothécaires. Viellles notices sont de moindre qualité mais les plus récentes devraient être bonnes. http://www.sudoc.fr/146956419.rdf[Exemple]. Pas ou très peu d’articles (pas sa vocation première).
+* Sudoc utilise un format RDF national, géré par les bibliothécaires. Viellles notices sont de moindre qualité mais les plus récentes devraient être bonnes. https://www.sudoc.fr/146956419.rdf[Exemple]. Pas ou très peu d’articles (pas sa vocation première).
 * Copac équivalent du Sudoc en GB, utilise format http://www.loc.gov/standards/mods/[MODS].
-* http://data.bnf.fr[BNF] : dépôt légal, acquisitions.
+* https://data.bnf.fr[BNF] : dépôt légal, acquisitions.
 * Base CrossRef (https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md[API]) très riche, > 80 M enregistrements. Bonne qualité pour démarrer. Articles de revue académique, souvent.
-* http://m.abes.fr/Espace-Pro-Acces-direct-a/API-et-Web-Services[Web services] de l’ABES (Idref…).
+* http://m.abes.fr/Espace-Pro-Acces-direct-a/Utiliser-les-web-services[Web services] de l’ABES (Idref…).
 * http://domybiblio.net/search/[Exemple] d’exploitation.
 * Idref, service web en ligne pour identifier une personne. Permet ensuite de récupérer Orcid, viaf etc. puis de récupérer des ressources. Permet d’interroger le catalogue du Sudoc à partir de noms. http://documentation.abes.fr/aideidrefdeveloppeur/ch02s01.html[API Solr] pour interroger IdRef.
 * https://bitbucket.org/bibsonomy/bibsonomy/src/tip/bibsonomy-rest-client/[BibSonomy], a social bookmarking system, with a REST client in Java.

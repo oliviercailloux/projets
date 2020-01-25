@@ -1,0 +1,27 @@
+= MIDO SVG
+
+Le département MIDO propose plusieurs parcours, contenant pour certains des cours à option, avec des passerelles entre certains parcours. Il est difficile pour un enseignant extérieur (ou débutant) de se repérer dans l’offre de cours et de voir comment son cours s’articule avec les cours existants. Une manière de pallier ce problème consiste à représenter graphiquement l’offre de cours et les relations entre les cours. Cependant, de tels dessins requièrent du temps pour être bien faits, et deviennent rapidement obsolète. Ce projet vise à génération automatique de diagrammes au format SVG représentant des organigramme des cours et autres informations liées.
+
+On pourra s’inspirer d’un https://github.com/oliviercailloux/MIDO-SVG[projet] qui s’est attaqué au problème.
+
+== À envisager
+* Une classe `DiagramPreferences` qui représente les préférences d’un utilisateur concernant ce que le dessin doit montrer : filière (license, master, ou les deux) ; responsables ? ; enseignants ? ; prérequis ? (des booléens).
+* Une classe Course qui représente un cours. Un cours a un nom, un enseignant (une simple chaine de caractères), un ensemble de cours prérequis, une URL (exemple http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme/A3INFAPP01), une formation et un département auxquels le cours appartient (de simples chaines de caractères dans les deux cas, temporairement).
+* Pouvoir lire et écrire les préférences de l’utilisateur (`DiagramPreferences`) au format Json.
+* Inclure dans votre class path un fichier `default-prefs.json` avec des préférences par défaut pour l’utilisateur (`DiagramPreferences`).
+* Une classe qui dessine un SVG, étant donné une liste de cours et des préférences, dessin qui ressemble (en largement simplifié et limité aux informations stockées dans vos classes) à ce https://github.com/oliviercailloux/projets/blob/master/MIDO-Svg/MIDO.svg[dessin] à la main. Voir application https://github.com/oliviercailloux/Test-SVG[`Test SVG`] et `2D Library`.
+* Une classe `Department` qui représente un département (MIDO, LSO, …). Elle contient un nom et une URL (http://www.mido.dauphine.fr/ par exemple). Une classe `YearOfGrade` qui représente une année dans un parcours (MIAGE L3 Apprentissage par exemple), contenant un nom et une URL (http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme//#FRUAI0750736TPRPRA3INFAPP par exemple).
+* GUI pour éditer ses préférences d’affichage : le programme lit un fichier au démarrage, permet la modification, et écrit dans le fichier
+* Liens sur les parcours renvoient au programme des cours
+* Choix de cours par tags
+* Récupérer les informations depuis ROF, la BD des cours de Dauphine (obtenir l’accès via la DSI); voir https://github.com/Dauphine-MIDO/plaquette-MIDO[plaquette-MIDO] (copier les classes qui vous sont utiles, pour le moment)
+* Examiner en détail les informations envoyées depuis ROF, écrire un rapport au format Asciidoctor indiquant ce qu’on peut récupérer et intégrer dans le diagramme
+* Un serveur qui renvoie un diagramme à la demande
+
+== Ensuite
+* Génération de diagrammes de toutes sortes de formats et avec informations diverses récupérées depuis ROF
+* Publication d’une bibliothèque permettant à des tiers de lire facilement l’information des cours de ROF
+
+== Refs
+* CDM-fr : https://fr.wikipedia.org/wiki/Course_description_metadata https://cdm-fr.fr/
+

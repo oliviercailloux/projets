@@ -1,0 +1,33 @@
+= Teach spreadsheets
+
+Affectation des enseignants aux cours dans le département MIDO via génération de feuilles de calcul
+
+== Contexte
+L’administration de MIDO, un département de Dauphine, utilise actuellement des feuilles de calcul pour affecter les enseignants aux cours à enseigner lors d’une année académique donnée. En vue d’une transition vers des outils plus simples d’emploi, ce projet vise à interagir automatiquement avec les feuilles de calcul intégrant les informations fournies par le département.
+
+On s’inspirera d’un https://github.com/oliviercailloux/Teach-spreadsheets[projet] existant, en particulier des classes `Writer` dans le package `io.github.oliviercailloux.y2018.teach_spreadsheets.odf`.
+
+* Je rentre sur site web, ça émet des feuilles excel.
+* L’administration fournit plein de feuilles excel, ça fournit un résumé.
+* Résumé des préférences. Interface pour affecter.
+
+== À envisager
+* Une classe Course qui permet de stocker un cours (voir fichier https://github.com/oliviercailloux/projets/raw/master/Voeux/AA%20-%20Saisie%20des%20voeux%202016-2017.xls[Saisie des vœux], onglet L3) : Nom, Code Apogée, Nb heures CM, Nb heures TD, Nb heures CMTD, Nb heures TP, Nb groupes CM / TD / etc., et l’année d’études dans laquelle le cours s’insère (L3 Informatique, M1 Mathématiques, L3 apprentissage, …).
+* Une classe CoursePref qui stocke des préférences d’un enseignant pour un cours : elle permet d’indiquer une préférence pour le CM, TD, CMTD, TP (A, B, C ou absent, pour chacun).
+* Pouvoir écrire et lire une liste de cours en JSON
+* Pouvoir écrire et lire une liste de préférences pour des cours (celles d’un enseignant) en JSON
+* Interface graphique pour éditer la liste des cours
+* Interface graphique pour éditer la liste de préférences d’un enseignant (la liste des cours étant supposée déjà fixée)
+* Pouvoir générer un fichier de calcul (LibreOffice Calc) similaire au fichier Saisie des vœux ci-dessus
+* Pouvoir lire un fichier de calcul et générer une liste de préférences d’un enseignant
+* Rédiger un rapport en Asciidoctor reprenant plusieurs approches pour générer un fichier Calc et argumenter en vue d’en choisir une (envisager l’approche du projet existant, l’approche recommandée actuellement par les auteurs de la bibliothèque utilisée, en chercher d’autres éventuellement)
+* Pouvoir remplir les deux premiers onglets du fichier de calcul
+* Pouvoir fusionner les informations de préférences d’un ensemble d’enseignants, en tenant compte des affectations (de l’année précédente). Voir https://github.com/oliviercailloux/projets/raw/master/Voeux/Fichier%20Agr%C3%A9g%C3%A9.pdf[Fichier Agrégé.pdf]
+* Lecture et écriture d’une affectation d’enseignants aux cours pour une année donnée. Voir https://github.com/oliviercailloux/projets/raw/master/Voeux/services%20MIDO.xls[services MIDO], onglet « donnees ». Reproduire le tableau croisé dynamique de l’onglet Affectations (ou écrire dans un modèle qui le contient).
+* GUI pour affecter.
+* Étant donné une affectation, génération d’un ensemble de fiches de service (une par enseignant) dans un répertoire donné. Voir https://github.com/oliviercailloux/projets/raw/master/Voeux/Fiche%20de%20service.png[Fiche de service].
+
+== Ensuite
+* Serveur qui renvoie les données JSON
+* Communication avec ROF pour obtenir les données de cours (voir projet MIDO SVG et communiquer avec la DSI pour obtenir les informations manquantes)
+

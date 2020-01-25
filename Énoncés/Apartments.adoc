@@ -1,0 +1,52 @@
+= Apartments
+
+Les sites de location (type https://www.pap.fr) proposent généralement des moyens rudimentaires de recherche parmi les annonces existantes. Ce projet vise à doter l’utilisateur de moyens d’indiquer ses préférences d’une manière riche, afin de lui montrer les annonces qui lui conviennent le mieux d’abord. En particulier, au lieu de filtrer de façon binaire (ex. : inclure un appartement seulement s’il fait au moins x m²), le système permettra la compensation (ex. : inclure une annonce pour un appartement très petit s’il est très bon sur les autres critères) ; et le système permettra d’inclure comme critère la distance (en transport public) à des lieux d’intérêts pour l’utilisateur tels que son lieu de travail.
+
+On repartira d’un https://github.com/oliviercailloux/Apartments[projet] existant. Il permet de manipuler des annonces d’appartements (programmatiquement et avec des interfaces graphiques) ; d’en générer aléatoirement ; de calculer la distance d’un appartement à un lieu en métro ; de calculer la valeur subjective d’un appartement aux yeux de l’utilisateur via sa fonction de valeur. Une fonction de valeur est une somme de fonctions de valeur partielles. Une fonction de valeur partielle indique, sur un critère (superficie, nombre de chambres…), la valeur que l’utilisateur accorde à l’appartement sur cet aspect. La valeur d’un appartement est la somme des valeurs partielles sur chaque aspect.
+
+== À envisager
+* Retirer dépendance joda time si possible
+* Apartment immuable
+* Réusiner DistanceSubway, qui mélange deux fonctionnalités (requête adresse et coordonnées) et qui duplique la création de l’objet de requête. Intégrer Localizer à cette réflexion. Par exemple, il faudrait une méthode `localize(String): LatLng` au lieu de `getGeometryLocation`.
+* Lecture plus propre de la clé d’API Google via un fichier ou une variable d’environnement dans `KeyManager` (voir https://github.com/Dauphine-MIDO/plaquette-MIDO-json)
+* Apartements stockés en JSON au lieu des fichiers properties
+* Pouvoir générer aléatoirement des appartements et les sauver dans un fichier JSON
+* Pouvoir visualiser dans un GUI les appartements à partir du fichier JSON
+* Générer des graphiques et données de statistiques des appartements disponibles (surface moyenne, médiane, nombre d’appartements par surface, …)
+* L’interface `PartialValueFunction` ne devrait pas étendre `Function`. Simplifier les créateurs de PVF en utilisant des expressions lambda.
+* Réduire la redondance dans `ApartmentValueFunction`, simplifier de manière à pouvoir modifier les critères facilement
+* Pouvoir enregistrer et lire les paramètres de la fonction de valeur de l’utilisateur dans un fichier JSON
+* Visualiser la fonction de valeur de l’utilisateur : sur un critère, graphique de la fonction de valeur partielle sur ce critère
+* Réfléchir au traitement de la valeur « distance par rapport aux lieux appréciés » : l’utilisateur doit pouvoir spécifier ces lieux ; le calcul doit être précisé… (Envisager un `TimedApartment` qui contient également une valeur « temps », dépendant des lieux de l’utilisateur.)
+* Affichage de la comparaison de deux appartements du point de vue de l’utilisateur : valeurs partielles et valeur totale (lui permettant de comprendre pourquoi un appartement a une valeur plus faible)
+* Réfléchir à un affichage agréable et utile de différents appartements de grande valeur pour l’utilisateur, en vue de lui permettre d’explorer les alternatives intéressantes
+* Permettre à l’utilisateur de modifier sa fonction de valeur et voir le résultat en même temps sur la valeur relative de deux appartements
+* Pour le moment, les critères pris en compte sont destinés à l’évaluation d’appartements de type AirBNB (location de courte durée). Le projet devrait pouvoir s’appliquer à d’autres problèmes (location longue durée pour résidence principale, location d’une chambre d’hotel), voire même à l’évaluation d’autres choses qui s’évaluent sur des critères multiples (voiture en vue d’un achat, par exemple). Séparer ce qui est propre aux évaluations d’appartement avec les critères choisis de ce qui est réutilisable pour évaluer avec d’autres critères (en particulier ce qui est actuellement dans `io.github.oliviercailloux.y2018.apartments.valuefunction`), et placer les classes génériques dans `io.github.oliviercailloux.mcdm.valuefunction`.
+* Investiguer la possibilité et proposer une manière de fusionner (des parties de) ce projet avec https://github.com/oliviercailloux/decision-uta-method/[decision-uta-method], qui propose une manière générique de traiter un problème de décision avec des critères et des alternatives (les alternatives sont les objets parmi lesquels l’utilisateur veut choisir, par exemple des appartements, des voitures…)
+* Utiliser ce projet pour trouver une fonction de valeur qui convienne à l’utilisateur, étant donné des comparaisons d’appartements
+* Serveur web qui renvoie (ou affiche) la fonction de valeur de l’utilisateur, stockée dans un répertoire qui lui est propre
+* Généraliser d’autres parties de ce projet de façon à ce qu’elles fonctionnent sur un serveur
+
+== Documentation
+L’interface Java `PartialValueFunction`, paramétée par le type de donnée objective, représente l’association entre des données objectives et des utilités : on lui fournit une donnée objective (par exemple une couleur) et elle retourne la valeur subjective associée, entre 0 et 1. Elle étend `Function<T, Double>`, où `T` est le type de donnée objective.
+
+La classe `LinearValueFunction` implémente `PartialValueFunction<Double>`. On lui fournit un intervalle (par exemple [10, 50]) qui définit les points renvoyant zéro et un. Si on communique un autre nombre à la fonction entre 10 et 50, elle interpole linéairement (par exemple 20 renverrait (20−10)/(50−10)=0.25).
+
+La classe `PiecewiseLinearValueFunction` permet de stocker un ensemble de paires (valeur réelle, valeur réelle entre 0 et 1 compris). Une instance de cette classe permet de mesurer l’attrait pour l’utilisateur d’un aspect donné d’un appartement. La première valeur représente une description objective de la qualité d’un appartement sur un aspect donné (par exemple la taille de l’appartement), et la deuxième, entre 0 et 1, mesure l’attrait associée à cette qualité. Cette mesure est nommée la valeur subjective, ou utilité, correspondant à la valeur objective fournie. La classe permet donc d’associer à différentes valeurs objectives leur utilité. Par exemple, on pourra associer la valeur 30 (mètre carrés) à l’utilité 0.5 et la valeur 45 (mètres carrés) à l’utilité 0.7.
+
+Un appartement a une localisation précise (stockée dans un `LatLng`, permettant de représenter un endroit précis sur le globe). `ValueDistFunction`, une implémentation de `PartialValueFunction<LatLng>`, calcule la valeur partielle de la localisation : l’instance reçoit des lieux d’intérêts de l’utilisateur (par défaut, le centre de Paris), calcule le max des distances entre l’appartement et tous les lieux d’intérêts, et renvoie une interpolation linéaire avec 1 pour une distance de 0, et 0 pour une distance de 10h. (Non complètement implémenté.)
+
+== Autres idées
+* Lecture et écriture d’un appartement dans et depuis un fichier XML, au format https://github.com/xmcda-modular/[xmcda-modular]. Voir https://github.com/xmcda-modular/schema[example].
+* Lecture et écriture d’une `PartialValueFunction` au format xmcda-modular.
+* Lecture et écriture d’une `ApartmentValueFunction` au format xmcda-modular.
+* GUI qui montre à l’utilisateur tous les appartements disponibles dans un répertoire donné en paramètre, triés selon l’utilité de l’utilisateur (fournie dans un fichier dans le même répertoire). L’utilisateur peut cliquer sur un appartement et voit sa description.
+* Extraction d’annonces depuis pap.
+* Alertes : l’utilisateur indique à quel niveau d’utilité il veut être alerté en cas d’apparition d’une nouvelle annonce intéressante.
+* L’utilisateur peut indiquer en voyant la liste d’annonces qu’il préfère une annonce à une autre alors qu’elle est classé sous la deuxième. Le système lui permet alors de corriger son utilité pour que le classement en question soit rétabli.
+
+== Sources
+* https://www.pap.fr : semblent ouverts.
+* https://www.seloger.com/ : verrouillage légal. (« En accédant au Site Internet de la Société, l'Utilisateur déclare, garantit et s'engage à (…) ne pas utiliser de dispositifs ou logiciels autres que ceux fournis par la Société destinés à (…) extraire, modifier, consulter, même en mémoire tampon ou temporaire, ou encore pour une utilisation individualisée, tout ou partie du Site Internet »)
+* AirBnB : verrouillage légal. (https://www.airbnb.fr/terms, Conduite de l'Utilisateur)
+

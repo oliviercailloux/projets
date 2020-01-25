@@ -1,0 +1,39 @@
+= Assisted Board Games
+
+D’après une idée généreusement fournie par Vincent Giroux. (Merci à lui !)
+
+Le https://boardgamegeek.com/wiki/page/Welcome_to_BoardGameGeek[jeu de plateau] se décline essentiellement en deux versions : sur place, sans ordinateur ; ou purement http://www.yucata.de/[en ligne]. Dans le https://boardgamegeek.com/image/1648160/game-thrones-board-game-second-edition[premier cas], on se réunit et on joue autour d’un plateau de jeu et d’éléments de jeu incarnés physiquement. Dans le https://play.google.com/store/apps/details?id=com.f2zentertainment.pandemic[deuxième cas], on joue généralement chacun chez soi.
+
+Le concept d’Assisted Board Game propose de réunir les avantages des deux aspects. (Pour ses détracteurs : les inconvénients des deux aspects.) Il s’agit de partager un moment ensemble, en étant physiquement réunis, mais tout en profitant de l’aide d’une implémentation informatique. Ceci sera particulièrement bienvenu pour les jeux nécessitant de https://boardgamegeek.com/image/2836495/republic-rome[nombreuses] manipulations de pions et ajustements automatiques, ou une https://boardgamegeek.com/image/1822915/zombie-15[longue] mise en place, mais aussi pour sauvegarder la partie, rejouer une partie existante, ou se faire assister de diverses manières par un ordinateur.
+
+Un Assisted Board Game est composé, idéalement, d’link:https://novotelstore.com/fr/table-interactive-play#prettyPhoto%5Bmedia_gallery%5D/1/[une] https://d2rormqr1qwzpz.cloudfront.net/photos/2012/03/16/55-32402-11672_pax_catan_3_super.jpg[table] https://www.theguardian.com/games/2018/mar/14/playtable-tablet-blockchain-technology-enhance-board-games-blokparty[interactive], qui joue le rôle de plateau de jeu, et d’une tablette par joueur. (Pour ce projet on se contentera d’un ordinateur qui jouera le rôle de table interactive et d’un ordinateur par joueur.)
+
+Ce projet vise à construire un système générique permettant facilement d’implémenter une vaste gamme de jeux. On repartira d’un https://github.com/oliviercailloux/Assisted-Board-Games[projet] existant, qui a implémenté un système permettant de jouer aux échecs. Il s’agira pour partie d’étendre les fonctionnalités pour améliorer ce jeu d’échecs, mais surtout de généraliser la logique pour permettre l’inclusion d’autres jeux, d’abord similaires (dames…) puis plus distincts (poker…). Le système permettra seulement de générer le moteur du jeu, l’ambition ne s’étendant pas à la génération automatique d’interface graphique qui devra donc être programmée manuellement pour chaque jeu.
+
+Le projet existant permet d’afficher le plateau de jeu d’échecs ; de jouer un coup ; de décompter le temps restant ; il intègre une logique de sauvegarde et restauration de partie et de récupération d’une partie historique, des puzzles… 
+
+== Documentation
+Le programme lance un serveur. En navigant vers `http://localhost:8080`, l’interface en Javascript s’active.
+
+L’interface fonctionne en communiquant avec le serveur en question. Lorsqu’il reçoit une requête à l’adresse `http://localhost:8080/api/v1/game/…`, le serveur appelle une méthode de la classe `GameResource` (car elle est annotée `@Path("api/v1/game")`). La méthode appelée dépend de la suite de l’adresse requêtée. Par exemple, une requête à l’adresse `api/v1/game/new` appelle la méthode `createGame()` (car cette méthode est annotée `@Path("new")`). Ces méthodes appellent généralement un `EntityManager` (partie d’un standard Java, Java Persistence API) qui s’occupe de placer les objets dans la base de données du serveur ou de les en récupérer.
+
+Quand une requête est envoyée à l’adresse `api/v1/game/import`, c’est la méthode `importGame(GameDAO)` qui est appelée. La requête est censée contenir des données au format JSON, qui sont automatiquement transformées par le serveur en un objet de type `GameDAO` et passées en paramètre de la méthode.
+
+== À envisager
+* Les clients individuels des joueurs leur permettront de jouer en recevant l’assistance d’un ordinateur : le joueur peut de façon privée (sans le montrer à son adversaire) proposer un coup, et l’ordinateur lui montrera les meilleurs réponses à son coup. En limitant adéquatement la profondeur de recherche de l’ordinateur, cela pourrait permettre aux joueurs d’éviter les erreurs basiques, ou fournir un avantage compensatoire à un joueur plus faible, ou aider à l’apprentissage. (Pour commencer on choisira n’importe quelle façon simple de trouver des coups valables, à terme il serait bon d’utiliser une bibliothèque existante de recherche de bons coups)
+* Autres aides : liste de bons coups possibles pour le prochain coup, stratégie menant à la victoire ou à une meilleure position (sous forme de meilleurs coups de part et d’autre), stratégie sous forme d’arbre de profondeur et largeur donnés.
+* Séparer ce qui est propre au jeu d’échec (en gros, dans le package `io.github.oliviercailloux.assisted_board_games.model`) de la partie serveur (en gros, le reste), en vue de la généralisation à d’autres jeux. Envisager de fournir à `GameResources` une interface qui offre les services spécifiques au jeu pour lequel un serveur est demandé.
+* Généraliser autant que possible pour faciliter l’implémentation d’un nouveau jeu (tel que les dames). Par exemple, la logique de comptage du temps n’est pas spécifique aux échecs et devrait pouvoir être réutilisée.
+* Implémenter un nouveau jeu dans un autre sous-package (par exemple `checkers`). Ceci ne devrait pas induire de redondance avec le jeu existant.
+* Prévoir une interface rudimentaire et générique pour ce nouveau jeu, sous forme d’affichage de l’état de la partie en JSON et envoi des nouveaux coups en JSON (donc sans graphisme)
+* En plus de l’interface générique rudimentaire, envisager une interface spécifique au jeu de dames (similaire à celle utilisée pour les échecs)
+* Implémenter un jeu (t.q. pierre, feuille, ciseaux) avec concept d’état partiellement caché : état complet (inclut données pour tous les joueurs, par ex. : joueur 1 a choisi _pierre_, joueur 2 n’a pas encore choisi) ; état partiel, visible par un joueur donné (par ex., le joueur 2 voit : joueur 1 a choisi, joueur 2 doit encore choisir) ; état visible, sous-ensemble des données visibles par tous (ce que voit un spectateur qui ne connait pas l’information propre aux joueurs). Dans le cas où tout est visible (par ex. les échecs), les trois états sont égaux.
+* Implémenter un jeu (t.q. jeu de l’oie) avec hasard : l’état complet inclut un générateur déterministe qui contient toutes les possibilités, auquel on demande tout tirage aléatoire. Ce générateur doit être enregistré avec la partie, et n’est pas visible.
+* Implémenter un jeu (t.q. Texas Hold’em) avec état partiellement caché et hasard.
+
+== Autres idées
+* Permettre un fork de partie à un certain coup (bonus : permettre d’enregistrer une série de générateurs avec une partie, associés à un numéro de coup, pour permettre de changer le générateur lors du fork) ; de nommer la partie (exemple : partie célèbre Kasparov contre Deep Blue), de trouver les états communs…
+* Analyser le langages de description de http://www.zillions-of-games.com/[Zillion of Games] ou d’autres aspects de ce service et rédiger un rapport en Asciidoctor indiquant ce qui peut être utilisé dans le projet.
+
+//https://github.com/tdf/odftoolkit/raw/master/src/site/site/content/odftoolkit_website/docs/presentations/2019%20-%20ACM%20DocEng%20-%20The_Next_Millennium_Document_Format_DRAFT_20190712.pdf, Svante Schubert. We should exchange patches (Operational Transformations, OT) and view a document as a list of changes, or a tree of changes. We should allow for more efficient standardization by means of supporting software tools.
+

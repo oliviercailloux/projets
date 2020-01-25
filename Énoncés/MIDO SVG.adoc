@@ -6,7 +6,7 @@ On pourra s’inspirer d’un https://github.com/oliviercailloux/MIDO-SVG[projet
 
 == À envisager
 * Une classe `DiagramPreferences` qui représente les préférences d’un utilisateur concernant ce que le dessin doit montrer : filière (license, master, ou les deux) ; responsables ? ; enseignants ? ; prérequis ? (des booléens).
-* Une classe Course qui représente un cours. Un cours a un nom, un enseignant (une simple chaine de caractères), un ensemble de cours prérequis, une URL (exemple http://formations.dauphine.fr/offre/fr-FR/fiche/A3INF/programme/A3INFAPP01), une formation et un département auxquels le cours appartient (de simples chaines de caractères dans les deux cas, temporairement).
+* Une classe Course qui représente un cours. Un cours a un nom, un enseignant (une simple chaine de caractères), un ensemble de cours prérequis, une URL facultative, une formation et un département auxquels le cours appartient (de simples chaines de caractères dans les deux cas, temporairement).
 * Pouvoir lire et écrire les préférences de l’utilisateur (`DiagramPreferences`) au format Json.
 * Inclure dans votre class path un fichier `default-prefs.json` avec des préférences par défaut pour l’utilisateur (`DiagramPreferences`).
 * Une classe qui dessine un SVG, étant donné une liste de cours et des préférences, dessin qui ressemble (en largement simplifié et limité aux informations stockées dans vos classes) à ce https://github.com/oliviercailloux/projets/blob/master/MIDO-Svg/MIDO.svg[dessin] à la main. Voir application https://github.com/oliviercailloux/Test-SVG[`Test SVG`] et `2D Library`.

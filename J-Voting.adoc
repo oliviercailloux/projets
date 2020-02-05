@@ -12,21 +12,17 @@ Dans ce projet, un ensemble de candidats, d’objets, appelés _alternatives_, e
 
 Le projet doit permettre la manipulation de telles préférences, et leur _aggrégation_ en vue de déterminer un vainqueur, en utilisant l’une des nombreuses règles de vote définies par les chercheurs en choix social.
 
-Diverses restrictions peuvent s’appliquer sur les préférences exprimées par les électeurs : elles peuvent être complètes (pour chaque paire de candidat, on sait que l’un est au moins aussi bon que l’autre), anti-symétriques (pas d’ex-æquo), 
+Diverses restrictions peuvent s’appliquer sur les préférences exprimées par les électeurs : elles peuvent être complètes (pour chaque paire de candidat, on sait que l’un est au moins aussi bon que l’autre), anti-symétriques (pas d’ex-æquo), …
 
-Pour représenter une préférence, on définit généralement une relation de préférence « au moins aussi bon que », considérée comme transitive (donc si A est au moins aussi bon que B, elle-même au moins aussi bonne que C, A est au moins aussi bon que C). Si un électeur juge le candidat A au moins aussi bon que B, et B au moins aussi bon que A, on dit que A et B sont ex-æquos (pour cet électeur). Si A est au moins aussi bon que B, et B n’est pas au moins aussi bon que A, on dit que A est strictement préféré à B (pour cet électeur, et dans le cas où la relation est entièrement connue). 
+Pour représenter une préférence, on définit généralement une relation de préférence « au moins aussi bon que », considérée comme transitive (donc si A est au moins aussi bon que B, elle-même au moins aussi bonne que C, A est au moins aussi bon que C). Si un électeur juge le candidat A au moins aussi bon que B, et B au moins aussi bon que A, on dit que A et B sont ex-æquos (pour cet électeur). Si A est au moins aussi bon que B, et B n’est pas au moins aussi bon que A, on dit que A est strictement préféré à B (pour cet électeur, et dans le cas où la relation est entièrement connue). C’est ce genre de relation de préférence qu’on vise à manipuler ici.
 
-Exemples de votes (à faire).
-
-https://raw.githubusercontent.com/oliviercailloux/J-Voting/master/Doc/Preferences%20Diagram%20Interface.png
+Ce https://raw.githubusercontent.com/oliviercailloux/J-Voting/master/Doc/Preferences%20Diagram%20Interface.png[diagramme] montre les sortes de relations de préférences manipulées dans le projet et ce qui les différencie.
 
 == À envisager
-* Changer `MutablePreference` en classe, pas en interface
-* add MutablePreferencesFixedAlternatives, whose mutable graph already has all reflexive loops and this can’t be changed.
-* Ajouter asStrictGraph() dans Preference, qui renvoie un graphe transitif, asymétrique, sous-graphe de asGraph, qui contient uniquement les paires (a, b) telles que a est strictement préféré à b (c-à-d (a, b) est dans asGraph mais (b, a) n’y est pas).
+* Ajouter `AbstractMutablePreference` dont hérite `Mutable*Preference` et qui ne garantit pas qu’on peut effectivement ajouter quoi que ce soit.
+* Ajouter `MutablePreferenceFixedAlternatives`, dont le graphe contient toujours toutes les boucles réflexives.
+* Ajouter asStrictGraph() dans Preference, qui renvoie un graphe transitif, asymétrique, sous-graphe de asGraph, qui contient uniquement les paires _(a, b)_ telles que _a_ est strictement préféré à _b_ (c-à-d telles que _(a, b)_ est dans asGraph mais _(b, a)_ n’y est pas).
 * Ajouter equals dans ImmutablePreference (et l’implémenter).
-* asMutableGraph(). When adding an edge, does not necessarily check that it is permissible (that it is acyclic): the check is done iff asGraph() has been called before, thus it the object does maintain a transitive closure. Ajouter #mayAddEdge(), ou qqch. comme ça ?
-* Upgrade parent pom
 * Visualisation des graphes. Exporter une préférence au format DOT (voir https://jgrapht.org/guide/UserOverview#guava-graph-adapter[JGraphT adapter] et éventuellement org.decision_deck.utils.relation.graph.GraphExporter et org.decision_deck.utils.relation.graph.mess.DOTExporterTemp<V, E>, dans https://github.com/oliviercailloux/jmcda-utils[J-MCDA utils]), et puis en SVG. 
 * Intégrer à https://github.com/oliviercailloux/minimax/blob/master/src/main/java/io/github/oliviercailloux/j_voting/VoterPartialPreference.java[Minimax]
 * Quand on ajoute (a, b), il faut ajouter à la fermeture transitive (c, d) pour tout c au moins aussi bon que a et tout d aussi bon ou moins bon que b.

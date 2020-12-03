@@ -5,6 +5,9 @@ Les sites de location (type https://www.pap.fr) proposent généralement des moy
 On repartira d’un https://github.com/oliviercailloux/Apartments[projet] existant. Il permet de manipuler des annonces d’appartements (programmatiquement et avec des interfaces graphiques) ; d’en générer aléatoirement ; de calculer la distance d’un appartement à un lieu en métro ; de calculer la valeur subjective d’un appartement aux yeux de l’utilisateur via sa fonction de valeur. Une fonction de valeur est une somme de fonctions de valeur partielles. Une fonction de valeur partielle indique, sur un critère (superficie, nombre de chambres…), la valeur que l’utilisateur accorde à l’appartement sur cet aspect. La valeur d’un appartement est la somme des valeurs partielles sur chaque aspect.
 
 == À envisager
+* parent pom oliviercailloux
+
+== À envisager (2019)
 * Retirer dépendance joda time si possible
 * Apartment immuable
 * Réusiner DistanceSubway, qui mélange deux fonctionnalités (requête adresse et coordonnées) et qui duplique la création de l’objet de requête. Intégrer Localizer à cette réflexion. Par exemple, il faudrait une méthode `localize(String): LatLng` au lieu de `getGeometryLocation`.

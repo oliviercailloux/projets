@@ -9,6 +9,10 @@ Ce projet a pour but d’aider un chercheur et l’administration à organiser l
 On repartira d’un https://github.com/oliviercailloux/J-Confs[projet] existant. Il permet de stocker et lire des conférences dans un calendrier partagé en ligne ; et implémente une logique partielle d’affichage de cartes des lieux de conférence ; il permet également de générer des documents sur base des coordonnées d’un chercheur (cependant, le système de récupération des données est cassé suite à un changement de fonctionnement de l’annuaire de Dauphine).
 
 == À envisager
+* Seek replacement for LocationIQ, or Maven release.
+* Fix tests that fail
+
+== À envisager (2019)
 * Utiliser des `Instant` dans `Conference`. Utiliser des `double` au lieu des `Double`. Utiliser un `Builder`.
 * Supprimer le package `io.github.oliviercailloux.geocode` s’il ne sert pas
 * S’assurer que `CalendarOnline` stocke des conférences dans un format qui est compris par les logiciels de manipulation de calendriers tels que `Evolution`. Écrire un rapport au format Asciidoctor indiquant quels champs du standard iCal doivent être utilisés, en particulier, comment représenter un point précis sur le globe (latitude, longitude, adresse textuelle)

@@ -2,9 +2,9 @@
 
 D’après une idée généreusement fournie par Vincent Giroux. (Merci à lui !)
 
-Le https://boardgamegeek.com/wiki/page/Welcome_to_BoardGameGeek[jeu de plateau] se décline essentiellement en deux versions : sur place, sans ordinateur ; ou purement http://www.yucata.de/[en ligne]. Dans le https://boardgamegeek.com/image/1648160/game-thrones-board-game-second-edition[premier cas], on se réunit et on joue autour d’un plateau de jeu et d’éléments de jeu incarnés physiquement. Dans le https://play.google.com/store/apps/details?id=com.f2zentertainment.pandemic[deuxième cas], on joue généralement chacun chez soi.
+Le https://boardgamegeek.com/wiki/page/Welcome_to_BoardGameGeek[jeu] de https://boardgamegeek.com/image/1648160/game-thrones-board-game-second-edition[[plateau] se décline essentiellement en deux versions : sur place, sans ordinateur ; ou https://play.google.com/store/apps/details?id=com.f2zentertainment.pandemic[purement] http://www.yucata.de/[en] https://boardgamearena.com/[ligne]. Dans le premier cas, on se réunit et on joue autour d’un plateau de jeu et d’éléments de jeu incarnés physiquement. Dans le deuxième cas, on joue généralement chacun chez soi.
 
-Le concept d’Assisted Board Game propose de réunir les avantages des deux aspects. (Pour ses détracteurs : les inconvénients des deux aspects.) Il s’agit de partager un moment ensemble, en étant physiquement réunis, mais tout en profitant de l’aide d’une implémentation informatique. Ceci sera particulièrement bienvenu pour les jeux nécessitant de https://boardgamegeek.com/image/2836495/republic-rome[nombreuses] manipulations de pions et ajustements automatiques, ou une https://boardgamegeek.com/image/1822915/zombie-15[longue] mise en place, mais aussi pour sauvegarder la partie, rejouer une partie existante, ou se faire assister de diverses manières par un ordinateur.
+Le concept d’Assisted Board Game propose de réunir les avantages des deux aspects. (Pour ses détracteurs : les inconvénients des deux aspects.) Il s’agit de partager un moment ensemble, en étant physiquement réunis, mais tout en profitant de l’aide d’une implémentation informatique. Ceci sera particulièrement bienvenu pour les jeux nécessitant de https://boardgamegeek.com/image/2836495/republic-rome[nombreuses] manipulations de pions et ajustements sans décisions, ou une https://boardgamegeek.com/image/1822915/zombie-15[longue] mise en place, mais aussi pour sauvegarder la partie, rejouer une partie existante, ou se faire assister de diverses manières par un ordinateur.
 
 Un Assisted Board Game est composé, idéalement, d’link:https://novotelstore.com/fr/table-interactive-play#prettyPhoto%5Bmedia_gallery%5D/1/[une] https://d2rormqr1qwzpz.cloudfront.net/photos/2012/03/16/55-32402-11672_pax_catan_3_super.jpg[table] https://www.theguardian.com/games/2018/mar/14/playtable-tablet-blockchain-technology-enhance-board-games-blokparty[interactive], qui joue le rôle de plateau de jeu, et d’une tablette par joueur. (Pour ce projet on se contentera d’un ordinateur qui jouera le rôle de table interactive et d’un ordinateur par joueur.)
 
@@ -36,4 +36,10 @@ Quand une requête est envoyée à l’adresse `api/v1/game/import`, c’est la 
 * Analyser le langages de description de http://www.zillions-of-games.com/[Zillion of Games] ou d’autres aspects de ce service et rédiger un rapport en Asciidoctor indiquant ce qui peut être utilisé dans le projet.
 
 //https://github.com/tdf/odftoolkit/raw/master/src/site/site/content/odftoolkit_website/docs/presentations/2019%20-%20ACM%20DocEng%20-%20The_Next_Millennium_Document_Format_DRAFT_20190712.pdf, Svante Schubert. We should exchange patches (Operational Transformations, OT) and view a document as a list of changes, or a tree of changes. We should allow for more efficient standardization by means of supporting software tools.
+
+== Références
+* https://dominion.games/
+* https://boardgamearena.com/
+* https://simmer.io/upload
+* http://www.vassalengine.org/ : « Once we've released 3.3.0, I'll be focusing my efforts on assembling and updating all of that so we can get moving on V4. », http://www.vassalengine.org/forum/viewtopic.php?f=5&t=10027#p58941[29 mars 2020] http://www.vassalengine.org/forum/viewtopic.php?f=5&t=11195[Test builds for 3.3.0]. http://www.vassalengine.org/forum/viewtopic.php?f=5&t=3914[Roadmap for VASSAL 4] (2011) (Le post concernant protobuf pourrait être intéressant.)
 

@@ -19,6 +19,9 @@ Pour représenter une préférence, on définit généralement une relation de p
 Ce https://raw.githubusercontent.com/oliviercailloux/J-Voting/master/Doc/Preferences%20Diagram%20Interface.png[diagramme] montre les sortes de relations de préférences manipulées dans le projet et ce qui les différencie.
 
 == À envisager
+* Javadoc warnings
+
+== À envisager (2019)
 * Ajouter `AbstractMutablePreference` dont hérite `Mutable*Preference` et qui ne garantit pas qu’on peut effectivement ajouter quoi que ce soit.
 * Ajouter `MutablePreferenceFixedAlternatives`, dont le graphe contient toujours toutes les boucles réflexives.
 * Ajouter asStrictGraph() dans Preference, qui renvoie un graphe transitif, asymétrique, sous-graphe de asGraph, qui contient uniquement les paires _(a, b)_ telles que _a_ est strictement préféré à _b_ (c-à-d telles que _(a, b)_ est dans asGraph mais _(b, a)_ n’y est pas).

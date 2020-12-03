@@ -4,4 +4,16 @@ image:https://api.travis-ci.org/oliviercailloux/projets.svg?branch=master["Link 
 
 Des projets pour cours de Java. Ces projets visent à être (potentiellement) utiles, pas à être de simples exercices académiques.
 
-Vous êtes libres de réutiliser ces idées de projets. Veuillez citer Olivier Cailloux, Université Paris-Dauphine si vous réutilisez ces idées. N’hésitez pas à me contacter si vous obtenez des résultats exploitables !
+Vous êtes libres de réutiliser ces idées de projets. Veuillez citer Olivier Cailloux, Université Paris-Dauphine si vous réutilisez ces idées. J’apprécierais que vous m’en informiez.
+
+== Liste
+
+* 2D Library
+* Apartments
+* Assisted Board Games
+* J-Confs
+* J-Voting
+* MIDO SVG
+* Teach spreadsheets
+* XM-GUI
+

@@ -5,6 +5,13 @@ Le département MIDO propose plusieurs parcours, contenant pour certains des cou
 On pourra s’inspirer d’un https://github.com/oliviercailloux/MIDO-SVG[projet] qui s’est attaqué au problème.
 
 == À envisager
+* dependency on JUnit 4
+* package, groupid
+* GH WF?
+* Some warnings
+* Tests should access ROF API (and thus require API_PASSWORD)
+
+== À envisager (2019)
 * Une classe `DiagramPreferences` qui représente les préférences d’un utilisateur concernant ce que le dessin doit montrer : filière (license, master, ou les deux) ; responsables ? ; enseignants ? ; prérequis ? (des booléens).
 * Une classe Course qui représente un cours. Un cours a un nom, un enseignant (une simple chaine de caractères), un ensemble de cours prérequis, une URL facultative, une formation et un département auxquels le cours appartient (de simples chaines de caractères dans les deux cas, temporairement).
 * Pouvoir lire et écrire les préférences de l’utilisateur (`DiagramPreferences`) au format Json.

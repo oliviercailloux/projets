@@ -8,12 +8,12 @@ Vous êtes libres de réutiliser ces idées de projets. Veuillez citer Olivier C
 
 == Liste
 
-* 2D Library
-* Apartments
-* Assisted Board Games
-* J-Confs
-* J-Voting
-* MIDO SVG
-* Teach spreadsheets
-* XM-GUI
+* https://github.com/oliviercailloux/projets/blob/master/2D%20Library/2D%20Library.adoc[2D Library]
+* https://github.com/oliviercailloux/projets/blob/master/Apartments.adoc[Apartments]
+* https://github.com/oliviercailloux/projets/blob/master/Assisted%20Board%20Games.adoc[Assisted Board Games]
+* https://github.com/oliviercailloux/projets/blob/master/J-Confs/J-Confs.adoc[J-Confs]
+* https://github.com/oliviercailloux/projets/blob/master/J-Voting.adoc[J-Voting]
+* https://github.com/oliviercailloux/projets/blob/master/MIDO%20SVG/MIDO%20SVG.adoc[MIDO SVG]
+* https://github.com/oliviercailloux/projets/blob/master/Teach%20spreadsheets/Teach%20spreadsheets.adoc[Teach spreadsheets]
+* https://github.com/oliviercailloux/projets/blob/master/XM-GUI.adoc[XM-GUI]
 

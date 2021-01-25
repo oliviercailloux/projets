@@ -16,36 +16,29 @@ Diverses restrictions peuvent s’appliquer sur les préférences exprimées par
 
 Pour représenter une préférence, on définit généralement une relation de préférence « au moins aussi bon que », considérée comme transitive (donc si A est au moins aussi bon que B, elle-même au moins aussi bonne que C, A est au moins aussi bon que C). Si un électeur juge le candidat A au moins aussi bon que B, et B au moins aussi bon que A, on dit que A et B sont ex-æquos (pour cet électeur). Si A est au moins aussi bon que B, et B n’est pas au moins aussi bon que A, on dit que A est strictement préféré à B (pour cet électeur, et dans le cas où la relation est entièrement connue). C’est ce genre de relation de préférence qu’on vise à manipuler ici.
 
-Ce https://raw.githubusercontent.com/oliviercailloux/J-Voting/master/Doc/Preferences%20Diagram%20Interface.png[diagramme] montre les sortes de relations de préférences manipulées dans le projet et ce qui les différencie.
-
 == À envisager
+* Améliorer si besoin la doc des formats de préférence pref lib supportés par ce projet, voir https://www.preflib.org/data/format.php#soc[SOC], https://www.preflib.org/data/format.php#election-data[doc], https://www.preflib.org/data/election/netflix/ED-00004-00000001.soc[exemple]. 
+* Export d’une préférence en ligne de commande : le programme lit `preference.soc` dans le répertoire courant (déplacer et améliorer méthode dans ReadProfile) et écrit la même préférence au format DOT (voir https://jgrapht.org/guide/UserOverview#guava-graph-adapter[JGraphT adapter] et éventuellement org.decision_deck.utils.relation.graph.GraphExporter et org.decision_deck.utils.relation.graph.mess.DOTExporterTemp<V, E>, dans https://github.com/oliviercailloux/jmcda-utils[J-MCDA utils])
+* Export similaire de DOT en SVG
+* Pouvoir indiquer une URL de PrefLib
+* Poursuivre l’implémentation du GUI d’édition d’un SOC, d’abord pour un seul électeur, comme planifié dans la doc
+* Permettre d’ouvrir le GUI en ligne de commande avec une URL d’un SOC ; le programme le télécharge et l’ouvre pour commencer l’édition
+* Préciser dans la doc : `MutablePreference` autorise toutes les modifications (ajout ou suppression d’arêtes et d’alternatives) ; `MutableLinearPreference` garantit que la préférence est linéaire
 * Javadoc warnings
-
-== À envisager (2019)
-* Ajouter `AbstractMutablePreference` dont hérite `Mutable*Preference` et qui ne garantit pas qu’on peut effectivement ajouter quoi que ce soit.
-* Ajouter `MutablePreferenceFixedAlternatives`, dont le graphe contient toujours toutes les boucles réflexives.
 * Ajouter asStrictGraph() dans Preference, qui renvoie un graphe transitif, asymétrique, sous-graphe de asGraph, qui contient uniquement les paires _(a, b)_ telles que _a_ est strictement préféré à _b_ (c-à-d telles que _(a, b)_ est dans asGraph mais _(b, a)_ n’y est pas).
-* Ajouter equals dans ImmutablePreference (et l’implémenter).
-* Visualisation des graphes. Exporter une préférence au format DOT (voir https://jgrapht.org/guide/UserOverview#guava-graph-adapter[JGraphT adapter] et éventuellement org.decision_deck.utils.relation.graph.GraphExporter et org.decision_deck.utils.relation.graph.mess.DOTExporterTemp<V, E>, dans https://github.com/oliviercailloux/jmcda-utils[J-MCDA utils]), et puis en SVG. 
-* Intégrer à https://github.com/oliviercailloux/minimax/blob/master/src/main/java/io/github/oliviercailloux/j_voting/VoterPartialPreference.java[Minimax]
-* Quand on ajoute (a, b), il faut ajouter à la fermeture transitive (c, d) pour tout c au moins aussi bon que a et tout d aussi bon ou moins bon que b.
-* Un profil concerne toujours un même ensemble d’alternatives pour tous les électeurs, même dans le cas d’un profil muable incomplet. Un profil peut être vide (aucun électeur), auquel cas il ne concerne aucune alternative.
-* ImmutableGeneralProfile: preferences, general, on a shared set of alternatives
-* ImmutableProfile: preferences, complete, on a shared set of alternatives
-* ImmutableAntiSymmetricProfile: preferences, AS, complete, on a shared set of alternatives.
-* GeneralProfile: on a shared set of alternatives (may be increased but not decreased), general.
-* Un GUI qui permet d’éditer une préférence (de différentes sortes, un GUI pour chaque sorte), sauvée dans un fichier sur le disque dur au fur et à mesure de l’édition.
+* Ajouter `ImmutablePreference#equals`
+* Changer `MutableLinearPreference#addAlternative`, `removeAlternative` et `swap` : lever une exception si les alternatives sont déjà ou ne sont pas déjà dans le graphe, empêchant la méthode d’effectuer l’action demandée
+* Ajouter `MutableLinearEdges` qui permet de modifier les arêtes en conservant la linéarité (mais ne se prononce pas concernant les alternatives) ; faire hériter `MutableLinearPreference` de `MutableLinearEdges`.
+* Ajouter `MutableLinearPreferenceFixedAlternatives`, qui hérite de `MutableLinearEdges` et garantit l’immuabilité des alternatives
+* Permettre de récupérer un `NavigableSet` d’alternatives depuis une `ImmutableLinearPreference`, et réfléchir à l’extension à la version muable
+* Modifier la proposition d’interfaces de profils en ajoutant la simplification que l’ensemble d’alternatives ne bouge jamais, même dans le cas d’un profil muable : les préférences peuvent se compléter ou se modifier, mais dans cet ensemble fixé. Donc un profil a un ensemble d’électeurs ET d’alternatives fixe. Un profil ne peut pas être vide, donc doit contenir au moins un électeur et au moins une alternative. En outre, la notion de Complete profile semble mal définie actuellement : un profil complet devrait être un profil contenant uniquement des préférences complètes. `ImmutableCompleteProfile` devrait s’appeler `ImmutableProfile` (c’est le cas le plus courant). Les alternatives associées au profil sont identiques aux alternatives dans le graphe réflexif des préférences de chaque électeur (grâce aux boucles réflexives, toujours présentes).
+* Améliorer interface SocialWelfareFunction et créer d’autres interfaces : AntiSymmetricSocialWelfareFunction contient une méthode #aggregate qui envoie un AntiSymmetricCompleteProfile vers une CompletePreference; SocialWelfareFunction étend AntiSymmetricSocialWelfareFunction et envoie un CompleteProfile vers une CompletePreference.
 
 == Autres idées
-* Exporter un profil au format http://www.preflib.org/data/format.php#soc[SOC] (améliorer l’existant), et dans d’autres formats. Voir http://www.preflib.org/data/format.php#election-data[doc], http://www.preflib.org/data/election/netflix/ED-00004-00000001.soc[exemple]. 
-* Convertir un InputStream représentant un profile dans un format Pref Lib en profil. Améliorer pour ce faire ReadProfile. La conversion renvoie un profil aussi contraint que possible, donc par exemple plutôt un AntiSymmetricProfile qu’un Profile si possible. La conversion détecte de quel format il s’agit automatiquement, si possible.
-* Une méthode permet de télécharger des données exemple depuis Pref Lib. (Déplacer et améliorer méthode dans ReadProfile.) Le GUI permet d’ouvrir les exemples, de les modifier, et de les enregistrer sur le disque dur.
-* Améliorer interface SocialWelfareFunction et créer d’autres interfaces : AntiSymmetricSocialWelfareFunction contient une méthode #aggregate qui envoie un AntiSymmetricCompleteProfile vers une CompletePreference, et étend Function (marquer apply comme dépréciée et invoquer #aggregate); SocialWelfareFunction étend AntiSymmetricSocialWelfareFunction et envoie un CompleteProfile vers une CompletePreference. Améliorer FrenchElection.
 * GUI pour voir les résultats d’application d’une SWF sur un profil.
 * Le GUI permet d’afficher et d’éditer le nombre d’électeurs qui ont les mêmes préférences. Cela permet de travailler également avec de gros profils.
 * Implémenter d’autres règles de votes telles que celles proposées dans Whale4. Elles sont toutes disponibles dans le GUI proposé.
-* Étudier les différents formats JSON renvoyés par Whale, les comparer aux données dans les formats correspondants de PrefLib (qui sont le standard établi), et documenter un ou plusieurs formats JSON dans un document rédigé au format Asciidoc et placé à la racine de votre projet, permettant de représenter tout ce que vos formats PrefLib permettent de représenter, et aussi compatible que possible avec le format utilisé par Whale : vous pouvez proposer des améliorations par rapport au format de Whale, mais les différences éventuelles doivent être documentées et justifiées. Si le format utilisé par Whale vous parait bon, vous pouvez le conserver tel quel, mais la documentation sera de toute façon utile car la documentation actuelle de ces formats est sommaire ou inexistante, rendant leur utilisation difficile.
-* Prise en charge, partout où du PrefLib est actuellement utilisé dans votre bibliothèque (en entrée ou en sortie) et dans les GUI, du format JSON documenté par la fct ci-dessus. (Le programmeur ou utilisateur peut choisir le format.) Utiliser obligatoirement https://github.com/oliviercailloux/java-course/blob/master/JSON.adoc[JSON Processing] ou JSON B, selon ce qui est le plus approprié, cf. cours.
+* Étudier les différents formats JSON renvoyés par Whale, les comparer aux données dans les formats correspondants de PrefLib (qui sont le standard établi), et documenter un ou plusieurs formats JSON dans la documentation, permettant de représenter tout ce que vos formats PrefLib permettent de représenter, et aussi compatible que possible avec le format utilisé par Whale : vous pouvez proposer des améliorations par rapport au format de Whale, mais les différences éventuelles doivent être documentées et justifiées.
 * L’utilisateur peut visualiser un profil créé dans Whale4.
 * L’utilisateur peut visualiser les résultats d’une élection selon d’autres règles (cf. Whale4).
 * L’utilisateur peut accéder à un profil au format xmcda-modular.

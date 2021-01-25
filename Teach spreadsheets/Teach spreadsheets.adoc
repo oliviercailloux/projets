@@ -5,29 +5,15 @@ Affectation des enseignants aux cours dans le département MIDO via génération
 == Contexte
 L’administration de MIDO, un département de Dauphine, utilise actuellement des feuilles de calcul pour affecter les enseignants aux cours à enseigner lors d’une année académique donnée. En vue d’une transition vers des outils plus simples d’emploi, ce projet vise à interagir automatiquement avec les feuilles de calcul intégrant les informations fournies par le département.
 
-On s’inspirera d’un https://github.com/oliviercailloux/Teach-spreadsheets[projet] existant, en particulier des classes `Writer` dans le package `io.github.oliviercailloux.y2018.teach_spreadsheets.odf`.
-
-* Je rentre sur site web, ça émet des feuilles excel.
-* L’administration fournit plein de feuilles excel, ça fournit un résumé.
-* Résumé des préférences. Interface pour affecter.
+On repatira d’un https://github.com/oliviercailloux/Teach-spreadsheets[projet] existant, capable de lire des préférences exprimées dans des feuilles de calcul et d’en écrire de nouvelles. L’objectif principal sera de l’étendre de façon à ce qu’il permette de travailler avec Office 365 (c-à-d dans le cloud au lieu de localement uniquement)
 
 == À envisager
-* Une classe Course qui permet de stocker un cours (voir fichier https://github.com/oliviercailloux/projets/raw/master/Voeux/AA%20-%20Saisie%20des%20voeux%202016-2017.xls[Saisie des vœux], onglet L3) : Nom, Code Apogée, Nb heures CM, Nb heures TD, Nb heures CMTD, Nb heures TP, Nb groupes CM / TD / etc., et l’année d’études dans laquelle le cours s’insère (L3 Informatique, M1 Mathématiques, L3 apprentissage, …).
-* Une classe CoursePref qui stocke des préférences d’un enseignant pour un cours : elle permet d’indiquer une préférence pour le CM, TD, CMTD, TP (A, B, C ou absent, pour chacun).
-* Pouvoir écrire et lire une liste de cours en JSON
-* Pouvoir écrire et lire une liste de préférences pour des cours (celles d’un enseignant) en JSON
-* Interface graphique pour éditer la liste des cours
-* Interface graphique pour éditer la liste de préférences d’un enseignant (la liste des cours étant supposée déjà fixée)
-* Pouvoir générer un fichier de calcul (LibreOffice Calc) similaire au fichier Saisie des vœux ci-dessus
-* Pouvoir lire un fichier de calcul et générer une liste de préférences d’un enseignant
-* Rédiger un rapport en Asciidoctor reprenant plusieurs approches pour générer un fichier Calc et argumenter en vue d’en choisir une (envisager l’approche du projet existant, l’approche recommandée actuellement par les auteurs de la bibliothèque utilisée, en chercher d’autres éventuellement)
-* Pouvoir remplir les deux premiers onglets du fichier de calcul
-* Pouvoir fusionner les informations de préférences d’un ensemble d’enseignants, en tenant compte des affectations (de l’année précédente). Voir https://github.com/oliviercailloux/projets/raw/master/Voeux/Fichier%20Agr%C3%A9g%C3%A9.pdf[Fichier Agrégé.pdf]
-* Lecture et écriture d’une affectation d’enseignants aux cours pour une année donnée. Voir https://github.com/oliviercailloux/projets/raw/master/Voeux/services%20MIDO.xls[services MIDO], onglet « donnees ». Reproduire le tableau croisé dynamique de l’onglet Affectations (ou écrire dans un modèle qui le contient).
-* GUI pour affecter.
-* Étant donné une affectation, génération d’un ensemble de fiches de service (une par enseignant) dans un répertoire donné. Voir https://github.com/oliviercailloux/projets/raw/master/Voeux/Fiche%20de%20service.png[Fiche de service].
-
-== Ensuite
-* Serveur qui renvoie les données JSON
-* Communication avec ROF pour obtenir les données de cours (voir projet MIDO SVG et communiquer avec la DSI pour obtenir les informations manquantes)
+* L’application lit les données de préférences à partir d’une feuille de calcul présente dans le répertoire courant, crée une feuille Microsoft Excel 365 et y entre les données de préférences lues (s’inspirer de https://universitedauphine-my.sharepoint.com/:x:/r/personal/olivier_cailloux_lamsade_dauphine_fr/_layouts/15/Doc.aspx?sourcedoc=%7B9bff1ac1-1b54-4b6c-a2d8-53094178d25d%7D&action=edit&wdPreviousSession=0b59b668-1ca8-44ac-a8b2-8273183ac24a[cet exemple] utilisé pour cette année)
+* L’application lit plusieurs feuilles en entrée, et compile les données de préférences dans la feuille 365
+* Si une feuille 365 existe déjà, l’application écrase les informations dans les cellules correspondantes ; et indique dans un nouvel onglet les modifications apportées
+* L’application lit les affectations actuelles dans la feuille 365 et compile, dans un onglet particulier, les affectations pour chacun, en indiquant le total d’heures affectées et désirées pour chacun.
+* L’application affiche la différence entre le nombre d’heures total désiré et le total affecté, pour chaque enseignant, dans chaque cellule où il apparait, par exemple : "[− 30h]".
+* L’application génère un résumé de toutes les affectations, par cours (cf. https://github.com/oliviercailloux/projets/raw/master/Teach%20spreadsheets/Affectations.ods[exemple]), pour diffusion aux enseignants
+* Accéder aux données des cours de l’année passée pour indiquer les responsables précédents dans 365 (ou modifier si déjà indiqués)
+* (Avec la Direction des Systèmes d’Information de Dauphine) Accéder aux cours prestés l’année passée : nombre d’heures, nombre de groupes, etc. Générer une feuille 365 ressemblant aux feuilles de collecte des préférences à l’aide de ces données.
 

@@ -9,41 +9,32 @@ Ce projet a pour but d’aider un chercheur et l’administration à organiser l
 On repartira d’un https://github.com/oliviercailloux/J-Confs[projet] existant. Il permet de stocker et lire des conférences dans un calendrier partagé en ligne ; et implémente une logique partielle d’affichage de cartes des lieux de conférence ; il permet également de générer des documents sur base des coordonnées d’un chercheur (cependant, le système de récupération des données est cassé suite à un changement de fonctionnement de l’annuaire de Dauphine).
 
 == À envisager
-* Seek replacement for LocationIQ, or Maven release.
 * Fix tests that fail
-
-== À envisager (2019)
-* Utiliser des `Instant` dans `Conference`. Utiliser des `double` au lieu des `Double`. Utiliser un `Builder`.
-* Supprimer le package `io.github.oliviercailloux.geocode` s’il ne sert pas
-* S’assurer que `CalendarOnline` stocke des conférences dans un format qui est compris par les logiciels de manipulation de calendriers tels que `Evolution`. Écrire un rapport au format Asciidoctor indiquant quels champs du standard iCal doivent être utilisés, en particulier, comment représenter un point précis sur le globe (latitude, longitude, adresse textuelle)
+* Utiliser https://github.com/oliviercailloux/JARiS[JARiS] pour lire la clé d’API pour accès aux services de calendrier en ligne ou LocationIQ
+* Améliorer ou compléter documentation, implémentation, tests du package calendar pour permettre récupération et édition d’entrées calendrier sur Fruux et NextCloud ; si nécessaire.
+* GUI pour visualiser les conférences du calendrier en ligne
+* GUI pour ajouter une conférence au calendrier en ligne
+* GUI pour modifier une conférence du calendrier en ligne
+* S’assurer que `CalendarOnline` stocke des conférences dans un format qui est compris par les logiciels de manipulation de calendriers tels que `Evolution`. Documenter quels champs du standard iCal sont utilisés, en particulier, comment représenter un point précis sur le globe (latitude, longitude, adresse textuelle)
+* Stocker une `Address` (point avec une description et des coordonnées) dans conférence au lieu ds champs de localisation actuels (`country`, `city`), pour une localisation précise
+* Calcul en ligne de commande d’un trajet de Paris à une ville d’europe continentale reliée directement à Paris (exemple : Berlin, Bruxelles), en train, avec prix. Commencer par rédiger un rapport, au format Asciidoctor, investigant les API en ligne pour ce faire. (Essayer la Deutshe Bahn)
+* GUI pour montrer le trajet
+* Étendre aux trajets à plusieurs points (avec changements)
+* Étendre aux trajets en avion ; en voiture
+* Étendre aux trajets multi-modaux
+* Le trajet est associé à une URL qui permet de l’afficher sur une carte (https://www.openstreetmap.org/directions?engine=osrm_car&route=48.857%2C2.352%3B52.517%2C13.389#map=7/50.716/7.866[Exemple])
+* Améliorer éventuellement documentation de https://github.com/mapsforge/mapsforge[Mapsforge] (https://www.javadoc.io/doc/org.mapsforge/mapsforge-map-reader/0.8.0/index.html[Javadoc]), étudier la possibilité de l’utiliser pour afficher le trajet directement
 * Étendre la fonctionalité d’enregistrement d’un prix (`registrationFee`) d’une conférence pour permettre des prix différenciés : student price, early registration fee, member price, …
-* Étudier la possibilité d’utiliser https://geotools.org/[`GeoTools`] pour calculer des distances ou temps de parcours en voiture entre endroits sur le globe, et comparer à la solution actuelle
+* Étudier la possibilité d’utiliser https://geotools.org/[`GeoTools`] pour calculer des distances ou temps de parcours en voiture entre endroits sur le globe, ou convertir entre adresses et coordonnées, en vue de remplacer LocationIQ, et comparer à la solution actuelle
 * Nettoyer ressources (16 MB dans src/main/resources/io/github/oliviercailloux/jconfs)
-* Simplifier code en se passant de l’interface `ConferencesRetriever`
+* Chercher les informations concernant un chercheur à l’aide de Supann, cf. https://github.com/Dauphine-MIDO/plaquette-MIDO[Plaquette MIDO]
 * Étudier existence d’une API plus moderne pour manipuler des documents OpenDocument
 * Modifier canevas existant LibreOffice Writer, insérer des champs d’utilisateur tels que Researcher_name ou Conference_name (dans LibreOffice : menu Insertion / Champ / Autres champs / Variables), et faire en sorte que ces champs soient mis à la bonne valeur
-* GUI qui ne s’occupe que de la génération de document LibreOffice (cf. ci-dessus)
-* Extraire un programme spécialisé s’occupant de la génération de documents LibreOffice, lui créer son propre dépôt GitHub
-* Restaurer fonction de récupération des données d’un chercheur depuis l’annuaire (en lien avec la DSI de Dauphine)
-* GUI spécialisé pour éditer une conférence (récupérer l’existant et le spécialiser) en ligne
-* GUI pour visualiser et éditer un ensemble de conférences
+* GUI pour générer un document LibreOffice (cf. ci-dessus)
 * L’ensemble du calendrier doit pouvoir être envoyé sur un dépot existant GitHub créé (manuellement) à cet effet. Après modification de conférences (à la sortie de l’application ou toutes les 30 minutes), le nouveau calendrier est envoyé sur le dépôt existant, pour sauvegarde (permet de restaurer une version précédente en cas d’effacement maladroit, par exemple)
-* Classe `PathStep` qui stocke une étape d’un itinéraire : type (transport en commun local, train, avion, taxi), lieu de départ, lieu d’arrivée, date départ, date d’arrivée, prix (représentant le prix de ce trajet seul)
-* Classe `Path`, une instance étant liée à une conférence, comprenant une liste de `PathStep`, chacun se terminant où commence le suivant, chacun commençant après la date de fin du précédent, et commençant au lieu de travail du chercheur (par défaut, Paris) et se terminant à l’endroit de la conférence. La classe contient également un champ `price` qui est indiqué si le prix total n’est pas la somme des prix des morceaux de trajets (par exemple, en cas de réduction si on prend plusieurs voyages en train)
-* Classe qui construit un `Path` pour aller à une conférence choisie, en s’aidant (par exemple) de l’API de Google pour construire un chemin par défaut (voiture, avion…)
-* GUI qui visualise un `Path`, soit par texte, soit par carte
-* Pouvoir voir une fourchette de prix pour se rendre à une conférence, aller et retour, variant selon la date de départ précise
 * L’utilisateur peut ajouter des entrées de dépenses (par exemple, dépenses sur place) qui s’ajoutent à la note
-* L’application détecte si elle a accès à des calendriers en lecture seule ou en écriture, et adapte les possibilités offertes à l’utilisateur
-* On peut spécifier plusieurs calendriers en ligne et l’application lit à partir de tous ces calendriers
-* Inclure dans votre class path un (petit !) fichier de carte du monde de https://github.com/mapsforge/mapsforge[Mapsforge]. Créer une méthode main qui lit le fichier et teste sa validité. (Exemple https://www.javadoc.io/doc/org.mapsforge/mapsforge-map-reader/0.8.0/index.html[Javadoc]
-* Afficher des cartes de trajet localement. (Tester avec cartes Île-de-France et Monde.) Le logiciel télécharge la carte si elle n’existe pas déjà. Il doit être possible d’afficher une carte contenant un point de départ (considéré comme Paris par défaut) et un point d’arrivée donnés. (https://www.openstreetmap.org/directions?engine=osrm_car&route=48.857%2C2.352%3B52.517%2C13.389#map=7/50.716/7.866[Exemple], mais il n’est pas nécessaire d’afficher l’itinéraire ni de surligner les points extrêmes.)
-* Modifier la gestion des codes d’accès au calendrier partagé sur Fruux pour éviter qu’il se trouve dans le code source (voir https://github.com/Dauphine-MIDO/plaquette-MIDO-json). L’application doit toutefois utiliser un calendrier par défaut si l’utilisateur n’en fournit pas, dont les codes doivent se trouver dans un fichier dans le classpath. S’assurer que l’application émet un message d’erreur clair si ce calendrier par défaut se retrouve inaccessible.
 * Serveur web qui renvoie un canevas LibreOffice sur base du login d’un chercheur
-
-== Autres idées
 * Génération du formulaire annuel de demande de PRES (voir https://github.com/oliviercailloux/projets/blob/master/LAMSADE/PRES.pdf[canevas] PRES), d’après données passées en paramètres / fournies par interface graphique / récupérée depuis fichier / récupérée depuis internet
-* Génération et stockage de la demande d’ordre de mission (OM) ou de la demande JC. Si déjà une, elle passe dans l’historique.
 * L’utilisateur peut entrer son mot de passe de son compte e-mail @dauphine. Le logiciel le stocke en suivant le mécanisme de conservation des données secrètes de l’OS.
 * Réception des demandes scannées envoyées sur l’e-mail du chercheur (reconnaissable par l’adresse expéditeur : \photocopieur@lamsade.dauphine.fr), à la demande de l’utilisateur.
 * Envoi demande par e-mail.

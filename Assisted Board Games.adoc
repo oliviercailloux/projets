@@ -42,4 +42,5 @@ Quand une requête est envoyée à l’adresse `api/v1/game/import`, c’est la 
 * https://boardgamearena.com/
 * https://simmer.io/upload
 * http://www.vassalengine.org/ : « Once we've released 3.3.0, I'll be focusing my efforts on assembling and updating all of that so we can get moving on V4. », http://www.vassalengine.org/forum/viewtopic.php?f=5&t=10027#p58941[29 mars 2020] http://www.vassalengine.org/forum/viewtopic.php?f=5&t=11195[Test builds for 3.3.0]. http://www.vassalengine.org/forum/viewtopic.php?f=5&t=3914[Roadmap for VASSAL 4] (2011) (Le post concernant protobuf pourrait être intéressant.)
+* https://chess.stackexchange.com/a/33584[Visual chess moves]
 

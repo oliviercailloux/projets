@@ -17,3 +17,7 @@ On repatira d’un https://github.com/oliviercailloux/Teach-spreadsheets[projet]
 * Accéder aux données des cours de l’année passée pour indiquer les responsables précédents dans 365 (ou modifier si déjà indiqués)
 * (Avec la Direction des Systèmes d’Information de Dauphine) Accéder aux cours prestés l’année passée : nombre d’heures, nombre de groupes, etc. Générer une feuille 365 ressemblant aux feuilles de collecte des préférences à l’aide de ces données.
 
+== Références
+* Tutoriel https://docs.microsoft.com/graph/tutorials/java[Office 365 en Java]
+* https://docs.microsoft.com/graph/use-the-api[Use the Microsoft Graph API]
+

@@ -50,4 +50,5 @@ Pour représenter une préférence, on définit généralement une relation de p
 * https://github.com/xmcda-modular[xmcda-modular]
 * http://www.spliddit.org/
 * http://centrality.mimuw.edu.pl/editor/[Editor4Centralities]
+* https://tikzit.github.io/[TikZiT]
 
